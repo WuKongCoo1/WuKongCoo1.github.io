@@ -7,7 +7,7 @@ title: Jacky Walker
 subtitle: 用于记录工作和学习的博客
 description: 机会是留给有准备的人，这句话说的贼对
 keywords: iOS、Mac
-author: 吴珂
+author: 佚名
 language: zh-Hans
 timezone: UTC
 
@@ -35,7 +35,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
