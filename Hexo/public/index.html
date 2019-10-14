@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="机会是留给有准备的人，这句话说的贼对">
+<meta name="description" content="机会是留给有准备的人">
 <meta name="keywords" content="iOS、Mac">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jacky Walker">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Jacky Walker">
-<meta property="og:description" content="机会是留给有准备的人，这句话说的贼对">
+<meta property="og:description" content="机会是留给有准备的人">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jacky Walker">
-<meta name="twitter:description" content="机会是留给有准备的人，这句话说的贼对">
+<meta name="twitter:description" content="机会是留给有准备的人">
 
 
 
@@ -131,6 +131,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?87d18a71ec23b683860e124d45b93b99";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -303,10 +313,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/C、CPlusPlus格式化字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/10/C、CPlusPlus格式化字符串/" itemprop="url">C、C++格式化字符串</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T18:05:44Z">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/10/C、CPlusPlus格式化字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/10/C、CPlusPlus格式化字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/10/C、CPlusPlus格式化字符串/" class="leancloud_visitors" data-flag-title="C、C++格式化字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在C和C++开发中，我们经常会用到printf来进行字符串的格式化，例如<code>printf(&quot;format string %d, %d&quot;, 1, 2);</code>，这样的格式化只是用于打印调试信息。printf函数实现的是接收可变参数，然后解析格式化的字符串，最后输出到控制台。那么问题来了，当我们需要实现一个函数，根据传入的可变参数来生成格式化的字符串，应该怎么办呢？</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>首先来一个可变参数使用示例，<code>testVariadic</code>方法接收int行的可变参数，并以可变参数为-1表示结束。va_list用于遍历可变参数，<code>va_start</code>方法接收两个参数，第一个为<code>va_list</code>，第二个为可变参数前一个参数，下面的例子里该参数为a。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 下面是 &lt;stdarg.h&gt; 里面重要的几个宏定义如下：</span></span><br><span class="line"><span class="comment"> typedef char* va_list;</span></span><br><span class="line"><span class="comment"> void va_start ( va_list ap, prev_param ); // ANSI version</span></span><br><span class="line"><span class="comment"> type va_arg ( va_list ap, type );</span></span><br><span class="line"><span class="comment"> void va_end ( va_list ap );</span></span><br><span class="line"><span class="comment"> va_list 是一个字符指针，可以理解为指向当前参数的一个指针，取参必须通过这个指针进行。</span></span><br><span class="line"><span class="comment"> &lt;Step 1&gt; 在调用参数表之前，定义一个 va_list 类型的变量，(假设va_list 类型变量被定义为ap)；</span></span><br><span class="line"><span class="comment"> &lt;Step 2&gt; 然后应该对ap 进行初始化，让它指向可变参数表里面的第一个参数，这是通过 va_start 来实现的，第一个参数是 ap 本身，第二个参数是在变参表前面紧挨着的一个变量,即“...”之前的那个参数；</span></span><br><span class="line"><span class="comment"> &lt;Step 3&gt; 然后是获取参数，调用va_arg，它的第一个参数是ap，第二个参数是要获取的参数的指定类型，然后返回这个指定类型的值，并且把 ap 的位置指向变参表的下一个变量位置；</span></span><br><span class="line"><span class="comment"> &lt;Step 4&gt; 获取所有的参数之后，我们有必要将这个 ap 指针关掉，以免发生危险，方法是调用 va_end，他是输入的参数 ap 置为 NULL，应该养成获取完参数表之后关闭指针的习惯。说白了，就是让我们的程序具有健壮性。通常va_start和va_end是成对出现。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//-1表示可变参数结束</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">receiveVariadic</span><span class="params">(<span class="keyword">int</span> a, ...)</span> </span>&#123;</span><br><span class="line">    va_list <span class="built_in">list</span>;</span><br><span class="line">    va_start(<span class="built_in">list</span>, a);</span><br><span class="line">    <span class="keyword">int</span> arg = a;</span><br><span class="line">    <span class="keyword">while</span> (arg != <span class="number">-1</span>) &#123;</span><br><span class="line">        arg = va_arg(<span class="built_in">list</span>, <span class="keyword">int</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, arg);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testVari</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="comment">//-1表示可变参数结束</span></span><br><span class="line">    receiveVariadic(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testVari------</span><br><span class="line">2 3 4 5 6 -1</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>好了，我们已经介绍了怎样实现一个接收可变参数的C函数，接下来介绍根据接收的可变参数来格式化字符串。这里介绍两种方式，第一种是利用宏定义，第二种通过函数的方式来实现。</p>
+<h3 id="通过宏定义的方式"><a href="#通过宏定义的方式" class="headerlink" title="通过宏定义的方式"></a>通过宏定义的方式</h3><p>en…让咱们先来看看第一个版本的宏，这个宏定义对于不熟悉宏的人来说可能看着有点费劲，不过不要怕，稍后会做解释，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_WithoutReturn(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>, buf); \</span><br><span class="line">    <span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="宏基础知识"><a href="#宏基础知识" class="headerlink" title="宏基础知识"></a>宏基础知识</h4><p>首先需要介绍宏用到的知识：<code>\</code>, 这个<code>\</code>的作用是可换行定义宏，毕竟如果一行很长的宏可读性很差，使用方式在换行时加上<code>\</code>即可。第二个是介绍<code>(format, ...)</code>，这里的<code>...</code>是预定义的宏，用于接收可变参数，就像是<code>printf</code>函数一样。接着介绍<code>##__VA_ARGS__</code>，同样的<code>__VA_ARGS__</code>也是预定义的宏，表示接收到的<code>...</code>传入的可变参数。<code>##</code>的作用是用来处理未传入可变参数的情况，当没有传入可变参数的时候，编译器或通过优化将<code>snprintf(NULL, 0, format, ##__VA_ARGS__);</code>优化为<code>snprintf(NULL, 0, format);</code>。你可以理解为没有可变参数时，<code>##</code>前的逗号<code>,</code>与<code>__VA_ARGS__</code>都被“干掉了”。</p>
+<p>你一定会觉得困惑，为什么要写<code>do-while</code>语句呢？这是为了宏的健壮性，如果使用宏的人像下面这样使用的话，就会出问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> testMarco(a, b) \</span></span><br><span class="line"><span class="keyword">int</span> _a = a + <span class="number">1</span>; \</span><br><span class="line"><span class="keyword">int</span> _b = b + <span class="number">1</span>; \</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); \</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        testMarco(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码连编译都不会通过, 会报错如下:</p>
+<p><img src="/images/macro_1.png" alt></p>
+<p>如果手动展开这个宏的话，会变成这个样子，问题就显而易见了。但是如果<code>if</code>语句加上了<code>{}</code>的话，就不会有问题，可以看出规范写法是多么的重要🐶（皮一下很开心）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">int</span> _a = <span class="number">1</span> + <span class="number">1</span>; <span class="keyword">int</span> _b = <span class="number">2</span> + <span class="number">1</span>; <span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b);;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加上<code>do-while</code>以后就不一样，加上do-while后的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> testMarco(a, b) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line"><span class="keyword">int</span> _a = a + <span class="number">1</span>; \</span><br><span class="line"><span class="keyword">int</span> _b = b + <span class="number">1</span>; \</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        testMarco(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>预处理之后代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//展开后的代码 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">do</span> &#123; <span class="keyword">int</span> _a = <span class="number">1</span> + <span class="number">1</span>; <span class="keyword">int</span> _b = <span class="number">2</span> + <span class="number">1</span>; <span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); &#125; <span class="keyword">while</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，宏的基础知识就介绍这么多了，接下来进入正题。</p>
+<h4 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h4><p>为了方便阅读，原谅我在这里再贴一遍宏定义的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_WithoutReturn(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>, buf); \</span><br><span class="line">    <span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>首先，介绍一下<code>snprintf()</code>函数，此函数的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> @param __str 接收格式化结果的指针</span></span><br><span class="line"><span class="comment"> @param __size 接收的size</span></span><br><span class="line"><span class="comment"> @param __format 格式化的字符串</span></span><br><span class="line"><span class="comment"> @param ... 可变参数</span></span><br><span class="line"><span class="comment"> @return 返回格式化后实际上写入的大小a，a &lt;= __size</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>     <span class="title">snprintf</span><span class="params">(<span class="keyword">char</span> * __restrict __str, <span class="keyword">size_t</span> __size, <span class="keyword">const</span> <span class="keyword">char</span> * __restrict __format, ...)</span> __<span class="title">printflike</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>为了方便理解，使用方式是这个样子的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testSnprintf</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> des[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(des, <span class="number">50</span>, <span class="string">"less length %d"</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"size:%d\n"</span>, size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testSnprintf------</span><br><span class="line">size:14</span><br></pre></td></tr></table></figure>
+
+<p><code>snprintf</code>函数还有一个用法是<code>__str</code>和<code>__size</code>分别传入NULL和0，返回值会是格式化字符串的实际长度，可以通过这个方式来获取正确的格式化size，从而避免malloc多余的空间，造成空间浪费。同时返回的size是不包含结束符<code>\0</code>的，所以真正写入要buffer时，需要对size + 1。</p>
+<p>相信通过我的解释，你一定能看懂上面这段代码了吧。哦，对了malloc的代码一定要记得free（敲重点）。</p>
+<p>到了这里，如果细心思考的同学一定会问？这个宏根本没有实际用途好不好，我要的是能够把格式化的字符串作为返回值返回的，仅仅打印直接用<code>printf</code>不就好了。其实，这样的宏还是有作用的，比如说当你要记录日志时，你可以像这样使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Log_Debug(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line"><span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">size++; \</span><br><span class="line"><span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line"><span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">doLog(buf); \</span><br><span class="line"><span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要将结果字符串返回的话，需要用到GNU C的赋值扩展，使用方式如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = (&#123;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">4</span>;</span><br><span class="line">        b + c;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这段代码变量a最终值会是6。利用gnu这个扩展，将之前的宏改造一下就能实现我们的需求，改造完成后是这个样子的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_ReturnFormatString(format, ...) \</span></span><br><span class="line">(&#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    buf; \</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>调用宏的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testByMacro1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *a = myFormatStringByMacro_ReturnFormatString(<span class="string">"format by macro, %d %s"</span>, <span class="number">123</span>, <span class="string">"well done"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a);</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原谅我的啰嗦，malloc开辟的空间一定要记得free。运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testByMacro1------</span><br><span class="line">format by macro, <span class="number">123</span> well done</span><br></pre></td></tr></table></figure>
+
+<p>至此利用宏的方式就介绍完了。</p>
+<h3 id="通过函数的方式"><a href="#通过函数的方式" class="headerlink" title="通过函数的方式"></a>通过函数的方式</h3><p>老规矩先上代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">myFormatStringByFun</span><span class="params">(<span class="keyword">char</span> *format, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list <span class="built_in">list</span>;</span><br><span class="line">    <span class="comment">//1. 先获取格式化后字符串的长度</span></span><br><span class="line">    va_start(<span class="built_in">list</span>, format);</span><br><span class="line">    <span class="keyword">int</span> size = vsnprintf(<span class="literal">NULL</span>, <span class="number">0</span>, format, <span class="built_in">list</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">    <span class="keyword">if</span>(size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    size++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2. 复位va_list，将格式化字符串写入到buf</span></span><br><span class="line">    va_start(<span class="built_in">list</span>, format);</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size);</span><br><span class="line">    vsnprintf(buf, size, format, <span class="built_in">list</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">    <span class="keyword">return</span> buf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里利用的是<code>vsnprintf</code>函数，此函数的定义在<code>stdio.h</code>中的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> @param __str 目标字符串</span></span><br><span class="line"><span class="comment"> @param __size 要赋值的大小</span></span><br><span class="line"><span class="comment"> @param __format 格式化字符串</span></span><br><span class="line"><span class="comment"> @param va_list 可变参数列表</span></span><br><span class="line"><span class="comment"> @return 返回格式化后实际上写入的大小a，a &lt;= __size</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>     <span class="title">vsnprintf</span><span class="params">(<span class="keyword">char</span> * __restrict __str, <span class="keyword">size_t</span> __size, <span class="keyword">const</span> <span class="keyword">char</span> * __restrict __format, va_list)</span> __<span class="title">printflike</span><span class="params">(<span class="number">3</span>, <span class="number">0</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>vsnprintf</code>的具体使用方式和之前介绍的<code>snprintf</code>是差不多的，这里就不再详细介绍了，不大明白的同学可以看看上面的介绍。哦，对了，这两个函数都是定义在stdio.h这个头文件下的</p>
+<p>接下来就是试一下我们封装的函数了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testByFun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *b = myFormatStringByFun(<span class="string">"format by fun %d %s"</span>, <span class="number">321</span>, <span class="string">"nice"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testByFun------</span><br><span class="line">format by fun <span class="number">321</span> nice</span><br></pre></td></tr></table></figure>
+
+<p>格式化字符串的方法差不多介绍完了，不知道善于思考的你有没想到直接用宏定义来调用我们封装的函数呢？我就在这直接给出宏定义和使用方式了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByFunQuick(format, ...) myFormatStringByFun(format, ##__VA_ARGS__);</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testMyFormatStringByFunQuick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *formatString = myFormatStringByFunQuick(<span class="string">"amazing happen, %s"</span>, <span class="string">"cool"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, formatString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testMyFormatStringByFunQuick------</span><br><span class="line">amazing happen</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-版本"><a href="#C-版本" class="headerlink" title="C++版本"></a>C++版本</h3><p>对了，最初实现是用的C++版本，这里使用的是泛型，代码是这个样子的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt; <span class="keyword">typename</span>... Args &gt;</span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">string_sprintf</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span>* format, Args... args )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">std</span>::<span class="built_in">snprintf</span>( <span class="literal">nullptr</span>, <span class="number">0</span>, format, args... );</span><br><span class="line">    assert( length &gt;= <span class="number">0</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">char</span>* buf = <span class="keyword">new</span> <span class="keyword">char</span>[length + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">snprintf</span>( buf, length + <span class="number">1</span>, format, args... );</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">( buf )</span></span>;</span><br><span class="line">    <span class="keyword">delete</span>[] buf;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实和C语言版本的没什么差别，只是多了泛型的东西而已，相信聪明的你一定能看懂，看不懂的话，就去看看C++的泛型知识吧，哈哈哈。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>终于介绍完了，你可以在<a href="https://github.com/WuKongCoo1/DemoFormatString" target="_blank" rel="noopener">这里</a>下载代码。写博客是真的有点累人，不过对于最近被面试打击的我来说，写博客能够让我对知识理解的更加透彻，毕竟要自己认真思考后才能够写的明白（至少我觉得讲明白了，哈哈哈）。如果有什么说的不对的地方，还请指出，感谢你的阅读，thks。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://stackoverflow.com/questions/2342162/stdstring-formatting-like-sprintf" target="_blank" rel="noopener">std::string formatting like sprintf</a></p>
+<p><a href="https://onevcat.com/2014/01/black-magic-in-macro/" target="_blank" rel="noopener">宏定义的黑魔法 - 宏菜鸟起飞手册</a></p>
+<p><a href="https://blog.csdn.net/bat67/article/details/77542165" target="_blank" rel="noopener">整理：C/C++可变参数，“## <strong>VA_ARGS</strong>”宏的介绍和使用</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -370,9 +626,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/02/TCP的三次握手与四次挥手/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/02/TCP的三次握手与四次挥手/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/09/02/TCP的三次握手与四次挥手/" class="leancloud_visitors" data-flag-title="TCP的三次握手与四次挥手">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -396,7 +673,33 @@
       
         
           
-            <p><img src="/images/timg.jpeg" alt></p>
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>前段时间一直在准备面试，本以为准备的挺好，然而被腾讯面试官问道网络问题的时候，发现自己对TCP协议的理解真的是停留在表面，不够深入。于是本着提高自己的想法，去查了些资料，这里主要是总结我对TCP建立与断开连接过程的理解。</p>
+<h1 id="常见题目"><a href="#常见题目" class="headerlink" title="常见题目"></a>常见题目</h1><p>在面试中网络问题是一定会考察的，而TCP协议则是考察网络知识的重点。经常会被问道的问题如下：</p>
+<ol>
+<li>请讲一下TCP协议建立连接的过程</li>
+<li>请介绍TCP协议中的三次握手和四次挥手是怎么样的</li>
+<li>为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</li>
+<li>TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</li>
+</ol>
+<p>接下来，我将介绍我理解的TCP三次握手和4次挥手的过程，如果错误还请指正，谢谢。</p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h2><p>首先需要服务器监听特定的端口，等待客户端来请求连接。当客户端需要建立连接时，客户端会先向服务器发送syn报文，将报文中syn置为随机生成的序号n（这里假设序号为1000）。服务器收到同步报文后，会回复一个ack报文，把ACK位置位n+1（这里的序号应该为1001），同时设置syn为y（这里假设为2000）。客户端收到服务器发送的ack报文后，会回复一个ACK报文给服务器，其中ACK位置为y+1（这里即为2001）。当服务器收到ACK消息后，即认为连接进入稳定状态。状态机与流程图如下：</p>
+<p><img src="/images/state_machine.png" alt></p>
+<p><img src="/images/tcp3waysynch.png" alt></p>
+<h2 id="四次挥手过程"><a href="#四次挥手过程" class="headerlink" title="四次挥手过程"></a>四次挥手过程</h2><p>当client从app接收到关闭指令后，client会给server发送FIN消息（表明client不会再给server发送数据），client进入finish-wait-1状态。server收到finish消息后，回复确认消息ack给client，自身进入close-wait状态。client接收到ack消息后，进入到FIN-WAIT-2状态。并且在此状态等待服务器发送finish消息。当server接收到app的关闭指令后，server给client发送FIN消息。服务器进入到LAST-ACK状态。客户端收到FIN消息后，会回复ACK消息，同时进入到TIME-WAIT状态，来等待server收到ack消息，客户端会在接下来的2MSL（maximum segment lifetime）的时间内保持TIME-WAIT状态。为什么是2MSL时间呢，一是为了server有足够的时间收到ACK消息，并在消息丢失时重发。二是为了在此连接结束后的后续连接提供缓冲期。如果不是2倍MSL的话，就可能混合来自不同连接的数据包，造成消息混乱。状态机与流程图如下：</p>
+<p><img src="/images/tcp_close_state_machine.png" alt></p>
+<p><img src="/images/tcpclose1.png" alt></p>
+<h2 id="完整过程"><a href="#完整过程" class="headerlink" title="完整过程"></a>完整过程</h2><p>以下为TCP从建立连接到断开的完整流程图</p>
+<p><img src="/images/tcpfsm1.png" alt></p>
+<h1 id="开始答题"><a href="#开始答题" class="headerlink" title="开始答题"></a>开始答题</h1><p>有了上面的介绍，基本能够回答前两个问题。</p>
+<h3 id="请讲一下TCP协议建立连接的过程"><a href="#请讲一下TCP协议建立连接的过程" class="headerlink" title="请讲一下TCP协议建立连接的过程"></a>请讲一下TCP协议建立连接的过程</h3><p>看上面</p>
+<h3 id="请介绍TCP协议中的三次握手和四次挥手是怎么样的"><a href="#请介绍TCP协议中的三次握手和四次挥手是怎么样的" class="headerlink" title="请介绍TCP协议中的三次握手和四次挥手是怎么样的"></a>请介绍TCP协议中的三次握手和四次挥手是怎么样的</h3><p>看上面</p>
+<h3 id="为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"><a href="#为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次" class="headerlink" title="为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"></a>为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</h3><p>首先呢，根本不存在可靠的连接，tcp只是提供相对可靠的连接。三次握手的主要目的是交换通信需要的参数，主要是server与client的syn序号，这个序号是用于收发数据的。如果只有两次握手的话，当服务器发送ack+syn消息后，就会认为建立了稳定连接，这个时候如果ack+syn丢失了，client并没有收到这个消息，那么客户端就会认为连接建立不成功，而直接进入close状态。这样就会造成，server一直在哪傻等，永远不会有client来发送数据，这就会造成服务器资源的浪费。至于为什么不是四次握手，是因为握手三次成功以后，就可以认定当前连接是可靠的了，不然的话还需要client与server互相之间发送ack消息，这样就无休无止了。</p>
+<h3 id="TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"><a href="#TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1" class="headerlink" title="TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"></a>TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</h3><p>因为现实中的网络状况不可预知，比如说客户端在第一次连接时，使用序号为1为初始序号进行数据发送，发送了1到30的数据片段，这个时候因为网络问题断开了连接。然后客户端是syn为1重新建立了新的连接，这个时候服务器收到了之前发送的30个字节的数据，服务器就会以为这30个字节的数据是新发的，这就会导致数据混乱。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>说明，本文所有图片均来自<a href="http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm" target="_blank" rel="noopener">The TCP/IP Guide</a>。</p>
+<p>参考资料如下：</p>
+<p><a href="http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm" target="_blank" rel="noopener">The TCP/IP Guide</a></p>
+<p><a href="https://blog.csdn.net/xifeijian/article/details/12777187" target="_blank" rel="noopener">TCP为什么需要3次握手与4次挥手</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/40013850" target="_blank" rel="noopener">TCP三次握手四次挥手详解</a></p>
 
           
         
@@ -448,7 +751,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/C-中调用OC代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -512,9 +815,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/20/C-中调用OC代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/C-中调用OC代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/08/20/C-中调用OC代码/" class="leancloud_visitors" data-flag-title="C++中调用OC代码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -608,7 +932,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -672,9 +996,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/20/Mac-OpenGL环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/Mac-OpenGL环境搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/08/20/Mac-OpenGL环境搭建/" class="leancloud_visitors" data-flag-title="Mac OpenGL环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -791,7 +1136,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/19/initial-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -899,9 +1244,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/19/initial-blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/19/initial-blog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/08/19/initial-blog/" class="leancloud_visitors" data-flag-title="initial blog">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -976,7 +1342,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/16/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1018,9 +1384,30 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/16/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/16/hello-world/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
+          
+             <span id="/2019/08/16/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
           
 
           
@@ -1127,8 +1514,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">佚名</p>
-              <p class="site-description motion-element" itemprop="description">机会是留给有准备的人，这句话说的贼对</p>
+              <p class="site-author-name" itemprop="name">吴珂</p>
+              <p class="site-description motion-element" itemprop="description">机会是留给有准备的人</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1138,7 +1525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1202,7 +1589,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">佚名</span>
+  <span class="author" itemprop="copyrightHolder">吴珂</span>
 
   
 </div>
@@ -1337,6 +1724,14 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://github-io-13.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
 
 
 
@@ -1352,10 +1747,6 @@
 
 
 
-  
-
-
-
 
 
 
@@ -1372,6 +1763,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QL7AG58rliEwch4iwUV02r52-gzGzoHsz", "0L9XP3dI3wrxTzXH7D8fBUEI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
