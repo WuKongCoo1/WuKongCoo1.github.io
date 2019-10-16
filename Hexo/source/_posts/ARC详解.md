@@ -141,6 +141,8 @@ void foo2()
 
 ### ARC的优化
 
+#### 优化一 成对的retain与autorelease优化
+
 上面讲到，如果对象是通过不符合ARC规则的方法创建的，那么ARC会为其加上autorelease，如果这时候接收的变量是强指针的话，那么ARC会为其加上retain调用。示例如下：
 
 ```objc
@@ -153,4 +155,36 @@ Student *stu = [Student studentWithName:@"Nacy"];
 ```
 
 这样看来的话，在这里studentWithName中的autorelease与这里的retain就是多余的了，可以删除。但是为了兼容性，ARC没有直接删除。ARC不会直接调用autorelease，而是执行另外的函数objc_autoreleaseReturnValue。这个函数会检查返回值之后的代码，如果之后的代码有执行retain操作，那么就设置全局结构，不执行autorelease操作。同样的，在调用retain方法时，会调用objc_retainAutoreleasedReturnValue。这个方法会检查上面提到的标志位，如果标志位被设置了的话，那么就不会执行retain操作，并重置检测标志位。
+
+#### 优化二 设置实例变量
+
+在MRC情况下，setter方法的内存管理是这样的
+
+```objc
+- (void)setObj:(id)obj
+{
+    id newObj = [obj retain]; //保留新值
+    [_obj release]; //释放旧值
+    _obj = newObj; //设置实例变量
+}
+```
+
+但是在ARC下面，只需要设置实例变量即可，ARC会自动保留新值，释放旧值，最后才设置实例变量，就像是上面这样写的一样，ARC代码如下：
+
+```objc
+- (void)setObj:(id)obj
+{
+    _obj = obj; //设置实例变量
+}
+```
+
+# 总结
+
+- ARC通过方法名来管理方法返回的对象
+- ARC会优化成对的retain与release操作
+- ARC只管理OC对象
+
+# 参考
+
+[Effective Objective-C 2.0](https://item.jd.com/11402853.html)
 
