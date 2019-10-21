@@ -313,6 +313,628 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/iOS-RGBA转YV12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/17/iOS-RGBA转YV12/" itemprop="url">iOS RGBA转YV12</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T16:58:23Z">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/17/iOS-RGBA转YV12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/17/iOS-RGBA转YV12/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/17/iOS-RGBA转YV12/" class="leancloud_visitors" data-flag-title="iOS RGBA转YV12">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>因为项目中要做画面共享，所以需要学一点图像相关的知识，首当其冲就是RGB转YUV了，因为图像处理压缩这一块是由专业对口的同事做的，所以呢，我这就是写一下自己的理解，如有不对的地方，还望指正，谢谢。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="知识准备"><a href="#知识准备" class="headerlink" title="知识准备"></a>知识准备</h2><h3 id="RGB"><a href="#RGB" class="headerlink" title="RGB"></a>RGB</h3><p><strong>三原色光模式</strong>（<strong>RGB color model</strong>），又称<strong>RGB颜色模型</strong>或<strong>红绿蓝颜色模型</strong>，是一种<a href="https://zh.wikipedia.org/wiki/加色法" target="_blank" rel="noopener">加色模型</a>，将<a href="https://zh.wikipedia.org/wiki/红" target="_blank" rel="noopener">红</a>（<strong>R</strong>ed）、<a href="https://zh.wikipedia.org/wiki/绿色" target="_blank" rel="noopener">绿</a>（<strong>G</strong>reen）、<a href="https://zh.wikipedia.org/wiki/蓝" target="_blank" rel="noopener">蓝</a>（<strong>B</strong>lue）三<a href="https://zh.wikipedia.org/wiki/原色" target="_blank" rel="noopener">原色</a>的色光以不同的比例相加，以合成产生各种色彩光。</p>
+<h3 id="RGB32"><a href="#RGB32" class="headerlink" title="RGB32"></a>RGB32</h3><p>RGB32使用32位来表示一个像素，RGB分量各用去8位，剩下的8位用作Alpha<a href="https://baike.baidu.com/item/通道" target="_blank" rel="noopener">通道</a>或者不用。（ARGB32就是带Alpha通道的RGB24。）注意在内存中RGB各分量的排列顺序为：BGRA BGRA BGRA…。通常可以使用RGBQUAD数据结构来操作一个像素，它的定义为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagRGBQUAD</span> &#123;</span></span><br><span class="line">BYTE rgbBlue; <span class="comment">// 蓝色分量</span></span><br><span class="line">BYTE rgbGreen; <span class="comment">// 绿色分量</span></span><br><span class="line">BYTE rgbRed; <span class="comment">// 红色分量</span></span><br><span class="line">BYTE rgbReserved; <span class="comment">// 保留字节（用作Alpha通道或忽略）</span></span><br><span class="line">&#125; RGBQUAD。</span><br></pre></td></tr></table></figure>
+
+<h3 id="YUV"><a href="#YUV" class="headerlink" title="YUV"></a>YUV</h3><p><strong>YUV</strong>，是一种<a href="https://zh.wikipedia.org/wiki/顏色" target="_blank" rel="noopener">颜色</a><a href="https://zh.wikipedia.org/wiki/編碼" target="_blank" rel="noopener">编码</a>方法。常使用在各个影像处理组件中。 YUV在对照片或影片编码时，考虑到人类的感知能力，允许降低色度的带宽。</p>
+<p>YUV是编译true-color颜色空间（color space）的种类，Y’UV, YUV, <a href="https://zh.wikipedia.org/wiki/YCbCr" target="_blank" rel="noopener">YCbCr</a>，<a href="https://zh.wikipedia.org/wiki/YPbPr" target="_blank" rel="noopener">YPbPr</a>等专有名词都可以称为YUV，彼此有重叠。“Y”表示<strong>明亮度</strong>（Luminance、Luma），“U”和“V”则是<strong>色度</strong>、<strong>浓度</strong>（Chrominance、Chroma）。</p>
+<p>YUV Formats分成两个格式：</p>
+<ul>
+<li>紧缩格式（packed formats）：将Y、U、V值存储成Macro Pixels数组，和<a href="https://zh.wikipedia.org/wiki/RGB" target="_blank" rel="noopener">RGB</a>的存放方式类似。</li>
+<li>平面格式（planar formats）：将Y、U、V的三个分量分别存放在不同的矩阵中。</li>
+</ul>
+<h3 id="YV12"><a href="#YV12" class="headerlink" title="YV12"></a>YV12</h3><p>YV12是每个像素都提取Y，在UV提取时，将图像2 x 2的矩阵，每个矩阵提取一个U和一个V。YV12格式和I420格式的不同处在V平面和U平面的位置不同。在YV12格式中，V平面紧跟在Y平面之后，然后才是U平面（即：YVU）；但I420则是相反（即：YUV）。<strong>NV12</strong>与YV12类似，效果一样，YV12中U和V是连续排列的，而在NV12中，U和V就交错排列的。</p>
+<p>排列举例： <strong>2*2图像</strong>YYYYVU； <strong>4＊4图像</strong>YYYYYYYYYYYYYYYYVVVVUUUU。</p>
+<p>ps：以上介绍摘自于维基百科、百度百科。</p>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h3 id="获取RGBA数据"><a href="#获取RGBA数据" class="headerlink" title="获取RGBA数据"></a>获取RGBA数据</h3><p>在这里主要介绍从Image中获取RGBA数据，会用到CoreGraphics库。</p>
+<p>首先我们需要创建bitmap context</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">CGContextRef</span>) newBitmapRGBA8ContextFromImage:(<span class="built_in">CGImageRef</span>) image &#123;</span><br><span class="line">	<span class="built_in">CGContextRef</span> context = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="built_in">CGColorSpaceRef</span> colorSpace;</span><br><span class="line">	uint32_t *bitmapData;</span><br><span class="line">	</span><br><span class="line">	size_t bitsPerPixel = <span class="number">32</span>; <span class="comment">//每一个像素 由4个通道构成(RGBA)，每一个通道都是1个byte，4个通道也就是32个bit</span></span><br><span class="line">	size_t bitsPerComponent = <span class="number">8</span>; <span class="comment">//可以理解为每个通道的bit数</span></span><br><span class="line">	size_t bytesPerPixel = bitsPerPixel / bitsPerComponent; <span class="comment">//每个像素点的byte大小</span></span><br><span class="line">	</span><br><span class="line">	size_t width = <span class="built_in">CGImageGetWidth</span>(image); </span><br><span class="line">	size_t height = <span class="built_in">CGImageGetHeight</span>(image);</span><br><span class="line">	</span><br><span class="line">	size_t bytesPerRow = width * bytesPerPixel; <span class="comment">//每一行的字节数</span></span><br><span class="line">	size_t bufferLength = bytesPerRow * height; <span class="comment">//整个buffer的size</span></span><br><span class="line">	</span><br><span class="line">	colorSpace = <span class="built_in">CGColorSpaceCreateDeviceRGB</span>(); <span class="comment">//指定颜色空间为RGB</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!colorSpace) &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error allocating color space RGB\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 开辟存储位图的内存</span></span><br><span class="line">	bitmapData = (uint32_t *)malloc(bufferLength);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!bitmapData) &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error allocating memory for bitmap\n"</span>);</span><br><span class="line">		<span class="built_in">CGColorSpaceRelease</span>(colorSpace);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 创建bitmap context</span></span><br><span class="line">	context = <span class="built_in">CGBitmapContextCreate</span>(bitmapData, </span><br><span class="line">									width, </span><br><span class="line">									height, </span><br><span class="line">									bitsPerComponent, </span><br><span class="line">									bytesPerRow, </span><br><span class="line">									colorSpace, </span><br><span class="line">                                    kCGImageAlphaPremultipliedLast);	<span class="comment">// RGBA</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!context) &#123;</span><br><span class="line">        free(bitmapData);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Bitmap context not created"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="built_in">CGColorSpaceRelease</span>(colorSpace);</span><br><span class="line">	<span class="keyword">return</span> context;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要向image绘制到bitmap context，然后从context中获取bitmap data。代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">unsigned</span> <span class="keyword">char</span> *) convertUIImageToBitmapRGBA8:(<span class="built_in">UIImage</span> *) image &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGImageRef</span> imageRef = image.CGImage;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 创建bitmap context</span></span><br><span class="line">	<span class="built_in">CGContextRef</span> context = [<span class="keyword">self</span> newBitmapRGBA8ContextFromImage:imageRef];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!context) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	size_t width = <span class="built_in">CGImageGetWidth</span>(imageRef);</span><br><span class="line">	size_t height = <span class="built_in">CGImageGetHeight</span>(imageRef);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGRect</span> rect = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 将image绘制到bitmap context</span></span><br><span class="line">	<span class="built_in">CGContextDrawImage</span>(context, rect, imageRef);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 获取bitmap context	中的数据指针</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> *bitmapData = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="built_in">CGBitmapContextGetData</span>(context);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 拷贝 bitmap text中的数据</span></span><br><span class="line">	size_t bytesPerRow = <span class="built_in">CGBitmapContextGetBytesPerRow</span>(context);</span><br><span class="line">	size_t bufferLength = bytesPerRow * height;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> *newBitmap = <span class="literal">NULL</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(bitmapData) &#123;</span><br><span class="line">		newBitmap = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>) * bytesPerRow * height);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(newBitmap) &#123;	<span class="comment">// 拷贝数据</span></span><br><span class="line">			memcpy(newBitmap, bitmapData, bufferLength);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		free(bitmapData);</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error getting bitmap pixel data\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGContextRelease</span>(context);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> newBitmap;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看了这段代码，你可能会有疑问，为什么不直接返回bitmapData呢？这是因为在我们释放bitmap context后，会释放掉bitmapData，所以这就需要我们从新申请空间将数据拷贝到重新开辟的空间了。</p>
+<h3 id="格式化图像数据"><a href="#格式化图像数据" class="headerlink" title="格式化图像数据"></a>格式化图像数据</h3><p>因为YV12要求以像素的2 * 2矩阵来做转换，所以在做RGB转换YV12之前，我们需要先格式化图像数据，以满足要求。</p>
+<p>首先需要格式化图片size，在这里我们以8来对齐，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ (CGSize)fromatImageSizeToYV12Size:(CGSize)originalSize</span><br><span class="line">&#123;</span><br><span class="line">    CGSize targetSize = CGSizeMake(originalSize.width, originalSize.height);</span><br><span class="line">    </span><br><span class="line">    //除以8是为了位对齐</span><br><span class="line">    int widthRemainder = (int)originalSize.width % 8;</span><br><span class="line">    </span><br><span class="line">    if (widthRemainder != 0) &#123;</span><br><span class="line">        targetSize.width -= widthRemainder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int heightRemainder = (int)originalSize.height % 8;</span><br><span class="line">    if (heightRemainder != 0) &#123;</span><br><span class="line">        targetSize.height -= heightRemainder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return targetSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上个步骤我们计算得到了满足YV12格式的size，在这里还需要根据计算到的size来格式化image data，以满足YV12格式要求，代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)formatImageDataToYV12:(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)originalData outputData:(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)outputData originalWidth:(<span class="built_in">CGFloat</span>)originalWidth targetSize:(<span class="built_in">CGSize</span>)targetSize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> targetHeight = targetSize.height;</span><br><span class="line">    <span class="built_in">CGFloat</span> targetWidth = targetSize.width;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> *pTemp = outputData;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//按照targetSize逐行拷贝数据, 乘以4是因为每个size表示4个通道</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; targetHeight; i++) &#123;</span><br><span class="line">        memcpy(pTemp, originalData, targetWidth * <span class="number">4</span>);</span><br><span class="line">        originalData += (<span class="keyword">int</span>)originalWidth * <span class="number">4</span>;</span><br><span class="line">        pTemp += (<span class="keyword">int</span>)targetWidth * <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数据准备好了，接下来，可以进入真正的主题，RGBA转换为YV12了。</p>
+<h3 id="RGBA转YV12"><a href="#RGBA转YV12" class="headerlink" title="RGBA转YV12"></a>RGBA转YV12</h3><p>对于RGB转换为对应的YV12，转换规则都是大佬们研究出来的，只是实现的方式各有不同，我在这里罗列了我找到的几种方式。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> rgb2yuv(<span class="keyword">int</span> r, <span class="keyword">int</span> g, <span class="keyword">int</span> b, <span class="keyword">int</span> *y, <span class="keyword">int</span> *u, <span class="keyword">int</span> *v)&#123;</span><br><span class="line">    <span class="comment">// 1 常规转换标准 - 浮点运算，精度高</span></span><br><span class="line">    *y =  <span class="number">0.29882</span>  * r + <span class="number">0.58681</span>  * g + <span class="number">0.114363</span> * b;</span><br><span class="line">    *u = <span class="number">-0.172485</span> * r - <span class="number">0.338718</span> * g + <span class="number">0.511207</span> * b;</span><br><span class="line">    *v =  <span class="number">0.51155</span>  * r - <span class="number">0.42811</span>  * g - <span class="number">0.08343</span>  * b;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2 常规转换标准 通过位移来避免浮点运算，精度低</span></span><br><span class="line">    *y = ( <span class="number">76</span>  * r + <span class="number">150</span> * g + <span class="number">29</span>  * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *u = (<span class="number">-44</span>  * r - <span class="number">87</span>  * g + <span class="number">131</span> * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *v = ( <span class="number">131</span> * r - <span class="number">110</span> * g - <span class="number">21</span>  * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    <span class="comment">// 3 常规转换标准 通过位移来避免乘法运算，精度低</span></span><br><span class="line">    *y = ( (r&lt;&lt;<span class="number">6</span>) + (r&lt;&lt;<span class="number">3</span>) + (r&lt;&lt;<span class="number">2</span>) + (g&lt;&lt;<span class="number">7</span>) + (g&lt;&lt;<span class="number">4</span>) + (g&lt;&lt;<span class="number">2</span>) + (g&lt;&lt;<span class="number">1</span>) + (b&lt;&lt;<span class="number">4</span>) + (b&lt;&lt;<span class="number">3</span>) + (b&lt;&lt;<span class="number">2</span>) + b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *u = (-(r&lt;&lt;<span class="number">5</span>) - (r&lt;&lt;<span class="number">3</span>) - (r&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">6</span>) - (g&lt;&lt;<span class="number">4</span>) - (g&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">1</span>) - g + (b&lt;&lt;<span class="number">7</span>) + (b&lt;&lt;<span class="number">1</span>) + b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *v = ((r&lt;&lt;<span class="number">7</span>) + (r&lt;&lt;<span class="number">1</span>) + r - (g&lt;&lt;<span class="number">6</span>) - (g&lt;&lt;<span class="number">5</span>) - (g&lt;&lt;<span class="number">3</span>) - (g&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">1</span>) - (b&lt;&lt;<span class="number">4</span>) - (b&lt;&lt;<span class="number">2</span>) - b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4 高清电视标准：BT.709 常规方法：浮点运算，精度高</span></span><br><span class="line">    *y =  <span class="number">0.2126</span>  * r + <span class="number">0.7152</span>  * g + <span class="number">0.0722</span>  * b;</span><br><span class="line">    *u = <span class="number">-0.09991</span> * r - <span class="number">0.33609</span> * g + <span class="number">0.436</span>   * b;</span><br><span class="line">    *v =  <span class="number">0.615</span>   * r - <span class="number">0.55861</span> * g - <span class="number">0.05639</span> * b;</span><br><span class="line">    </span><br><span class="line">    *v += <span class="number">128</span>;</span><br><span class="line">    *u += <span class="number">128</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的转换方式都是可行的，当然要提升效率的话，还有查表法什么的，这些有兴趣的可以自行搜索。既然转换规则固定了，那么不考虑效率的前提下，我们需要做的就是如何从rgba数组中按照2 * 2矩阵来获取YUV数据并存储下来了。</p>
+<p>在这里介绍采用紧缩格式存储YV12的数据。为了便于理解，在这里先举个栗子：</p>
+<p>下图中的表示一张图中的像素排列，每个像素都包含RGBA通道，将RGBA转换为YV12需要按照2 * 2的像素矩阵为单位来处理，在图中就是按颜色分块中的像素来获取YUV数据，YV12是每4个像素获取一次U、V分量的数据，每个像素都要获取Y分量。</p>
+<p><img src="/images/rgb2yuv.png" alt></p>
+<p>要看转换后的YUV的样子，这里以2 * 2为例，8 个像素生成的YUV如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YYYY YYYY VV UU</span><br></pre></td></tr></table></figure>
+
+<p>有了上面的知识，就可以直接上代码看看了。在这里我们以数组的方式来存储yuv数据，输入的rgba数据我们设置为int型数组，因为每个像素包含4个通道，每个通道都是一个byte，这样每个像素是4个byte，正好是一个int。需要注意的是，在int数组中，按理说每个int的数据应该是:RGBA，但是在iOS上，由于iOS是小端，所以实际上每个int的内容为ABGR，所以在取数据的时候需要注意，避免弄错顺序。还有需要注意的是，计算出来的UV数据需要避免负数，不然颜色值会有问题。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> rgbaConvert2YV12(<span class="keyword">int</span> *rgbData, uint8_t *yuv, <span class="keyword">int</span> width, <span class="keyword">int</span> height) &#123;</span><br><span class="line">    <span class="keyword">int</span> frameSize = width * height;</span><br><span class="line">    <span class="keyword">int</span> yIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> vIndex = frameSize;</span><br><span class="line">    <span class="keyword">int</span> uIndex = frameSize * <span class="number">1.25</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> R, G, B, Y, U, V, A;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; height; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; width; i++) &#123;<span class="comment">//RGBA</span></span><br><span class="line">            <span class="comment">//样式为ABGR iOS设备为小端</span></span><br><span class="line">            A = (rgbData[index] &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            B = (rgbData[index] &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            G = (rgbData[index] &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            R = rgbData[index] &amp; <span class="number">0xff</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//转换</span></span><br><span class="line">            rgb2yuv(R, G, B, &amp;Y, &amp;U, &amp;V);</span><br><span class="line">            <span class="comment">//避免负数</span></span><br><span class="line">            U += <span class="number">128</span>;</span><br><span class="line">            V += <span class="number">128</span>;</span><br><span class="line">            </span><br><span class="line">            Y = RANG_CONTROL(Y, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            U = RANG_CONTROL(U, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            V = RANG_CONTROL(V, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            </span><br><span class="line">            yuv[yIndex++] = Y;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (j % <span class="number">2</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">2</span> == <span class="number">0</span>) &#123;<span class="comment">//按2 * 2矩阵取</span></span><br><span class="line">                yuv[vIndex++] = V;</span><br><span class="line">                yuv[uIndex++] = U;</span><br><span class="line">            &#125;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="YV12转RGBA"><a href="#YV12转RGBA" class="headerlink" title="YV12转RGBA"></a>YV12转RGBA</h3><p>首先还是yuv转rgb的方法，这与RGB转YV12是对应的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void yuv2rgb(int y, int u, int v, int *r, int *g, int *b)&#123;</span><br><span class="line">    u -= 128;</span><br><span class="line">    v -= 128;</span><br><span class="line">    // 1 常规转换标准 - 浮点运算，精度高</span><br><span class="line">    *r = y                  + (1.370705 * v);</span><br><span class="line">    *g = y - (0.337633 * u) - (0.698001 * v);</span><br><span class="line">    *b = y + (1.732446 * u);</span><br><span class="line"></span><br><span class="line">    // 2 常规转换标准 通过位移来避免浮点运算，精度低</span><br><span class="line">    *r = ((256 * y             + (351 * v))&gt;&gt;8);</span><br><span class="line">    *g = ((256 * y - (86  * u) - (179 * v))&gt;&gt;8);</span><br><span class="line">    *b = ((256 * y + (444 * u))            &gt;&gt;8);</span><br><span class="line">    // 3 常规转换标准 通过位移来避免乘法运算，精度低</span><br><span class="line">    *r = (((y&lt;&lt;8) + (v&lt;&lt;8) + (v&lt;&lt;6) + (v&lt;&lt;4) + (v&lt;&lt;3) + (v&lt;&lt;2) + (v&lt;&lt;1) + v)                   &gt;&gt; 8);</span><br><span class="line">    *g = (((y&lt;&lt;8) - (u&lt;&lt;6) - (u&lt;&lt;4) - (u&lt;&lt;2) - (u&lt;&lt;1) - (v&lt;&lt;7) - (v&lt;&lt;5) - (v&lt;&lt;4) - (v&lt;&lt;1) - v) &gt;&gt; 8);</span><br><span class="line">    *b = (((y&lt;&lt;8) + (u&lt;&lt;8) + (u&lt;&lt;7) + (u&lt;&lt;5) + (u&lt;&lt;4) + (u&lt;&lt;3) + (u&lt;&lt;2))                       &gt;&gt; 8);</span><br><span class="line">    // 4 高清电视标准：BT.709 常规方法：浮点运算，精度高</span><br><span class="line">    *r = (y               + 1.28033 * v);</span><br><span class="line">    *g = (y - 0.21482 * u - 0.38059 * v);</span><br><span class="line">    *b = (y + 2.12798 * u);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重点来了，将YUV数组恢复为RGBA数组</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> YV12Convert2RGB(uint8_t *yuv, uint8_t *rgb, <span class="keyword">int</span> width, <span class="keyword">int</span> height)&#123;</span><br><span class="line">    <span class="keyword">int</span> frameSize = width * height;</span><br><span class="line">    <span class="keyword">int</span> rgbIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> yIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> uvOffset = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> vIndex = frameSize;</span><br><span class="line">    <span class="keyword">int</span> uIndex = frameSize * <span class="number">1.25</span>;</span><br><span class="line">    <span class="keyword">int</span> R, G, B, Y, U, V;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; width; j++) &#123;</span><br><span class="line">            Y = yuv[yIndex++];</span><br><span class="line">            uvOffset = i / <span class="number">2</span> * width / <span class="number">2</span> + j / <span class="number">2</span>;<span class="comment">//按2 * 2矩阵 还原</span></span><br><span class="line">            </span><br><span class="line">            V = yuv[vIndex + uvOffset];</span><br><span class="line">            U = yuv[uIndex + uvOffset];</span><br><span class="line">            </span><br><span class="line">            yuv2rgb(Y, U, V, &amp;R, &amp;G, &amp;B);</span><br><span class="line">            </span><br><span class="line">            R = RANG_CONTROL(R, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            G = RANG_CONTROL(G, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            B = RANG_CONTROL(B, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            </span><br><span class="line">            rgb[rgbIndex++] = R;</span><br><span class="line">            rgb[rgbIndex++] = G;</span><br><span class="line">            rgb[rgbIndex++] = B;</span><br><span class="line">            rgb[rgbIndex++] = <span class="number">255</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上就是iOS中RGB与YUV互转的方式了，你可以在<a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E5%8E%9F%E8%89%B2%E5%85%89%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">这里</a>下载demo</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E5%8E%9F%E8%89%B2%E5%85%89%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">三元光模式-维基百科</a></p>
+<p><a href="https://baike.baidu.com/item/RGB" target="_blank" rel="noopener">RGB百度百科</a></p>
+<p><a href="https://blog.csdn.net/CAICHAO1234/article/details/79260954" target="_blank" rel="noopener">IOS rgb yuv 转换</a></p>
+<p><a href="http://anddymao.com/2017/12/04/2017-12-4-YUV%E5%92%8CRGB%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E5%8F%8AOpenGL%E6%98%BE%E7%A4%BAYUV%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">YUV和RGB互相转换及OpenGL显示YUV数据</a></p>
+<p><a href="https://www.jianshu.com/p/a91502c00fb0" target="_blank" rel="noopener">YUV颜色编码解析</a></p>
+<p><a href="https://www.cnblogs.com/dwdxdy/p/3713990.html" target="_blank" rel="noopener">YUV与RGB格式转化</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/ARC详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/ARC详解/" itemprop="url">ARC详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T15:03:14Z">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/14/ARC详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/14/ARC详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/14/ARC详解/" class="leancloud_visitors" data-flag-title="ARC详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h1><p>Objective-C（以下简称OC）的内存管理是通过引用计数来完成的，具体来说有两种方式。以前呢，我们是通过MRC（Manual Reference Counting 手动引用计数）的方式来管理，而现在呢，现在苹果官方是推荐我们使用ARC（Automatic Reference Counting 自动引用计数）。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内存管理基础知识"><a href="#内存管理基础知识" class="headerlink" title="内存管理基础知识"></a>内存管理基础知识</h2><p>oc中对对象的引用计数retain count有影响的方法有：retain、release、autorelease等，其中retain会使对象的引用计数+1，而release与autorelease会使对象的引用计数减一。当执行release后，如果对象的引用计数减少为0，则执行对象的dealloc方法，来释放内存。总结起来就是：</p>
+<ul>
+<li>retain 递增引用计数</li>
+<li>release 递减引用计数</li>
+<li>autorelease 在自动释放池 pop时，再递减引用计数</li>
+</ul>
+<h2 id="MRC-手动引用计数"><a href="#MRC-手动引用计数" class="headerlink" title="MRC 手动引用计数"></a>MRC 手动引用计数</h2><p>在MRC管理方式中，管理原则是谁创建谁释放，即一个对象或者一个方法alloc或者retain了对象了，在使用完毕后，一定要执行release或者autorelease方法。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSObject *obj = [[NSObject alloc] init];</span><br><span class="line">//do something ...</span><br><span class="line">[obj release];</span><br></pre></td></tr></table></figure>
+
+<p>在平时的编码过程中，我们需要创建和销毁非常多的对象，如果通过MRC的方式来管理的话，工作量会非常的繁琐，于是乎苹果的工程师为我们提供了更便捷的管理方式ARC。</p>
+<h2 id="ARC-自动引用计数"><a href="#ARC-自动引用计数" class="headerlink" title="ARC 自动引用计数"></a>ARC 自动引用计数</h2><h3 id="ARC简介"><a href="#ARC简介" class="headerlink" title="ARC简介"></a>ARC简介</h3><p>简单来说ARC的作用是编译器在编译的时候，帮我们加入适当的release和retain调用。例如在ARC中的如下代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)foo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSObject</span> *object = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码，在ARC中会被改写为如下形式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)foo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSObject</span> *object = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, object);</span><br><span class="line">    [object release]; <span class="comment">//ARC添加的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由此可见，在ARC的管理方式下，引用计数任然是有效的，只是release与retain操作交给ARC自动添加了。因为ARC会自动为我们添加内存管理语义，所以在ARC下是不能主动调用内存管理语义的，具体如下：</p>
+<ul>
+<li>retain</li>
+<li>release</li>
+<li>autorelease</li>
+<li>dealloc</li>
+</ul>
+<p>熟悉MRC的人可能会觉得ARC只是替我们调用了release与retain等方法，其实ARC并不是直接通过消息派发机制来调用的，而是直接通过调用底层的C语言版本。C语言对应的方法如下：</p>
+<ul>
+<li>retain -&gt; objc_retain</li>
+<li>release -&gt; objc_release</li>
+<li>autorelease -&gt; objc_autorelease</li>
+</ul>
+<h3 id="ARC命名规则"><a href="#ARC命名规则" class="headerlink" title="ARC命名规则"></a>ARC命名规则</h3><p>总的来说ARC下的内存管理是通过命名规则来决定对象的管理权的归属，具体来说通过以下名称开头产生的对象管理权归调用者所有：</p>
+<ul>
+<li>alloc</li>
+<li>new</li>
+<li>copy</li>
+<li>mutableCopy</li>
+</ul>
+<p>如果不是通过以上语句开头产生的，那么则有被调用方管理，ARC会在创建方法末尾添加调用autorelease。</p>
+<p>示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Student</span></span></span><br><span class="line">+ (<span class="keyword">id</span>)newStudent:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    Student *stu = [[Student alloc] init];</span><br><span class="line">    stu.name = name;</span><br><span class="line">    <span class="comment">//管理权归被调用方所有</span></span><br><span class="line">    <span class="keyword">return</span> stu;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)studentWithName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    Student *stu = [[Student alloc] init];</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     在arc下管理权归被调用者</span></span><br><span class="line"><span class="comment">     return [stu autorelease];</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    stu.name = name;</span><br><span class="line">    <span class="keyword">return</span> stu;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ dealloc"</span>, <span class="keyword">self</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> foo2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s begin"</span>, __func__);</span><br><span class="line">    &#123;</span><br><span class="line">        Student *stu1, *stu2;</span><br><span class="line">        stu1 = [Student newStudent:<span class="string">@"Jacky"</span>];</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         [stu1 release];</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        stu2 = [Student studentWithName:<span class="string">@"Nacy"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%s end"</span>, __func__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019-10-14 18:06:19.802799+0800 Test_ARC[9252:11351467] foo2 begin</span><br><span class="line">2019-10-14 18:06:19.802865+0800 Test_ARC[9252:11351467] Jacky dealloc</span><br><span class="line">2019-10-14 18:06:30.592471+0800 Test_ARC[9252:11351467] foo2 end</span><br><span class="line">2019-10-14 18:06:33.308012+0800 Test_ARC[9252:11351467] Nacy dealloc</span><br></pre></td></tr></table></figure>
+
+<p>可能你会对这个运行结果存在疑惑，正常来说stu1与stu2的生命周期都应该在=={}==中，出了中括号这两个变量都应该销毁，变量销毁后，指向的对象也应该马上销毁。但是只有stu1在生命周期结束后销毁了，而stu2却延迟销毁了。为什么会这样呢，就像之前介绍说到的，stu2是通过==studentWithName==创建的，这不符合ARC中管理规则，所以stu2是以autorelease的方式返回的，内存管理方式是交给被调用方的。同理，就可以明白stu1会在变量作用于结束时销毁的原理了</p>
+<h3 id="ARC的优化"><a href="#ARC的优化" class="headerlink" title="ARC的优化"></a>ARC的优化</h3><h4 id="优化一-成对的retain与autorelease优化"><a href="#优化一-成对的retain与autorelease优化" class="headerlink" title="优化一 成对的retain与autorelease优化"></a>优化一 成对的retain与autorelease优化</h4><p>上面讲到，如果对象是通过不符合ARC规则的方法创建的，那么ARC会为其加上autorelease，如果这时候接收的变量是强指针的话，那么ARC会为其加上retain调用。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Student *stu = [Student studentWithName:<span class="string">@"Nacy"</span>];</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">在arc处理后代码变为</span></span><br><span class="line"><span class="comment">Student *stu = [Student studentWithName:@"Nacy"];</span></span><br><span class="line"><span class="comment">[stu retain];</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>这样看来的话，在这里studentWithName中的autorelease与这里的retain就是多余的了，可以删除。但是为了兼容性，ARC没有直接删除。ARC不会直接调用autorelease，而是执行另外的函数objc_autoreleaseReturnValue。这个函数会检查返回值之后的代码，如果之后的代码有执行retain操作，那么就设置全局结构，不执行autorelease操作。同样的，在调用retain方法时，会调用objc_retainAutoreleasedReturnValue。这个方法会检查上面提到的标志位，如果标志位被设置了的话，那么就不会执行retain操作，并重置检测标志位。</p>
+<h4 id="优化二-设置实例变量"><a href="#优化二-设置实例变量" class="headerlink" title="优化二 设置实例变量"></a>优化二 设置实例变量</h4><p>在MRC情况下，setter方法的内存管理是这样的</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setObj:(<span class="keyword">id</span>)obj</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> newObj = [obj <span class="keyword">retain</span>]; <span class="comment">//保留新值</span></span><br><span class="line">    [_obj release]; <span class="comment">//释放旧值</span></span><br><span class="line">    _obj = newObj; <span class="comment">//设置实例变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是在ARC下面，只需要设置实例变量即可，ARC会自动保留新值，释放旧值，最后才设置实例变量，就像是上面这样写的一样，ARC代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setObj:(<span class="keyword">id</span>)obj</span><br><span class="line">&#123;</span><br><span class="line">    _obj = obj; <span class="comment">//设置实例变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>ARC通过方法名来管理方法返回的对象</li>
+<li>ARC会优化成对的retain与release操作</li>
+<li>ARC只管理OC对象</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://item.jd.com/11402853.html" target="_blank" rel="noopener">Effective Objective-C 2.0</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/mysql重置密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/19/mysql重置密码/" itemprop="url">mysql重置密码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T16:18:55Z">
+                2019-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/19/mysql重置密码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/19/mysql重置密码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/19/mysql重置密码/" class="leancloud_visitors" data-flag-title="mysql重置密码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：<a href="https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html" target="_blank" rel="noopener">mysql 官方重置密码</a></p>
+<ol>
+<li>杀掉mysql进程</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> shell&gt; <span class="built_in">kill</span> `cat /mysql-data-directory/host_name.pid`</span></span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>重写init.sql</p>
+</li>
+<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL 5.7.6 and later:</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'MyNewPass'</span>;</span><br><span class="line"><span class="comment">--MySQL 5.7.5 and earlier:</span></span><br><span class="line"><span class="comment">--SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');</span></span><br></pre></td></tr></table></figure>
+
+<p>用mysql-init启动mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysqld --init-file=/initFilePath &amp;</span></span><br><span class="line"><span class="meta">shell&gt;</span><span class="bash"> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/C、CPlusPlus格式化字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1198,6 +1820,17 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/OpenGL/" itemprop="url" rel="index">
                     <span itemprop="name">OpenGL</span>
                   </a>
@@ -1211,17 +1844,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/net/" itemprop="url" rel="index">
                     <span itemprop="name">net</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
                   </a>
                 </span>
 
@@ -1525,7 +2147,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

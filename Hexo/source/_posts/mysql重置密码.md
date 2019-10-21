@@ -3,7 +3,8 @@ title: mysql重置密码
 date: 2019-09-18 16:18:55
 tags:
 typora-root-url: ../../source
-
+categories:
+- [sundry]
 ---
 
 参考：[mysql 官方重置密码](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html)
@@ -24,11 +25,12 @@ sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`
    --SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');
    ```
 
-3. 用mysql-init启动mysql
-
+   用mysql-init启动mysql
+   
    ```shell
    # mysqld --init-file=/initFilePath &
    shell> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &
    ```
-
+   
+   
    
