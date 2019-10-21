@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -80,20 +80,23 @@
 
 
 <meta name="description" content="引言前段时间一直在准备面试，本以为准备的挺好，然而被腾讯面试官问道网络问题的时候，发现自己对TCP协议的理解真的是停留在表面，不够深入。于是本着提高自己的想法，去查了些资料，这里主要是总结我对TCP建立与断开连接过程的理解。 常见题目在面试中网络问题是一定会考察的，而TCP协议则是考察网络知识的重点。经常会被问道的问题如下：  请讲一下TCP协议建立连接的过程 请介绍TCP协议中的三次握手和四次挥">
+<meta name="keywords" content="iOS、Mac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP的三次握手与四次挥手">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;02&#x2F;TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/index.html">
+<meta property="og:site_name" content="Jacky Walker">
 <meta property="og:description" content="引言前段时间一直在准备面试，本以为准备的挺好，然而被腾讯面试官问道网络问题的时候，发现自己对TCP协议的理解真的是停留在表面，不够深入。于是本着提高自己的想法，去查了些资料，这里主要是总结我对TCP建立与断开连接过程的理解。 常见题目在面试中网络问题是一定会考察的，而TCP协议则是考察网络知识的重点。经常会被问道的问题如下：  请讲一下TCP协议建立连接的过程 请介绍TCP协议中的三次握手和四次挥">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;state_machine.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;tcp3waysynch.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;tcp_close_state_machine.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;tcpclose1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;tcpfsm1.png">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/state_machine.png">
+<meta property="og:image" content="http://yoursite.com/images/tcp3waysynch.png">
+<meta property="og:image" content="http://yoursite.com/images/tcp_close_state_machine.png">
+<meta property="og:image" content="http://yoursite.com/images/tcpclose1.png">
+<meta property="og:image" content="http://yoursite.com/images/tcpfsm1.png">
 <meta property="og:updated_time" content="2019-09-04T03:36:40.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;images&#x2F;state_machine.png">
+<meta name="twitter:title" content="TCP的三次握手与四次挥手">
+<meta name="twitter:description" content="引言前段时间一直在准备面试，本以为准备的挺好，然而被腾讯面试官问道网络问题的时候，发现自己对TCP协议的理解真的是停留在表面，不够深入。于是本着提高自己的想法，去查了些资料，这里主要是总结我对TCP建立与断开连接过程的理解。 常见题目在面试中网络问题是一定会考察的，而TCP协议则是考察网络知识的重点。经常会被问道的问题如下：  请讲一下TCP协议建立连接的过程 请介绍TCP协议中的三次握手和四次挥">
+<meta name="twitter:image" content="http://yoursite.com/images/state_machine.png">
 
 
 
@@ -109,7 +112,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -123,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/">
 
 
 
 
 
-  <title>TCP的三次握手与四次挥手 | Hexo</title>
+  <title>TCP的三次握手与四次挥手 | Jacky Walker</title>
   
 
 
@@ -151,7 +154,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -167,14 +170,14 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Jacky Walker</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">用于记录工作和学习的博客</p>
       
   </div>
 
@@ -195,19 +198,19 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首页
           </a>
         </li>
       
         
         <li class="menu-item menu-item-objective-c">
-          <a href="/categories/Objective-C/%20" rel="section">
+          <a href="/categories/Objective-C/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br>
             
             Objective-C
           </a>
@@ -215,9 +218,9 @@
       
         
         <li class="menu-item menu-item-cocoa/uikit">
-          <a href="/categories/Cocoa/%20" rel="section">
+          <a href="/categories/Cocoa/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Cocoa/UIKit
           </a>
@@ -225,9 +228,9 @@
       
         
         <li class="menu-item menu-item-net">
-          <a href="/categories/net/%20" rel="section">
+          <a href="/categories/net/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-internet-explorer"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-internet-explorer"></i> <br>
             
             net
           </a>
@@ -235,9 +238,9 @@
       
         
         <li class="menu-item menu-item-opengl">
-          <a href="/categories/OpenGL/%20" rel="section">
+          <a href="/categories/OpenGL/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-picture-o"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-picture-o"></i> <br>
             
             OpenGL
           </a>
@@ -245,9 +248,9 @@
       
         
         <li class="menu-item menu-item-sundry">
-          <a href="/categories/sundry/%20" rel="section">
+          <a href="/categories/sundry/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-square"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-square"></i> <br>
             
             others
           </a>
@@ -255,31 +258,31 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
-            Categories
+            分类
           </a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            Tags
+            标签
           </a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -316,16 +319,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Jacky Walker">
     </span>
 
     
@@ -343,9 +346,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-02T14:08:36+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T14:08:36Z">
                 2019-09-02
               </time>
             
@@ -356,7 +359,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -364,7 +367,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -386,9 +389,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/02/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2019/09/02/TCP的三次握手与四次挥手/" itemprop="commentCount"></span>
+                <a href="/2019/09/02/TCP的三次握手与四次挥手/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/02/TCP的三次握手与四次挥手/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -396,13 +398,13 @@
 
           
           
-             <span id="/2019/09/02/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="leancloud_visitors" data-flag-title="TCP的三次握手与四次挥手">
+             <span id="/2019/09/02/TCP的三次握手与四次挥手/" class="leancloud_visitors" data-flag-title="TCP的三次握手与四次挥手">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">Visitors&#58;</span>
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -437,13 +439,13 @@
 </ol>
 <p>接下来，我将介绍我理解的TCP三次握手和4次挥手的过程，如果错误还请指正，谢谢。</p>
 <h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h2><p>首先需要服务器监听特定的端口，等待客户端来请求连接。当客户端需要建立连接时，客户端会先向服务器发送syn报文，将报文中syn置为随机生成的序号n（这里假设序号为1000）。服务器收到同步报文后，会回复一个ack报文，把ACK位置位n+1（这里的序号应该为1001），同时设置syn为y（这里假设为2000）。客户端收到服务器发送的ack报文后，会回复一个ACK报文给服务器，其中ACK位置为y+1（这里即为2001）。当服务器收到ACK消息后，即认为连接进入稳定状态。状态机与流程图如下：</p>
-<p><img src="/images/state_machine.png" alt=""></p>
-<p><img src="/images/tcp3waysynch.png" alt=""></p>
+<p><img src="/images/state_machine.png" alt></p>
+<p><img src="/images/tcp3waysynch.png" alt></p>
 <h2 id="四次挥手过程"><a href="#四次挥手过程" class="headerlink" title="四次挥手过程"></a>四次挥手过程</h2><p>当client从app接收到关闭指令后，client会给server发送FIN消息（表明client不会再给server发送数据），client进入finish-wait-1状态。server收到finish消息后，回复确认消息ack给client，自身进入close-wait状态。client接收到ack消息后，进入到FIN-WAIT-2状态。并且在此状态等待服务器发送finish消息。当server接收到app的关闭指令后，server给client发送FIN消息。服务器进入到LAST-ACK状态。客户端收到FIN消息后，会回复ACK消息，同时进入到TIME-WAIT状态，来等待server收到ack消息，客户端会在接下来的2MSL（maximum segment lifetime）的时间内保持TIME-WAIT状态。为什么是2MSL时间呢，一是为了server有足够的时间收到ACK消息，并在消息丢失时重发。二是为了在此连接结束后的后续连接提供缓冲期。如果不是2倍MSL的话，就可能混合来自不同连接的数据包，造成消息混乱。状态机与流程图如下：</p>
-<p><img src="/images/tcp_close_state_machine.png" alt=""></p>
-<p><img src="/images/tcpclose1.png" alt=""></p>
+<p><img src="/images/tcp_close_state_machine.png" alt></p>
+<p><img src="/images/tcpclose1.png" alt></p>
 <h2 id="完整过程"><a href="#完整过程" class="headerlink" title="完整过程"></a>完整过程</h2><p>以下为TCP从建立连接到断开的完整流程图</p>
-<p><img src="/images/tcpfsm1.png" alt=""></p>
+<p><img src="/images/tcpfsm1.png" alt></p>
 <h1 id="开始答题"><a href="#开始答题" class="headerlink" title="开始答题"></a>开始答题</h1><p>有了上面的介绍，基本能够回答前两个问题。</p>
 <h3 id="请讲一下TCP协议建立连接的过程"><a href="#请讲一下TCP协议建立连接的过程" class="headerlink" title="请讲一下TCP协议建立连接的过程"></a>请讲一下TCP协议建立连接的过程</h3><p>看上面</p>
 <h3 id="请介绍TCP协议中的三次握手和四次挥手是怎么样的"><a href="#请介绍TCP协议中的三次握手和四次挥手是怎么样的" class="headerlink" title="请介绍TCP协议中的三次握手和四次挥手是怎么样的"></a>请介绍TCP协议中的三次握手和四次挥手是怎么样的</h3><p>看上面</p>
@@ -478,7 +480,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/20/C-%E4%B8%AD%E8%B0%83%E7%94%A8OC%E4%BB%A3%E7%A0%81/" rel="next" title="C++中调用OC代码">
+              <a href="/2019/08/20/C-中调用OC代码/" rel="next" title="C++中调用OC代码">
                 <i class="fa fa-chevron-left"></i> C++中调用OC代码
               </a>
             
@@ -488,7 +490,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/09/C%E3%80%81CPlusPlus%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="C、C++格式化字符串">
+              <a href="/2019/09/10/C、CPlusPlus格式化字符串/" rel="prev" title="C、C++格式化字符串">
                 C、C++格式化字符串 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -524,7 +526,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -554,10 +556,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -566,8 +568,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">吴珂</p>
+              <p class="site-description motion-element" itemprop="description">机会是留给有准备的人</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -575,10 +577,10 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">9</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -589,7 +591,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -633,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见题目"><span class="nav-number">2.</span> <span class="nav-text">常见题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP协议"><span class="nav-number">3.</span> <span class="nav-text">TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手过程"><span class="nav-number">3.1.</span> <span class="nav-text">三次握手过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手过程"><span class="nav-number">3.2.</span> <span class="nav-text">四次挥手过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整过程"><span class="nav-number">3.3.</span> <span class="nav-text">完整过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始答题"><span class="nav-number">4.</span> <span class="nav-text">开始答题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请讲一下TCP协议建立连接的过程"><span class="nav-number">4.0.1.</span> <span class="nav-text">请讲一下TCP协议建立连接的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请介绍TCP协议中的三次握手和四次挥手是怎么样的"><span class="nav-number">4.0.2.</span> <span class="nav-text">请介绍TCP协议中的三次握手和四次挥手是怎么样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"><span class="nav-number">4.0.3.</span> <span class="nav-text">为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"><span class="nav-number">4.0.4.</span> <span class="nav-text">TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见题目"><span class="nav-number">2.</span> <span class="nav-text">常见题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP协议"><span class="nav-number">3.</span> <span class="nav-text">TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手过程"><span class="nav-number">3.1.</span> <span class="nav-text">三次握手过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手过程"><span class="nav-number">3.2.</span> <span class="nav-text">四次挥手过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整过程"><span class="nav-number">3.3.</span> <span class="nav-text">完整过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开始答题"><span class="nav-number">4.</span> <span class="nav-text">开始答题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#请讲一下TCP协议建立连接的过程"><span class="nav-number">4.0.1.</span> <span class="nav-text">请讲一下TCP协议建立连接的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#请介绍TCP协议中的三次握手和四次挥手是怎么样的"><span class="nav-number">4.0.2.</span> <span class="nav-text">请介绍TCP协议中的三次握手和四次挥手是怎么样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"><span class="nav-number">4.0.3.</span> <span class="nav-text">为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"><span class="nav-number">4.0.4.</span> <span class="nav-text">TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></div>
             
 
           </div>
@@ -657,13 +659,13 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">吴珂</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -671,7 +673,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
@@ -803,7 +805,7 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/09/02/TCP%E7%9A%84%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/';
+          this.page.url = 'http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/';
           this.page.identifier = '2019/09/02/TCP的三次握手与四次挥手/';
           this.page.title = 'TCP的三次握手与四次挥手';
         };
