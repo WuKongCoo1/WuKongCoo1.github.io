@@ -8,4 +8,5 @@ categories:
 - [OpenGL]
 - [sundry]
 - [Cocoa]
+- [DesignPattern]
 ---

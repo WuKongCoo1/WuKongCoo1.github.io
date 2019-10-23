@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="前言　　最近项目中为了方便维护，底层统一使用C++编写。由于是项目是做屏幕共享sdk，所以只能底层的压缩、编解码使用C++，屏幕捕获部分Mac和win就自己实现了。那么问题就来了，因为是面向接口编程，所以项目的入口都是c++来写的，而屏幕捕获是需要oc部分的代码，就需要C++调用oc代码了。 准备　　之前只做过OC调动C++，于是Google了一下，在Stack Overflow上找到了这个回答。">
-<meta name="keywords" content="iOS、Mac">
+<meta name="keywords" content="iOS、Mac、runtime、objective-c、oc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++中调用OC代码">
 <meta property="og:url" content="http://yoursite.com/2019/08/20/C-中调用OC代码/index.html">
@@ -254,6 +254,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-designpattern">
+          <a href="/categories/designPattern/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-subway"></i> <br>
+            
+            designPattern
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -345,7 +355,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T13:16:19Z">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T21:16:19+08:00">
                 2019-08-20
               </time>
             
@@ -579,7 +589,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

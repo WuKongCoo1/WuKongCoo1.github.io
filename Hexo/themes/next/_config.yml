@@ -99,6 +99,7 @@ menu:
   net: /categories/net/ || internet-explorer
   OpenGL: /categories/OpenGL/ || picture-o
   sundry: /categories/sundry/ || square
+  designPattern: /categories/designPattern/ || subway
   categories: /categories/ || th
   tags: /tags/ || tags
   archives: /archives/ || archive

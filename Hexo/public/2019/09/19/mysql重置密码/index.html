@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="参考：mysql 官方重置密码  杀掉mysql进程  12# shell&amp;gt; kill `cat /mysql-data-directory/host_name.pid`sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`   重写init.sql  1234--MySQL 5.7.6 and later:ALTER USER &apos;r">
-<meta name="keywords" content="iOS、Mac">
+<meta name="keywords" content="iOS、Mac、runtime、objective-c、oc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql重置密码">
 <meta property="og:url" content="http://yoursite.com/2019/09/19/mysql重置密码/index.html">
@@ -251,6 +251,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-designpattern">
+          <a href="/categories/designPattern/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-subway"></i> <br>
+            
+            designPattern
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -342,7 +352,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T16:18:55Z">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-19T00:18:55+08:00">
                 2019-09-18
               </time>
             
@@ -427,7 +437,7 @@
 <ol>
 <li>杀掉mysql进程</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> shell&gt; <span class="built_in">kill</span> `cat /mysql-data-directory/host_name.pid`</span></span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> shell&gt; kill `cat /mysql-data-directory/host_name.pid`</span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li><p>重写init.sql</p>
@@ -435,7 +445,7 @@
 <li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL 5.7.6 and later:</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'MyNewPass'</span>;</span><br><span class="line"><span class="comment">--MySQL 5.7.5 and earlier:</span></span><br><span class="line"><span class="comment">--SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');</span></span><br></pre></td></tr></table></figure>
 
 <p>用mysql-init启动mysql</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysqld --init-file=/initFilePath &amp;</span></span><br><span class="line"><span class="meta">shell&gt;</span><span class="bash"> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysqld --init-file=/initFilePath &amp;</span><br><span class="line"><span class="meta">shell&gt;</span> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -566,7 +576,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

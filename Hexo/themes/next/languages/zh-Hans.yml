@@ -20,7 +20,8 @@ menu:
   Cocoa/UIKit: Cocoa/UIKit
   net: net
   OpenGL: OpenGL
-  sundry: others 
+  sundry: 杂项 
+  designPattern: 设计模式
 
 sidebar:
   overview: 站点概览
