@@ -326,7 +326,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/观察者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -516,191 +516,10 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/策略模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jacky Walker">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/29/策略模式/" itemprop="url">策略模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T16:36:30Z">
-                2019-10-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DesignPattern/" itemprop="url" rel="index">
-                    <span itemprop="name">DesignPattern</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/10/29/策略模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/29/策略模式/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/10/29/策略模式/" class="leancloud_visitors" data-flag-title="策略模式">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>定义算法族，并分别封装起来，让它们之间可以相互替换，此模式让算法之间的变化独立于使用算法的客户。</p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p>假如我们要设计一个游戏系统，其中有角色（Character）、攻击行为（AttackBehavior）。在此游戏中设计三种角色，每一种角色只能同时使用一种武器，但是可以更换武器。接下来让我们进行设计，首先根据之前介绍的设计原则，我们需要先设计一个接口，用来表示攻击行为（AttackBehavior），游戏中的攻击行为都应该实现攻击接口。然后让我们设计Character。由于这个类要使用AttackBehavior来达到攻击效果，所以Charactor需要持有Behavior这个接口，同时提供set方法对behavior进行修改。attack方法通过调用AttackBehavior的attack来实现。三个角色King、master、Warrior分别继承自character。设计后的类图如下：</p>
-<img src="/images/StrategyPattern.png" width="800pt">
-
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><strong>Character.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Character</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> AttackBehavior weapon;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeapon</span><span class="params">(AttackBehavior weapon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.weapon = weapon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        weapon.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">King</span> <span class="keyword">extends</span> <span class="title">Character</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------King perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Master</span> <span class="keyword">extends</span> <span class="title">Character</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------Master perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Warrior</span> <span class="keyword">extends</span> <span class="title">Character</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------Warrior perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>AttackBehavior.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AttackBehavior</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GunBehavior</span> <span class="keyword">implements</span>  <span class="title">AttackBehavior</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using gun attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MagicBehavior</span> <span class="keyword">implements</span> <span class="title">AttackBehavior</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using magic attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwordBehavior</span> <span class="keyword">implements</span> <span class="title">AttackBehavior</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using sword attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Main.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        King k = <span class="keyword">new</span> King();</span><br><span class="line">        k.setWeapon(<span class="keyword">new</span> SwordBehavior());</span><br><span class="line">        k.attack();</span><br><span class="line"></span><br><span class="line">        Master m = <span class="keyword">new</span> Master();</span><br><span class="line">        m.setWeapon(<span class="keyword">new</span> MagicBehavior());</span><br><span class="line">        m.attack();</span><br><span class="line"></span><br><span class="line">        Warrior w = <span class="keyword">new</span> Warrior();</span><br><span class="line">        w.setWeapon(<span class="keyword">new</span> GunBehavior());</span><br><span class="line">        w.attack();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"---King change weapon---"</span>);</span><br><span class="line">        k.setWeapon(<span class="keyword">new</span> MagicBehavior());</span><br><span class="line">        k.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>运行结果</strong></p>
-<img src="/images/StrategyResult.png">
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>优点：</strong> 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
-<p><strong>缺点：</strong> 1、策略类会增多。 2、所有策略类都需要对外暴露。</p>
-<p><strong>适用</strong>：适用于需要多种算法自由切换的场景</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/设计模式原则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -898,7 +717,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/Mac 设置socket5代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1073,7 +892,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/iOS-RGBA转YV12/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1292,7 +1111,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/ARC详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1515,7 +1334,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/mysql重置密码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1695,7 +1514,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/C、CPlusPlus格式化字符串/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -1941,7 +1760,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -2130,7 +1949,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/C-中调用OC代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="佚名">
+      <meta itemprop="name" content="吴珂">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -2295,6 +2114,210 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/20/Mac-OpenGL环境搭建/" itemprop="url">Mac OpenGL环境搭建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T13:10:26Z">
+                2019-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/20/Mac-OpenGL环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/Mac-OpenGL环境搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/20/Mac-OpenGL环境搭建/" class="leancloud_visitors" data-flag-title="Mac OpenGL环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MAC-OpenGL-环境搭建"><a href="#MAC-OpenGL-环境搭建" class="headerlink" title="MAC OpenGL 环境搭建"></a>MAC OpenGL 环境搭建</h1><h2 id="基础库介绍"><a href="#基础库介绍" class="headerlink" title="基础库介绍"></a>基础库介绍</h2><p>先要安装两个库一个是GLEW（OpenGL Extension Wrangler Library），另外一个是GLFW（Graphics Library Framework）</p>
+<h3 id="GLEW"><a href="#GLEW" class="headerlink" title="GLEW"></a>GLEW</h3><p>譯自英文-OpenGL擴展Wrangler庫是一個跨平台的C / C ++庫，可幫助查詢和加載OpenGL擴展。 GLEW提供了高效的運行時機制，用於確定目標平台上支持哪些OpenGL擴展。所有OpenGL擴展都在一個頭文件中公開，該文件是從官方擴展名列表機器生成的</p>
+<h3 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h3><p>GLFW 是配合 OpenGL 使用的轻量级工具程序库，缩写自 Graphics Library Framework（图形库框架）。GLFW 的主要功能是创建并管理窗口和 OpenGL 上下文，同时还提供了处理手柄、键盘、鼠标输入的功能。</p>
+<h2 id="进入安装步骤"><a href="#进入安装步骤" class="headerlink" title="进入安装步骤"></a>进入安装步骤</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>要进行安装的话需要先安装CMake，可以选择使用GUI 方式 或者命令行的方式。GUI可以在这里<a href="https://cmake.org/download/" target="_blank" rel="noopener">下载</a>，命令行的方式的话，可以用brew来安装，方式如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装GLEW"><a href="#安装GLEW" class="headerlink" title="安装GLEW"></a>安装GLEW</h3><p>首先在这里下载<a href="http://glew.sourceforge.net/" target="_blank" rel="noopener">源码</a>，下载以后，解压文件，然后进入到文件所在路径，打开终端进入到此路径，执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装GLFW"><a href="#安装GLFW" class="headerlink" title="安装GLFW"></a>安装GLFW</h3><p>首先在<a href="https://www.glfw.org/download.html" target="_blank" rel="noopener">这里</a>下载源码，我们可以选择直接下载编译好的库，也可以下载源文件然后通过camke来自己编译，区别是如果用cmake库的话，在执行成功以后，会直接将生成的库与头文件分别添加到系统路径，也就是/usr/local/include和/usr/local/lib。这里就自己选择方式了。我在这里介绍利用make工具，自己编译的方式</p>
+<p>打开cmake 的gui工具，在source code选择下载的glfw路径，这一步需要在这个路径创建一个build目录，用于存放生成的文件。然后在browse build路径选择我们刚才创建的路径，点击configure。<br><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143441915-1128090430.png" alt></p>
+<p>生成成功会出现如下效果</p>
+<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143348522-1218740224.png" alt></p>
+<p>接下来从终端进入到build目录，没错就是刚才我们创建的build，输入如下指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后，剩成的.a文件与头文件就都放到/usr/local/include和/usr/local/lib了。</p>
+<p>环境安装好以后，应该是这个样子的</p>
+<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143328995-1467734221.png" alt></p>
+<p>至此，环境安装完毕，接下来就是加入到工程了</p>
+<h2 id="加入工程"><a href="#加入工程" class="headerlink" title="加入工程"></a>加入工程</h2><h3 id="配置搜索路径"><a href="#配置搜索路径" class="headerlink" title="配置搜索路径"></a>配置搜索路径</h3><p>首先我们创建一个command line的工程，然后在build setting里这只user search path，在user search path中设置为：/usr/local/include，这里一定要注意不能选择递归查找，否则会出错。然后设置library search path为：/usr/local/lib。设置这个的作用是工程中明确工程中查找头文件和.a文件的路径。</p>
+<h3 id="添加要链接的framework"><a href="#添加要链接的framework" class="headerlink" title="添加要链接的framework"></a>添加要链接的framework</h3><p>添加以下库文件：</p>
+<ul>
+<li>Cocoa.framework</li>
+<li>OpenGL.framwork</li>
+<li>GLUT.framework</li>
+<li>CoreVideo.framework</li>
+<li>IOKit.framework</li>
+<li>libglfw3.a</li>
+<li>libGLEW.a</li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143224335-1252417188.png" alt="库文件"></p>
+<p>其中，libglfw3.a、libGLEW.a需要点击 add another，然后进入要路径/usr/local/lib中添加。</p>
+<p>配置完成以后，就可以写代码了，进入main.cpp文件，将main中修改如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Render</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    glBegin(GL_TRIANGLES);</span><br><span class="line">    &#123;</span><br><span class="line">        glColor3f(<span class="number">1.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">0</span>, <span class="number">.5</span>);</span><br><span class="line">        glColor3f(<span class="number">0.0</span>,<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">-.5</span>,<span class="number">-.5</span>);</span><br><span class="line">        glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">.5</span>, <span class="number">-.5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    glEnd();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    GLFWwindow* win;</span><br><span class="line">    <span class="keyword">if</span>(!glfwInit())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    win = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"OpenGL Base Project"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(!win)</span><br><span class="line">    &#123;</span><br><span class="line">        glfwTerminate();</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!glewInit())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    glfwMakeContextCurrent(win);</span><br><span class="line">    <span class="keyword">while</span>(!glfwWindowShouldClose(win))&#123;</span><br><span class="line">        Render();</span><br><span class="line">        glfwSwapBuffers(win);</span><br><span class="line">        glfwPollEvents();</span><br><span class="line">    &#125;</span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>见证奇迹的时刻到了，运行，你将会看到一个漂亮的三角形<img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143156518-737968913.png" alt></p>
+<p>mac 工程搭建，就说这么多了。</p>
+<hr>
+<p>感谢以下文章的作者：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/24529016" target="_blank" rel="noopener">Mac系统下配置OpenGL环境（小白自学版）</a></p>
+<p><a href="http://blog.shenyuanluo.com/OpenGLEnvironment.html" target="_blank" rel="noopener">OpenGL学习笔记（二）—— (macOS)环境搭建</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2334,7 +2357,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">佚名</p>
+              <p class="site-author-name" itemprop="name">吴珂</p>
               <p class="site-description motion-element" itemprop="description">机会是留给有准备的人？不对，准备留给有机会的人，没机会的就别瞎准备了。</p>
           </div>
 
@@ -2345,7 +2368,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2409,7 +2432,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">佚名</span>
+  <span class="author" itemprop="copyrightHolder">吴珂</span>
 
   
 </div>
