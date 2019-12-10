@@ -437,7 +437,7 @@
 <ol>
 <li>杀掉mysql进程</li>
 </ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> shell&gt; kill `cat /mysql-data-directory/host_name.pid`</span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> shell&gt; <span class="built_in">kill</span> `cat /mysql-data-directory/host_name.pid`</span></span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li><p>重写init.sql</p>
@@ -445,7 +445,7 @@
 <li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL 5.7.6 and later:</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'MyNewPass'</span>;</span><br><span class="line"><span class="comment">--MySQL 5.7.5 and earlier:</span></span><br><span class="line"><span class="comment">--SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');</span></span><br></pre></td></tr></table></figure>
 
 <p>用mysql-init启动mysql</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mysqld --init-file=/initFilePath &amp;</span><br><span class="line"><span class="meta">shell&gt;</span> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysqld --init-file=/initFilePath &amp;</span></span><br><span class="line"><span class="meta">shell&gt;</span><span class="bash"> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -565,7 +565,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

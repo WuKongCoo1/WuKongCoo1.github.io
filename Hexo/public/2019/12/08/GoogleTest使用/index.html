@@ -79,21 +79,29 @@
 
 
 
-<meta name="description" content="策略模式定义：定义算法族，并分别封装起来，让它们之间可以相互替换，此模式让算法之间的变化独立于使用算法的客户。 示例：假如我们要设计一个游戏系统，其中有角色（Character）、攻击行为（AttackBehavior）。在此游戏中设计三种角色，每一种角色只能同时使用一种武器，但是可以更换武器。接下来让我们进行设计，首先根据之前介绍的设计原则，我们需要先设计一个接口，用来表示攻击行为（Attack">
+<meta name="description" content="前言因为项目是跨平台（Mac与Win）的，且是用C++编写的，所以在单元测试方面能用的框架就不多了。公司里其他项目组都是用的GTest来写单元测试的，所以呢，我们也觉得使用GTest与GMock。本文主要是讲在Mac环境下，对GTest的环境搭建及使用 正文GTest与GMock介绍GTest月GMock都是Google的开源C++测试框架，提供了一系列的断言与期望的宏，同时还提供了stub与mo">
 <meta name="keywords" content="iOS、Mac、runtime、objective-c、oc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="策略模式">
-<meta property="og:url" content="http://yoursite.com/2019/10/29/策略模式/index.html">
+<meta property="og:title" content="GoogleTest使用">
+<meta property="og:url" content="http://yoursite.com/2019/12/08/GoogleTest使用/index.html">
 <meta property="og:site_name" content="Jacky Walker">
-<meta property="og:description" content="策略模式定义：定义算法族，并分别封装起来，让它们之间可以相互替换，此模式让算法之间的变化独立于使用算法的客户。 示例：假如我们要设计一个游戏系统，其中有角色（Character）、攻击行为（AttackBehavior）。在此游戏中设计三种角色，每一种角色只能同时使用一种武器，但是可以更换武器。接下来让我们进行设计，首先根据之前介绍的设计原则，我们需要先设计一个接口，用来表示攻击行为（Attack">
+<meta property="og:description" content="前言因为项目是跨平台（Mac与Win）的，且是用C++编写的，所以在单元测试方面能用的框架就不多了。公司里其他项目组都是用的GTest来写单元测试的，所以呢，我们也觉得使用GTest与GMock。本文主要是讲在Mac环境下，对GTest的环境搭建及使用 正文GTest与GMock介绍GTest月GMock都是Google的开源C++测试框架，提供了一系列的断言与期望的宏，同时还提供了stub与mo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/StrategyPattern.png">
-<meta property="og:image" content="http://yoursite.com/images/StrategyResult.png">
-<meta property="og:updated_time" content="2019-10-29T09:17:18.513Z">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208155702764.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208155950191.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208161040143.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208161130932.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208161235027.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208162420154.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208162031530.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208162639580.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208163307265.png">
+<meta property="og:image" content="http://yoursite.com/images/image-20191208170630431.png">
+<meta property="og:updated_time" content="2019-12-08T10:16:17.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="策略模式">
-<meta name="twitter:description" content="策略模式定义：定义算法族，并分别封装起来，让它们之间可以相互替换，此模式让算法之间的变化独立于使用算法的客户。 示例：假如我们要设计一个游戏系统，其中有角色（Character）、攻击行为（AttackBehavior）。在此游戏中设计三种角色，每一种角色只能同时使用一种武器，但是可以更换武器。接下来让我们进行设计，首先根据之前介绍的设计原则，我们需要先设计一个接口，用来表示攻击行为（Attack">
-<meta name="twitter:image" content="http://yoursite.com/images/StrategyPattern.png">
+<meta name="twitter:title" content="GoogleTest使用">
+<meta name="twitter:description" content="前言因为项目是跨平台（Mac与Win）的，且是用C++编写的，所以在单元测试方面能用的框架就不多了。公司里其他项目组都是用的GTest来写单元测试的，所以呢，我们也觉得使用GTest与GMock。本文主要是讲在Mac环境下，对GTest的环境搭建及使用 正文GTest与GMock介绍GTest月GMock都是Google的开源C++测试框架，提供了一系列的断言与期望的宏，同时还提供了stub与mo">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20191208155702764.png">
 
 
 
@@ -123,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/29/策略模式/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/08/GoogleTest使用/">
 
 
 
 
 
-  <title>策略模式 | Jacky Walker</title>
+  <title>GoogleTest使用 | Jacky Walker</title>
   
 
 
@@ -326,7 +334,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/策略模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/GoogleTest使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="吴珂">
@@ -343,7 +351,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">策略模式</h1>
+          <h1 class="post-title" itemprop="name headline">GoogleTest使用</h1>
         
 
         <div class="post-meta">
@@ -355,8 +363,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T00:36:30+08:00">
-                2019-10-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-08T23:36:45+08:00">
+                2019-12-08
               </time>
             
 
@@ -378,8 +386,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/DesignPattern/" itemprop="url" rel="index">
-                    <span itemprop="name">DesignPattern</span>
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
                   </a>
                 </span>
 
@@ -396,8 +404,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/10/29/策略模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/29/策略模式/" itemprop="commentCount"></span>
+                <a href="/2019/12/08/GoogleTest使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/08/GoogleTest使用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -405,7 +413,7 @@
 
           
           
-             <span id="/2019/10/29/策略模式/" class="leancloud_visitors" data-flag-title="策略模式">
+             <span id="/2019/12/08/GoogleTest使用/" class="leancloud_visitors" data-flag-title="GoogleTest使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -436,25 +444,60 @@
       
 
       
-        <h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><h2 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h2><p>定义算法族，并分别封装起来，让它们之间可以相互替换，此模式让算法之间的变化独立于使用算法的客户。</p>
-<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p>假如我们要设计一个游戏系统，其中有角色（Character）、攻击行为（AttackBehavior）。在此游戏中设计三种角色，每一种角色只能同时使用一种武器，但是可以更换武器。接下来让我们进行设计，首先根据之前介绍的设计原则，我们需要先设计一个接口，用来表示攻击行为（AttackBehavior），游戏中的攻击行为都应该实现攻击接口。然后让我们设计Character。由于这个类要使用AttackBehavior来达到攻击效果，所以Charactor需要持有Behavior这个接口，同时提供set方法对behavior进行修改。attack方法通过调用AttackBehavior的attack来实现。三个角色King、master、Warrior分别继承自character。设计后的类图如下：</p>
-<img src="/images/StrategyPattern.png" width="800pt">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为项目是跨平台（Mac与Win）的，且是用C++编写的，所以在单元测试方面能用的框架就不多了。公司里其他项目组都是用的GTest来写单元测试的，所以呢，我们也觉得使用GTest与GMock。本文主要是讲在Mac环境下，对GTest的环境搭建及使用</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="GTest与GMock介绍"><a href="#GTest与GMock介绍" class="headerlink" title="GTest与GMock介绍"></a>GTest与GMock介绍</h2><p>GTest月GMock都是Google的开源C++测试框架，提供了一系列的断言与期望的宏，同时还提供了stub与mock的功能，这些都是单元测试不可或缺的。你可以在这里查看GTest的<a href="https://github.com/google/googletest" target="_blank" rel="noopener">GitHub主页</a>。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p>首先需要在googletest下载最新的release源码</p>
+<img src="/images/image-20191208155702764.png">
 
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p><strong>Character.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Character</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> AttackBehavior weapon;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWeapon</span><span class="params">(AttackBehavior weapon)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.weapon = weapon;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        weapon.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">King</span> <span class="keyword">extends</span> <span class="title">Character</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------King perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Master</span> <span class="keyword">extends</span> <span class="title">Character</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------Master perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Warrior</span> <span class="keyword">extends</span> <span class="title">Character</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"-------Warrior perform attack-------"</span>);</span><br><span class="line">        <span class="keyword">super</span>.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h3><p>解压后，会看到如下的目录结构：</p>
+<img src="/images/image-20191208155950191.png" height="300/">
 
-<p><strong>AttackBehavior.java</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">AttackBehavior</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GunBehavior</span> <span class="keyword">implements</span>  <span class="title">AttackBehavior</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using gun attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MagicBehavior</span> <span class="keyword">implements</span> <span class="title">AttackBehavior</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using magic attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwordBehavior</span> <span class="keyword">implements</span> <span class="title">AttackBehavior</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"using sword attack"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为官方提供了两种编译库的方式，一种的CMake，另外一种是Bazel。这里介绍用CMake的方式，所以你需要先安装CMake需要的环境，这里就不介绍安装方式了，请自行查询。CMake的使用方式可以参考IBM的<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-cmake/index.html" target="_blank" rel="noopener">这篇</a>文章。</p>
+<p>CMake的环境准备好后，从命令行进入到该目录，并在命令行分别执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir mybuild</span><br><span class="line">$ <span class="built_in">cd</span> mybuild</span><br><span class="line">$ cmake ..</span><br></pre></td></tr></table></figure>
 
-<p>Main.java</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        King k = <span class="keyword">new</span> King();</span><br><span class="line">        k.setWeapon(<span class="keyword">new</span> SwordBehavior());</span><br><span class="line">        k.attack();</span><br><span class="line"></span><br><span class="line">        Master m = <span class="keyword">new</span> Master();</span><br><span class="line">        m.setWeapon(<span class="keyword">new</span> MagicBehavior());</span><br><span class="line">        m.attack();</span><br><span class="line"></span><br><span class="line">        Warrior w = <span class="keyword">new</span> Warrior();</span><br><span class="line">        w.setWeapon(<span class="keyword">new</span> GunBehavior());</span><br><span class="line">        w.attack();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"---King change weapon---"</span>);</span><br><span class="line">        k.setWeapon(<span class="keyword">new</span> MagicBehavior());</span><br><span class="line">        k.attack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/images/image-20191208161040143.png">
 
-<p><strong>运行结果</strong></p>
-<img src="/images/StrategyResult.png">
+<p>执行成功后，应该是下面这个样子：</p>
+<img src="/images/image-20191208161130932.png">
 
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>优点：</strong> 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展性良好。</p>
-<p><strong>缺点：</strong> 1、策略类会增多。 2、所有策略类都需要对外暴露。</p>
-<p><strong>适用</strong>：适用于需要多种算法自由切换的场景</p>
+<p>接着执行以下指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后就生成了对应的.a文件了</p>
+<p><img src="/images/image-20191208161235027.png" alt="image-20191208161235027"></p>
+<p>在finder中可以看到新生成的文件</p>
+<img src="/images/image-20191208162420154.png">
+
+<p>可以看到，一共生成了四个.a文件，其中有*_main.a表示文件中包含了main函数，所以使用此类文件时，工程里不能有其他的main函数。</p>
+<h3 id="工程创建，配置环境"><a href="#工程创建，配置环境" class="headerlink" title="工程创建，配置环境"></a>工程创建，配置环境</h3><p>在这里示例创建一个名为TestGoogletest的命令行工程。</p>
+<img src="/images/image-20191208162031530.png" width="500/">
+
+<p>接着导入编译好的.a文件，在这里我就不适用带有main函数的.a文件了。</p>
+<p>直接将.a文件拖入工程</p>
+<img src="/images/image-20191208162639580.png" width="500/">
+
+<h4 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a>导入头文件</h4><p>打开finder，进入到源码目录，将googlemck与googletest目录下的include目录下的文件夹gmock与gtest加入到工程中</p>
+<img src="/images/image-20191208163307265.png" width="600/">
+
+<h4 id="配置头文件搜索路径"><a href="#配置头文件搜索路径" class="headerlink" title="配置头文件搜索路径"></a>配置头文件搜索路径</h4><p>导入头文件后需要配置头文件搜索路径，打开工程文件，选择build setting，设置user header search path。</p>
+<img src="/images/image-20191208170630431.png" width="600/">
+
+<p>至此gtest与gmock框架添加完毕，接下来就是编写测试用例了</p>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>main函数编写如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gtest/gtest.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, (<span class="keyword">char</span> **)argv);</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(TestSuiteName, TestName) &#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来解释代码，GTest需要在main函数中启动，启动方式如下：需要注意的是，在mac平台下的main函数默认参数类型是==const char <em>==而gtest接收的类型是==char *</em>==，所以需要做一个强制类型转换。同时return函数返回的是==RUN_ALL_TESTS==()，作用是执行所有的单元测试</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, (<span class="keyword">char</span> **)argv);</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>TEST是GTest提供的单元测试宏，第一个参数是模块名，第二个参数是测试名称</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEST(TestSuiteName, TestName) &#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，GTest还提供了测试宏TEST_F。</p>
+<p>以上就是googleTest的简单使用了，你可以在<a href="https://github.com/WuKongCoo1/Demo_TestGoogletest" target="_blank" rel="noopener">这里</a>下载demo</p>
+<p>要了解更多的话可以参考以下链接：</p>
+<p><a href="https://github.com/google/googletest/blob/master/googletest/docs/primer.md#simple-tests" target="_blank" rel="noopener">Googletest Primer</a></p>
+<p><a href="https://github.com/google/googletest/blob/master/googletest/README.md" target="_blank" rel="noopener">Googletest README</a></p>
 
       
     </div>
@@ -479,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/28/设计模式原则/" rel="next" title="面向对象设计原则">
-                <i class="fa fa-chevron-left"></i> 面向对象设计原则
+              <a href="/2019/10/29/观察者模式/" rel="next" title="观察者模式">
+                <i class="fa fa-chevron-left"></i> 观察者模式
               </a>
             
           </div>
@@ -488,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/29/观察者模式/" rel="prev" title="观察者模式">
-                观察者模式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -578,7 +617,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -634,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义："><span class="nav-number">1.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例："><span class="nav-number">1.2.</span> <span class="nav-text">示例：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.2.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GTest与GMock介绍"><span class="nav-number">2.1.</span> <span class="nav-text">GTest与GMock介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境搭建"><span class="nav-number">2.2.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源码下载"><span class="nav-number">2.2.1.</span> <span class="nav-text">源码下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码编译"><span class="nav-number">2.2.2.</span> <span class="nav-text">源码编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程创建，配置环境"><span class="nav-number">2.2.3.</span> <span class="nav-text">工程创建，配置环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入头文件"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">导入头文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置头文件搜索路径"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">配置头文件搜索路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试用例"><span class="nav-number">2.2.4.</span> <span class="nav-text">测试用例</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -804,9 +843,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/10/29/策略模式/';
-          this.page.identifier = '2019/10/29/策略模式/';
-          this.page.title = '策略模式';
+          this.page.url = 'http://yoursite.com/2019/12/08/GoogleTest使用/';
+          this.page.identifier = '2019/12/08/GoogleTest使用/';
+          this.page.title = 'GoogleTest使用';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://github-io-13.disqus.com/embed.js';
