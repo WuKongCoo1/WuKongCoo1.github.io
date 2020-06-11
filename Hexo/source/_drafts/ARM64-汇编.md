@@ -27,7 +27,7 @@ sp来访问局部变量
 
 
 
-![image-20191211131509655](/Users/lineworks/Documents/github-pages/Hexo/source/images/image-20191211131509655.png)
+![image-20191211131509655](/Users/bytedance/Documents/Working/文档/images/image-20191211131509655.png)
 
 #### 源码：
 
@@ -79,7 +79,8 @@ Ltmp3:
 
 分析图结果：
 
-![image-20191211134850694](/Users/lineworks/Documents/github-pages/Hexo/source/images/image-20191211134850694.png)
+
+![image-20191211134850694](/Users/bytedance/Documents/Working/文档/images/image-20191211134850694.png)
 
 ### 参考资料
 
