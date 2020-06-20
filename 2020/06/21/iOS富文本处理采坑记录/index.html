@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Jacky Walker">
 <meta property="og:description" content="前言最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：  当字符串中含有Unicode编码时，直接获取的range不对 在中英文混合的情况下，遍历字符串会不连续 富文本中的选择、删除处理 富文本中的链接点击处理  正文range不对场景在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下： 12345let strin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png">
-<meta property="og:updated_time" content="2020-06-20T09:32:13.441Z">
+<meta property="og:image" content="http://yoursite.com/images/image-20200620155224529.png">
+<meta property="og:updated_time" content="2020-06-20T09:42:57.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS富文本处理踩坑记录（一）">
 <meta name="twitter:description" content="前言最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：  当字符串中含有Unicode编码时，直接获取的range不对 在中英文混合的情况下，遍历字符串会不连续 富文本中的选择、删除处理 富文本中的链接点击处理  正文range不对场景在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下： 12345let strin">
-<meta name="twitter:image" content="http://yoursite.com/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png">
+<meta name="twitter:image" content="http://yoursite.com/images/image-20200620155224529.png">
 
 
 
@@ -456,7 +456,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"🔴1🔴2🔴3内部文档1"</span></span><br><span class="line"><span class="keyword">let</span> attributeString = <span class="type">NSMutableAttributedString</span>(string: string)</span><br><span class="line"><span class="keyword">let</span> range = <span class="type">NSRange</span>(location: <span class="number">0</span>, length: string.<span class="built_in">count</span>)</span><br><span class="line">attributeString.addAttribute(.foregroundColor, value: <span class="type">UIColor</span>.blue, range: range)</span><br><span class="line">textView.attributedText = attributeString</span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<img src="/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png" width="300">
+<img src="/images/image-20200620155224529.png" width="300">
 
 <p>上面的代码看起来是没有问题的，既然颜色值没有全部生效，那么问题一个是出在了rang上。通过查资料发现，在swift中使用了扩展字型集群，所以swift中会对可以组合在一起的两个字符，以下为示例:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> precomposed: <span class="type">Character</span> = <span class="string">"\u&#123;D55C&#125;"</span> <span class="comment">// 한</span></span><br><span class="line"><span class="keyword">let</span> characters = [<span class="string">"\u&#123;1112&#125;"</span>, <span class="string">"\u&#123;1161&#125;"</span>, <span class="string">"\u&#123;11AB&#125;"</span>] <span class="comment">// ᄒ, ᅡ, ᆫ</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="type">String</span>()</span><br><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> characters &#123;</span><br><span class="line">    string.append(character)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"string:\(string) count:\(string.count)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
