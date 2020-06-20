@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="机会是留给有准备的人？不对，准备留给有机会的人，没机会的就别瞎准备了。">
+<meta name="keywords" content="iOS、Mac、runtime、objective-c、oc">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jacky Walker">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Jacky Walker">
+<meta property="og:description" content="机会是留给有准备的人？不对，准备留给有机会的人，没机会的就别瞎准备了。">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jacky Walker">
+<meta name="twitter:description" content="机会是留给有准备的人？不对，准备留给有机会的人，没机会的就别瞎准备了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+
+
+  <title>Jacky Walker</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?87d18a71ec23b683860e124d45b93b99";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jacky Walker</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">用于记录工作和学习的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-objective-c">
+          <a href="/categories/Objective-C/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-paper-plane"></i> <br>
+            
+            Objective-C
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-cocoa/uikit">
+          <a href="/categories/Cocoa/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Cocoa/UIKit
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-net">
+          <a href="/categories/net/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-internet-explorer"></i> <br>
+            
+            net
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-opengl">
+          <a href="/categories/OpenGL/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-picture-o"></i> <br>
+            
+            OpenGL
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sundry">
+          <a href="/categories/sundry/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-square"></i> <br>
+            
+            杂项
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-designpattern">
+          <a href="/categories/DesignPattern/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-subway"></i> <br>
+            
+            设计模式
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/GoogleTest使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/08/GoogleTest使用/" itemprop="url">GoogleTest使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-08T15:36:45Z">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/08/GoogleTest使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/08/GoogleTest使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/08/GoogleTest使用/" class="leancloud_visitors" data-flag-title="GoogleTest使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>因为项目是跨平台（Mac与Win）的，且是用C++编写的，所以在单元测试方面能用的框架就不多了。公司里其他项目组都是用的GTest来写单元测试的，所以呢，我们也觉得使用GTest与GMock。本文主要是讲在Mac环境下，对GTest的环境搭建及使用</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="GTest与GMock介绍"><a href="#GTest与GMock介绍" class="headerlink" title="GTest与GMock介绍"></a>GTest与GMock介绍</h2><p>GTest月GMock都是Google的开源C++测试框架，提供了一系列的断言与期望的宏，同时还提供了stub与mock的功能，这些都是单元测试不可或缺的。你可以在这里查看GTest的<a href="https://github.com/google/googletest" target="_blank" rel="noopener">GitHub主页</a>。</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h3><p>首先需要在googletest下载最新的release源码</p>
+<img src="/images/image-20191208155702764.png">
+
+<h3 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h3><p>解压后，会看到如下的目录结构：</p>
+<img src="/images/image-20191208155950191.png" height="300/">
+
+<p>因为官方提供了两种编译库的方式，一种的CMake，另外一种是Bazel。这里介绍用CMake的方式，所以你需要先安装CMake需要的环境，这里就不介绍安装方式了，请自行查询。CMake的使用方式可以参考IBM的<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-cmake/index.html" target="_blank" rel="noopener">这篇</a>文章。</p>
+<p>CMake的环境准备好后，从命令行进入到该目录，并在命令行分别执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir mybuild</span><br><span class="line">$ <span class="built_in">cd</span> mybuild</span><br><span class="line">$ cmake ..</span><br></pre></td></tr></table></figure>
+
+<img src="/images/image-20191208161040143.png">
+
+<p>执行成功后，应该是下面这个样子：</p>
+<img src="/images/image-20191208161130932.png">
+
+<p>接着执行以下指令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>执行成功后就生成了对应的.a文件了</p>
+<p><img src="/images/image-20191208161235027.png" alt="image-20191208161235027"></p>
+<p>在finder中可以看到新生成的文件</p>
+<img src="/images/image-20191208162420154.png">
+
+<p>可以看到，一共生成了四个.a文件，其中有*_main.a表示文件中包含了main函数，所以使用此类文件时，工程里不能有其他的main函数。</p>
+<h3 id="工程创建，配置环境"><a href="#工程创建，配置环境" class="headerlink" title="工程创建，配置环境"></a>工程创建，配置环境</h3><p>在这里示例创建一个名为TestGoogletest的命令行工程。</p>
+<img src="/images/image-20191208162031530.png" width="500/">
+
+<p>接着导入编译好的.a文件，在这里我就不适用带有main函数的.a文件了。</p>
+<p>直接将.a文件拖入工程</p>
+<img src="/images/image-20191208162639580.png" width="500/">
+
+<h4 id="导入头文件"><a href="#导入头文件" class="headerlink" title="导入头文件"></a>导入头文件</h4><p>打开finder，进入到源码目录，将googlemck与googletest目录下的include目录下的文件夹gmock与gtest加入到工程中</p>
+<img src="/images/image-20191208163307265.png" width="600/">
+
+<h4 id="配置头文件搜索路径"><a href="#配置头文件搜索路径" class="headerlink" title="配置头文件搜索路径"></a>配置头文件搜索路径</h4><p>导入头文件后需要配置头文件搜索路径，打开工程文件，选择build setting，设置user header search path。</p>
+<img src="/images/image-20191208170630431.png" width="600/">
+
+<p>至此gtest与gmock框架添加完毕，接下来就是编写测试用例了</p>
+<h3 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h3><p>main函数编写如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gtest/gtest.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;numeric&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, (<span class="keyword">char</span> **)argv);</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">TEST(TestSuiteName, TestName) &#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来解释代码，GTest需要在main函数中启动，启动方式如下：需要注意的是，在mac平台下的main函数默认参数类型是==const char <em>==而gtest接收的类型是==char *</em>==，所以需要做一个强制类型转换。同时return函数返回的是==RUN_ALL_TESTS==()，作用是执行所有的单元测试</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    ::testing::InitGoogleTest(&amp;argc, (<span class="keyword">char</span> **)argv);</span><br><span class="line">    <span class="keyword">return</span> RUN_ALL_TESTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>TEST是GTest提供的单元测试宏，第一个参数是模块名，第二个参数是测试名称</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TEST(TestSuiteName, TestName) &#123;</span><br><span class="line">    EXPECT_EQ(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，GTest还提供了测试宏TEST_F。</p>
+<p>以上就是googleTest的简单使用了，你可以在<a href="https://github.com/WuKongCoo1/Demo_TestGoogletest" target="_blank" rel="noopener">这里</a>下载demo</p>
+<p>要了解更多的话可以参考以下链接：</p>
+<p><a href="https://github.com/google/googletest/blob/master/googletest/docs/primer.md#simple-tests" target="_blank" rel="noopener">Googletest Primer</a></p>
+<p><a href="https://github.com/google/googletest/blob/master/googletest/README.md" target="_blank" rel="noopener">Googletest README</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/29/观察者模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/29/观察者模式/" itemprop="url">观察者模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-29T11:07:17Z">
+                2019-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DesignPattern/" itemprop="url" rel="index">
+                    <span itemprop="name">DesignPattern</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/29/观察者模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/29/观察者模式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/29/观察者模式/" class="leancloud_visitors" data-flag-title="观察者模式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>观察者模式定义了对象之间的一对多依赖，当一个对象改变状态时，它的所有依赖者都会受到通知并自动更新。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>有这样一个场景，侦察兵（Scout）负责侦查附近有没有敌人，如果发现敌人的话，侦察兵就需要通知将军（General）与士兵（Soldier）。当士兵不在需要知道附近是否有敌人时，侦察兵就只需要通知将军。如果参谋长也需要知道侦查结果的话，同样的需要通知参谋长(Gigas)。这就是典型的一对多并且依赖状态的情况，让我们利用观察者模式来实现吧。</p>
+<h4 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h4><p>首先我们需要设计一个主题接口（Subject），这个接口定义对观察者的添加、删除、通知方法。Scout类实现Subject接口来完成可观察的功能。然后定义Observer接口，该接口定义update方法，用于接收通知，士兵、参谋长、将军分别实现此接口。类图如下:</p>
+<img src="/images/ObserverUML.png" width="800/">
+
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><strong>Subject.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Scout.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Scout</span> <span class="keyword">implements</span> <span class="title">Subject</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Observer&gt; observers = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        observers.add(o);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">removeObserver</span><span class="params">(Observer o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(observers.contains(o)) &#123;</span><br><span class="line">            observers.remove(o);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Iterator&lt;Observer&gt; iterable = observers.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterable.hasNext()) &#123;</span><br><span class="line">            Observer o = iterable.next();</span><br><span class="line">            o.update(<span class="string">"The enemy is coming"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Observer.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String msg)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>General.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">General</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"General receive : "</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Gigas.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gigas</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Gigas receive : "</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Soldier.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soldier</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(String msg)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Soldier receive : "</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试代码</strong></p>
+<p><strong>main.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Subject subject = <span class="keyword">new</span> Scout();</span><br><span class="line">        Observer o1 = <span class="keyword">new</span> General();</span><br><span class="line">        Observer o2 = <span class="keyword">new</span> Soldier();</span><br><span class="line"></span><br><span class="line">        subject.registerObserver(o1);</span><br><span class="line">        subject.registerObserver(o2);</span><br><span class="line">        subject.notifyObservers();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"-----register Gigas-----"</span>);</span><br><span class="line">        Observer o3 = <span class="keyword">new</span> Gigas();</span><br><span class="line">        subject.registerObserver(o3);</span><br><span class="line">        subject.notifyObservers();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"-----remove soldier-----"</span>);</span><br><span class="line">        subject.removeObserver(o2);</span><br><span class="line">        subject.notifyObservers();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结果</strong></p>
+<img src="/images/ObserverPatternResult.png" width="800/">
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>观察者模式遵循了针对接口编程，观察者与主题都是接口，主题通过接口通知观察者，观察者通过接口向主题注册，保证了松耦合。同时观察者模式将变化的部分（Observer的注册与移除）抽离出来，有着良好的扩展性与维护性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/设计模式原则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/28/设计模式原则/" itemprop="url">面向对象设计原则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T11:40:19Z">
+                2019-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DesignPattern/" itemprop="url" rel="index">
+                    <span itemprop="name">DesignPattern</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/28/设计模式原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/28/设计模式原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/28/设计模式原则/" class="leancloud_visitors" data-flag-title="面向对象设计原则">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="OO基础："><a href="#OO基础：" class="headerlink" title="OO基础："></a>OO基础：</h2><ul>
+<li>抽象</li>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h2 id="七大原则："><a href="#七大原则：" class="headerlink" title="七大原则："></a>七大原则：</h2><ol>
+<li><p><strong>单一职责原则（Single Responsibility Principle）</strong></p>
+<p>每一个类应该专注于做一件事情。</p>
+</li>
+<li><p><strong>里氏替换原则（Liskov Substitution Principle）</strong></p>
+<p>超类存在的地方，子类是可以替换的。</p>
+</li>
+<li><p><strong>依赖倒置原则（Dependence Inversion Principle）</strong></p>
+<p>实现尽量依赖抽象，不依赖具体实现。</p>
+</li>
+<li><p><strong>接口隔离原则（Interface Segregation Principle）</strong></p>
+<p>应当为客户端提供尽可能小的单独的接口，而不是提供大的总的接口。</p>
+</li>
+<li><p><strong>迪米特法则（Law Of Demeter）</strong></p>
+<p>又叫最少知识原则，一个软件实体应当尽可能少的与其他实体发生相互作用。</p>
+</li>
+<li><p><strong>开闭原则（Open Close Principle）</strong></p>
+<p>面向扩展开放，面向修改关闭。</p>
+</li>
+<li><p><strong>组合/聚合复用原则（Composite/Aggregate Reuse Principle CARP）</strong></p>
+<p>尽量使用合成/聚合达到复用，尽量少用继承。原则： 一个类中有另一个类的对象。</p>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>面向对象设计原则的目的是为了提高程序的可扩展性、可维护性以及可扩展性。简要的做法可以总结为一下三点：</p>
+<ol>
+<li>抽取可变化的部分并封装起来，让其他部分不受影响</li>
+<li>针对接口编程，而不是针对实现编程</li>
+<li>多用组合，少用继承</li>
+<li>为了交互对象之间的松耦合而努力</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/Mac 设置socket5代理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/23/Mac 设置socket5代理/" itemprop="url">Mac 设置socket5代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-23T13:14:18Z">
+                2019-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/23/Mac 设置socket5代理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/23/Mac 设置socket5代理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/23/Mac 设置socket5代理/" class="leancloud_visitors" data-flag-title="Mac 设置socket5代理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Mac-设置socket5代理"><a href="#Mac-设置socket5代理" class="headerlink" title="Mac 设置socket5代理"></a>Mac 设置socket5代理</h1><p>Mac端可以在设置-&gt;网络-&gt;高级-&gt;代理中设置http代理与socket代理，但是在这里设置的代理都是http的，并不能直接设置socket的代理。如果想要设置socket的代理的话，需要通过其他的软件来使用。在这里介绍利用==proxifier==来实现socket的代理。</p>
+<p>步骤如下：点击proxies，进入proxy列表</p>
+<img src="/images/proxy_1.png" width="600pt/">
+
+
+
+<p>点击add进入到添加界面</p>
+<img src="/images/proxy_3.png" width="600pt/">
+
+<p>在添加界面输入代理服务器的address与port，并且选择协议类型为http5，点击ok</p>
+<img src="/images/proxy_2.png" width="600pt/">
+
+<p>这就设置好socket5的代理了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/iOS-RGBA转YV12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/17/iOS-RGBA转YV12/" itemprop="url">iOS RGBA转YV12</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-16T16:58:23Z">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/17/iOS-RGBA转YV12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/17/iOS-RGBA转YV12/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/17/iOS-RGBA转YV12/" class="leancloud_visitors" data-flag-title="iOS RGBA转YV12">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>因为项目中要做画面共享，所以需要学一点图像相关的知识，首当其冲就是RGB转YUV了，因为图像处理压缩这一块是由专业对口的同事做的，所以呢，我这就是写一下自己的理解，如有不对的地方，还望指正，谢谢。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="知识准备"><a href="#知识准备" class="headerlink" title="知识准备"></a>知识准备</h2><h3 id="RGB"><a href="#RGB" class="headerlink" title="RGB"></a>RGB</h3><p><strong>三原色光模式</strong>（<strong>RGB color model</strong>），又称<strong>RGB颜色模型</strong>或<strong>红绿蓝颜色模型</strong>，是一种<a href="https://zh.wikipedia.org/wiki/加色法" target="_blank" rel="noopener">加色模型</a>，将<a href="https://zh.wikipedia.org/wiki/红" target="_blank" rel="noopener">红</a>（<strong>R</strong>ed）、<a href="https://zh.wikipedia.org/wiki/绿色" target="_blank" rel="noopener">绿</a>（<strong>G</strong>reen）、<a href="https://zh.wikipedia.org/wiki/蓝" target="_blank" rel="noopener">蓝</a>（<strong>B</strong>lue）三<a href="https://zh.wikipedia.org/wiki/原色" target="_blank" rel="noopener">原色</a>的色光以不同的比例相加，以合成产生各种色彩光。</p>
+<h3 id="RGB32"><a href="#RGB32" class="headerlink" title="RGB32"></a>RGB32</h3><p>RGB32使用32位来表示一个像素，RGB分量各用去8位，剩下的8位用作Alpha<a href="https://baike.baidu.com/item/通道" target="_blank" rel="noopener">通道</a>或者不用。（ARGB32就是带Alpha通道的RGB24。）注意在内存中RGB各分量的排列顺序为：BGRA BGRA BGRA…。通常可以使用RGBQUAD数据结构来操作一个像素，它的定义为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">tagRGBQUAD</span> &#123;</span></span><br><span class="line">BYTE rgbBlue; <span class="comment">// 蓝色分量</span></span><br><span class="line">BYTE rgbGreen; <span class="comment">// 绿色分量</span></span><br><span class="line">BYTE rgbRed; <span class="comment">// 红色分量</span></span><br><span class="line">BYTE rgbReserved; <span class="comment">// 保留字节（用作Alpha通道或忽略）</span></span><br><span class="line">&#125; RGBQUAD。</span><br></pre></td></tr></table></figure>
+
+<h3 id="YUV"><a href="#YUV" class="headerlink" title="YUV"></a>YUV</h3><p><strong>YUV</strong>，是一种<a href="https://zh.wikipedia.org/wiki/顏色" target="_blank" rel="noopener">颜色</a><a href="https://zh.wikipedia.org/wiki/編碼" target="_blank" rel="noopener">编码</a>方法。常使用在各个影像处理组件中。 YUV在对照片或影片编码时，考虑到人类的感知能力，允许降低色度的带宽。</p>
+<p>YUV是编译true-color颜色空间（color space）的种类，Y’UV, YUV, <a href="https://zh.wikipedia.org/wiki/YCbCr" target="_blank" rel="noopener">YCbCr</a>，<a href="https://zh.wikipedia.org/wiki/YPbPr" target="_blank" rel="noopener">YPbPr</a>等专有名词都可以称为YUV，彼此有重叠。“Y”表示<strong>明亮度</strong>（Luminance、Luma），“U”和“V”则是<strong>色度</strong>、<strong>浓度</strong>（Chrominance、Chroma）。</p>
+<p>YUV Formats分成两个格式：</p>
+<ul>
+<li>紧缩格式（packed formats）：将Y、U、V值存储成Macro Pixels数组，和<a href="https://zh.wikipedia.org/wiki/RGB" target="_blank" rel="noopener">RGB</a>的存放方式类似。</li>
+<li>平面格式（planar formats）：将Y、U、V的三个分量分别存放在不同的矩阵中。</li>
+</ul>
+<h3 id="YV12"><a href="#YV12" class="headerlink" title="YV12"></a>YV12</h3><p>YV12是每个像素都提取Y，在UV提取时，将图像2 x 2的矩阵，每个矩阵提取一个U和一个V。YV12格式和I420格式的不同处在V平面和U平面的位置不同。在YV12格式中，V平面紧跟在Y平面之后，然后才是U平面（即：YVU）；但I420则是相反（即：YUV）。<strong>NV12</strong>与YV12类似，效果一样，YV12中U和V是连续排列的，而在NV12中，U和V就交错排列的。</p>
+<p>排列举例： <strong>2*2图像</strong>YYYYVU； <strong>4＊4图像</strong>YYYYYYYYYYYYYYYYVVVVUUUU。</p>
+<p>ps：以上介绍摘自于维基百科、百度百科。</p>
+<h2 id="进入正题"><a href="#进入正题" class="headerlink" title="进入正题"></a>进入正题</h2><h3 id="获取RGBA数据"><a href="#获取RGBA数据" class="headerlink" title="获取RGBA数据"></a>获取RGBA数据</h3><p>在这里主要介绍从Image中获取RGBA数据，会用到CoreGraphics库。</p>
+<p>首先我们需要创建bitmap context</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="built_in">CGContextRef</span>) newBitmapRGBA8ContextFromImage:(<span class="built_in">CGImageRef</span>) image &#123;</span><br><span class="line">	<span class="built_in">CGContextRef</span> context = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="built_in">CGColorSpaceRef</span> colorSpace;</span><br><span class="line">	uint32_t *bitmapData;</span><br><span class="line">	</span><br><span class="line">	size_t bitsPerPixel = <span class="number">32</span>; <span class="comment">//每一个像素 由4个通道构成(RGBA)，每一个通道都是1个byte，4个通道也就是32个bit</span></span><br><span class="line">	size_t bitsPerComponent = <span class="number">8</span>; <span class="comment">//可以理解为每个通道的bit数</span></span><br><span class="line">	size_t bytesPerPixel = bitsPerPixel / bitsPerComponent; <span class="comment">//每个像素点的byte大小</span></span><br><span class="line">	</span><br><span class="line">	size_t width = <span class="built_in">CGImageGetWidth</span>(image); </span><br><span class="line">	size_t height = <span class="built_in">CGImageGetHeight</span>(image);</span><br><span class="line">	</span><br><span class="line">	size_t bytesPerRow = width * bytesPerPixel; <span class="comment">//每一行的字节数</span></span><br><span class="line">	size_t bufferLength = bytesPerRow * height; <span class="comment">//整个buffer的size</span></span><br><span class="line">	</span><br><span class="line">	colorSpace = <span class="built_in">CGColorSpaceCreateDeviceRGB</span>(); <span class="comment">//指定颜色空间为RGB</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!colorSpace) &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error allocating color space RGB\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 开辟存储位图的内存</span></span><br><span class="line">	bitmapData = (uint32_t *)malloc(bufferLength);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!bitmapData) &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error allocating memory for bitmap\n"</span>);</span><br><span class="line">		<span class="built_in">CGColorSpaceRelease</span>(colorSpace);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 创建bitmap context</span></span><br><span class="line">	context = <span class="built_in">CGBitmapContextCreate</span>(bitmapData, </span><br><span class="line">									width, </span><br><span class="line">									height, </span><br><span class="line">									bitsPerComponent, </span><br><span class="line">									bytesPerRow, </span><br><span class="line">									colorSpace, </span><br><span class="line">                                    kCGImageAlphaPremultipliedLast);	<span class="comment">// RGBA</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!context) &#123;</span><br><span class="line">        free(bitmapData);</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Bitmap context not created"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  <span class="built_in">CGColorSpaceRelease</span>(colorSpace);</span><br><span class="line">	<span class="keyword">return</span> context;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要向image绘制到bitmap context，然后从context中获取bitmap data。代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">unsigned</span> <span class="keyword">char</span> *) convertUIImageToBitmapRGBA8:(<span class="built_in">UIImage</span> *) image &#123;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGImageRef</span> imageRef = image.CGImage;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 创建bitmap context</span></span><br><span class="line">	<span class="built_in">CGContextRef</span> context = [<span class="keyword">self</span> newBitmapRGBA8ContextFromImage:imageRef];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(!context) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	size_t width = <span class="built_in">CGImageGetWidth</span>(imageRef);</span><br><span class="line">	size_t height = <span class="built_in">CGImageGetHeight</span>(imageRef);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGRect</span> rect = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 将image绘制到bitmap context</span></span><br><span class="line">	<span class="built_in">CGContextDrawImage</span>(context, rect, imageRef);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 获取bitmap context	中的数据指针</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> *bitmapData = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)<span class="built_in">CGBitmapContextGetData</span>(context);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 拷贝 bitmap text中的数据</span></span><br><span class="line">	size_t bytesPerRow = <span class="built_in">CGBitmapContextGetBytesPerRow</span>(context);</span><br><span class="line">	size_t bufferLength = bytesPerRow * height;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span> *newBitmap = <span class="literal">NULL</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(bitmapData) &#123;</span><br><span class="line">		newBitmap = (<span class="keyword">unsigned</span> <span class="keyword">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>) * bytesPerRow * height);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(newBitmap) &#123;	<span class="comment">// 拷贝数据</span></span><br><span class="line">			memcpy(newBitmap, bitmapData, bufferLength);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		free(bitmapData);</span><br><span class="line">		</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">NSLog</span>(<span class="string">@"Error getting bitmap pixel data\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">CGContextRelease</span>(context);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> newBitmap;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看了这段代码，你可能会有疑问，为什么不直接返回bitmapData呢？这是因为在我们释放bitmap context后，会释放掉bitmapData，所以这就需要我们从新申请空间将数据拷贝到重新开辟的空间了。</p>
+<h3 id="格式化图像数据"><a href="#格式化图像数据" class="headerlink" title="格式化图像数据"></a>格式化图像数据</h3><p>因为YV12要求以像素的2 * 2矩阵来做转换，所以在做RGB转换YV12之前，我们需要先格式化图像数据，以满足要求。</p>
+<p>首先需要格式化图片size，在这里我们以8来对齐，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">+ (CGSize)fromatImageSizeToYV12Size:(CGSize)originalSize</span><br><span class="line">&#123;</span><br><span class="line">    CGSize targetSize = CGSizeMake(originalSize.width, originalSize.height);</span><br><span class="line">    </span><br><span class="line">    //除以8是为了位对齐</span><br><span class="line">    int widthRemainder = (int)originalSize.width % 8;</span><br><span class="line">    </span><br><span class="line">    if (widthRemainder != 0) &#123;</span><br><span class="line">        targetSize.width -= widthRemainder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int heightRemainder = (int)originalSize.height % 8;</span><br><span class="line">    if (heightRemainder != 0) &#123;</span><br><span class="line">        targetSize.height -= heightRemainder;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return targetSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上个步骤我们计算得到了满足YV12格式的size，在这里还需要根据计算到的size来格式化image data，以满足YV12格式要求，代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">+ (<span class="keyword">void</span>)formatImageDataToYV12:(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)originalData outputData:(<span class="keyword">unsigned</span> <span class="keyword">char</span> *)outputData originalWidth:(<span class="built_in">CGFloat</span>)originalWidth targetSize:(<span class="built_in">CGSize</span>)targetSize</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">CGFloat</span> targetHeight = targetSize.height;</span><br><span class="line">    <span class="built_in">CGFloat</span> targetWidth = targetSize.width;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> *pTemp = outputData;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//按照targetSize逐行拷贝数据, 乘以4是因为每个size表示4个通道</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; targetHeight; i++) &#123;</span><br><span class="line">        memcpy(pTemp, originalData, targetWidth * <span class="number">4</span>);</span><br><span class="line">        originalData += (<span class="keyword">int</span>)originalWidth * <span class="number">4</span>;</span><br><span class="line">        pTemp += (<span class="keyword">int</span>)targetWidth * <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>数据准备好了，接下来，可以进入真正的主题，RGBA转换为YV12了。</p>
+<h3 id="RGBA转YV12"><a href="#RGBA转YV12" class="headerlink" title="RGBA转YV12"></a>RGBA转YV12</h3><p>对于RGB转换为对应的YV12，转换规则都是大佬们研究出来的，只是实现的方式各有不同，我在这里罗列了我找到的几种方式。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> rgb2yuv(<span class="keyword">int</span> r, <span class="keyword">int</span> g, <span class="keyword">int</span> b, <span class="keyword">int</span> *y, <span class="keyword">int</span> *u, <span class="keyword">int</span> *v)&#123;</span><br><span class="line">    <span class="comment">// 1 常规转换标准 - 浮点运算，精度高</span></span><br><span class="line">    *y =  <span class="number">0.29882</span>  * r + <span class="number">0.58681</span>  * g + <span class="number">0.114363</span> * b;</span><br><span class="line">    *u = <span class="number">-0.172485</span> * r - <span class="number">0.338718</span> * g + <span class="number">0.511207</span> * b;</span><br><span class="line">    *v =  <span class="number">0.51155</span>  * r - <span class="number">0.42811</span>  * g - <span class="number">0.08343</span>  * b;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2 常规转换标准 通过位移来避免浮点运算，精度低</span></span><br><span class="line">    *y = ( <span class="number">76</span>  * r + <span class="number">150</span> * g + <span class="number">29</span>  * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *u = (<span class="number">-44</span>  * r - <span class="number">87</span>  * g + <span class="number">131</span> * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *v = ( <span class="number">131</span> * r - <span class="number">110</span> * g - <span class="number">21</span>  * b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    <span class="comment">// 3 常规转换标准 通过位移来避免乘法运算，精度低</span></span><br><span class="line">    *y = ( (r&lt;&lt;<span class="number">6</span>) + (r&lt;&lt;<span class="number">3</span>) + (r&lt;&lt;<span class="number">2</span>) + (g&lt;&lt;<span class="number">7</span>) + (g&lt;&lt;<span class="number">4</span>) + (g&lt;&lt;<span class="number">2</span>) + (g&lt;&lt;<span class="number">1</span>) + (b&lt;&lt;<span class="number">4</span>) + (b&lt;&lt;<span class="number">3</span>) + (b&lt;&lt;<span class="number">2</span>) + b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *u = (-(r&lt;&lt;<span class="number">5</span>) - (r&lt;&lt;<span class="number">3</span>) - (r&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">6</span>) - (g&lt;&lt;<span class="number">4</span>) - (g&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">1</span>) - g + (b&lt;&lt;<span class="number">7</span>) + (b&lt;&lt;<span class="number">1</span>) + b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    *v = ((r&lt;&lt;<span class="number">7</span>) + (r&lt;&lt;<span class="number">1</span>) + r - (g&lt;&lt;<span class="number">6</span>) - (g&lt;&lt;<span class="number">5</span>) - (g&lt;&lt;<span class="number">3</span>) - (g&lt;&lt;<span class="number">2</span>) - (g&lt;&lt;<span class="number">1</span>) - (b&lt;&lt;<span class="number">4</span>) - (b&lt;&lt;<span class="number">2</span>) - b)&gt;&gt;<span class="number">8</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 4 高清电视标准：BT.709 常规方法：浮点运算，精度高</span></span><br><span class="line">    *y =  <span class="number">0.2126</span>  * r + <span class="number">0.7152</span>  * g + <span class="number">0.0722</span>  * b;</span><br><span class="line">    *u = <span class="number">-0.09991</span> * r - <span class="number">0.33609</span> * g + <span class="number">0.436</span>   * b;</span><br><span class="line">    *v =  <span class="number">0.615</span>   * r - <span class="number">0.55861</span> * g - <span class="number">0.05639</span> * b;</span><br><span class="line">    </span><br><span class="line">    *v += <span class="number">128</span>;</span><br><span class="line">    *u += <span class="number">128</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的转换方式都是可行的，当然要提升效率的话，还有查表法什么的，这些有兴趣的可以自行搜索。既然转换规则固定了，那么不考虑效率的前提下，我们需要做的就是如何从rgba数组中按照2 * 2矩阵来获取YUV数据并存储下来了。</p>
+<p>在这里介绍采用紧缩格式存储YV12的数据。为了便于理解，在这里先举个栗子：</p>
+<p>下图中的表示一张图中的像素排列，每个像素都包含RGBA通道，将RGBA转换为YV12需要按照2 * 2的像素矩阵为单位来处理，在图中就是按颜色分块中的像素来获取YUV数据，YV12是每4个像素获取一次U、V分量的数据，每个像素都要获取Y分量。</p>
+<p><img src="/images/rgb2yuv.png" alt></p>
+<p>要看转换后的YUV的样子，这里以2 * 2为例，8 个像素生成的YUV如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">YYYY YYYY VV UU</span><br></pre></td></tr></table></figure>
+
+<p>有了上面的知识，就可以直接上代码看看了。在这里我们以数组的方式来存储yuv数据，输入的rgba数据我们设置为int型数组，因为每个像素包含4个通道，每个通道都是一个byte，这样每个像素是4个byte，正好是一个int。需要注意的是，在int数组中，按理说每个int的数据应该是:RGBA，但是在iOS上，由于iOS是小端，所以实际上每个int的内容为ABGR，所以在取数据的时候需要注意，避免弄错顺序。还有需要注意的是，计算出来的UV数据需要避免负数，不然颜色值会有问题。</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> rgbaConvert2YV12(<span class="keyword">int</span> *rgbData, uint8_t *yuv, <span class="keyword">int</span> width, <span class="keyword">int</span> height) &#123;</span><br><span class="line">    <span class="keyword">int</span> frameSize = width * height;</span><br><span class="line">    <span class="keyword">int</span> yIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> vIndex = frameSize;</span><br><span class="line">    <span class="keyword">int</span> uIndex = frameSize * <span class="number">1.25</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> R, G, B, Y, U, V, A;</span><br><span class="line">    <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; height; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; width; i++) &#123;<span class="comment">//RGBA</span></span><br><span class="line">            <span class="comment">//样式为ABGR iOS设备为小端</span></span><br><span class="line">            A = (rgbData[index] &gt;&gt; <span class="number">24</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            B = (rgbData[index] &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            G = (rgbData[index] &gt;&gt; <span class="number">8</span>) &amp; <span class="number">0xff</span>;</span><br><span class="line">            R = rgbData[index] &amp; <span class="number">0xff</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//转换</span></span><br><span class="line">            rgb2yuv(R, G, B, &amp;Y, &amp;U, &amp;V);</span><br><span class="line">            <span class="comment">//避免负数</span></span><br><span class="line">            U += <span class="number">128</span>;</span><br><span class="line">            V += <span class="number">128</span>;</span><br><span class="line">            </span><br><span class="line">            Y = RANG_CONTROL(Y, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            U = RANG_CONTROL(U, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            V = RANG_CONTROL(V, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            </span><br><span class="line">            yuv[yIndex++] = Y;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (j % <span class="number">2</span> == <span class="number">0</span> &amp;&amp; i % <span class="number">2</span> == <span class="number">0</span>) &#123;<span class="comment">//按2 * 2矩阵取</span></span><br><span class="line">                yuv[vIndex++] = V;</span><br><span class="line">                yuv[uIndex++] = U;</span><br><span class="line">            &#125;</span><br><span class="line">            index ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="YV12转RGBA"><a href="#YV12转RGBA" class="headerlink" title="YV12转RGBA"></a>YV12转RGBA</h3><p>首先还是yuv转rgb的方法，这与RGB转YV12是对应的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">void yuv2rgb(int y, int u, int v, int *r, int *g, int *b)&#123;</span><br><span class="line">    u -= 128;</span><br><span class="line">    v -= 128;</span><br><span class="line">    // 1 常规转换标准 - 浮点运算，精度高</span><br><span class="line">    *r = y                  + (1.370705 * v);</span><br><span class="line">    *g = y - (0.337633 * u) - (0.698001 * v);</span><br><span class="line">    *b = y + (1.732446 * u);</span><br><span class="line"></span><br><span class="line">    // 2 常规转换标准 通过位移来避免浮点运算，精度低</span><br><span class="line">    *r = ((256 * y             + (351 * v))&gt;&gt;8);</span><br><span class="line">    *g = ((256 * y - (86  * u) - (179 * v))&gt;&gt;8);</span><br><span class="line">    *b = ((256 * y + (444 * u))            &gt;&gt;8);</span><br><span class="line">    // 3 常规转换标准 通过位移来避免乘法运算，精度低</span><br><span class="line">    *r = (((y&lt;&lt;8) + (v&lt;&lt;8) + (v&lt;&lt;6) + (v&lt;&lt;4) + (v&lt;&lt;3) + (v&lt;&lt;2) + (v&lt;&lt;1) + v)                   &gt;&gt; 8);</span><br><span class="line">    *g = (((y&lt;&lt;8) - (u&lt;&lt;6) - (u&lt;&lt;4) - (u&lt;&lt;2) - (u&lt;&lt;1) - (v&lt;&lt;7) - (v&lt;&lt;5) - (v&lt;&lt;4) - (v&lt;&lt;1) - v) &gt;&gt; 8);</span><br><span class="line">    *b = (((y&lt;&lt;8) + (u&lt;&lt;8) + (u&lt;&lt;7) + (u&lt;&lt;5) + (u&lt;&lt;4) + (u&lt;&lt;3) + (u&lt;&lt;2))                       &gt;&gt; 8);</span><br><span class="line">    // 4 高清电视标准：BT.709 常规方法：浮点运算，精度高</span><br><span class="line">    *r = (y               + 1.28033 * v);</span><br><span class="line">    *g = (y - 0.21482 * u - 0.38059 * v);</span><br><span class="line">    *b = (y + 2.12798 * u);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重点来了，将YUV数组恢复为RGBA数组</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> YV12Convert2RGB(uint8_t *yuv, uint8_t *rgb, <span class="keyword">int</span> width, <span class="keyword">int</span> height)&#123;</span><br><span class="line">    <span class="keyword">int</span> frameSize = width * height;</span><br><span class="line">    <span class="keyword">int</span> rgbIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> yIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> uvOffset = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> vIndex = frameSize;</span><br><span class="line">    <span class="keyword">int</span> uIndex = frameSize * <span class="number">1.25</span>;</span><br><span class="line">    <span class="keyword">int</span> R, G, B, Y, U, V;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; width; j++) &#123;</span><br><span class="line">            Y = yuv[yIndex++];</span><br><span class="line">            uvOffset = i / <span class="number">2</span> * width / <span class="number">2</span> + j / <span class="number">2</span>;<span class="comment">//按2 * 2矩阵 还原</span></span><br><span class="line">            </span><br><span class="line">            V = yuv[vIndex + uvOffset];</span><br><span class="line">            U = yuv[uIndex + uvOffset];</span><br><span class="line">            </span><br><span class="line">            yuv2rgb(Y, U, V, &amp;R, &amp;G, &amp;B);</span><br><span class="line">            </span><br><span class="line">            R = RANG_CONTROL(R, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            G = RANG_CONTROL(G, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            B = RANG_CONTROL(B, <span class="number">0</span>, <span class="number">255</span>);</span><br><span class="line">            </span><br><span class="line">            rgb[rgbIndex++] = R;</span><br><span class="line">            rgb[rgbIndex++] = G;</span><br><span class="line">            rgb[rgbIndex++] = B;</span><br><span class="line">            rgb[rgbIndex++] = <span class="number">255</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上就是iOS中RGB与YUV互转的方式了，你可以在<a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E5%8E%9F%E8%89%B2%E5%85%89%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">这里</a>下载demo</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://zh.wikipedia.org/wiki/%E4%B8%89%E5%8E%9F%E8%89%B2%E5%85%89%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">三元光模式-维基百科</a></p>
+<p><a href="https://baike.baidu.com/item/RGB" target="_blank" rel="noopener">RGB百度百科</a></p>
+<p><a href="https://blog.csdn.net/CAICHAO1234/article/details/79260954" target="_blank" rel="noopener">IOS rgb yuv 转换</a></p>
+<p><a href="http://anddymao.com/2017/12/04/2017-12-4-YUV%E5%92%8CRGB%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%E5%8F%8AOpenGL%E6%98%BE%E7%A4%BAYUV%E6%95%B0%E6%8D%AE/" target="_blank" rel="noopener">YUV和RGB互相转换及OpenGL显示YUV数据</a></p>
+<p><a href="https://www.jianshu.com/p/a91502c00fb0" target="_blank" rel="noopener">YUV颜色编码解析</a></p>
+<p><a href="https://www.cnblogs.com/dwdxdy/p/3713990.html" target="_blank" rel="noopener">YUV与RGB格式转化</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/ARC详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/14/ARC详解/" itemprop="url">ARC详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-14T15:03:14Z">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/10/14/ARC详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/14/ARC详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/10/14/ARC详解/" class="leancloud_visitors" data-flag-title="ARC详解">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h1><p>Objective-C（以下简称OC）的内存管理是通过引用计数来完成的，具体来说有两种方式。以前呢，我们是通过MRC（Manual Reference Counting 手动引用计数）的方式来管理，而现在呢，现在苹果官方是推荐我们使用ARC（Automatic Reference Counting 自动引用计数）。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内存管理基础知识"><a href="#内存管理基础知识" class="headerlink" title="内存管理基础知识"></a>内存管理基础知识</h2><p>oc中对对象的引用计数retain count有影响的方法有：retain、release、autorelease等，其中retain会使对象的引用计数+1，而release与autorelease会使对象的引用计数减一。当执行release后，如果对象的引用计数减少为0，则执行对象的dealloc方法，来释放内存。总结起来就是：</p>
+<ul>
+<li>retain 递增引用计数</li>
+<li>release 递减引用计数</li>
+<li>autorelease 在自动释放池 pop时，再递减引用计数</li>
+</ul>
+<h2 id="MRC-手动引用计数"><a href="#MRC-手动引用计数" class="headerlink" title="MRC 手动引用计数"></a>MRC 手动引用计数</h2><p>在MRC管理方式中，管理原则是谁创建谁释放，即一个对象或者一个方法alloc或者retain了对象了，在使用完毕后，一定要执行release或者autorelease方法。如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSObject *obj = [[NSObject alloc] init];</span><br><span class="line">//do something ...</span><br><span class="line">[obj release];</span><br></pre></td></tr></table></figure>
+
+<p>在平时的编码过程中，我们需要创建和销毁非常多的对象，如果通过MRC的方式来管理的话，工作量会非常的繁琐，于是乎苹果的工程师为我们提供了更便捷的管理方式ARC。</p>
+<h2 id="ARC-自动引用计数"><a href="#ARC-自动引用计数" class="headerlink" title="ARC 自动引用计数"></a>ARC 自动引用计数</h2><h3 id="ARC简介"><a href="#ARC简介" class="headerlink" title="ARC简介"></a>ARC简介</h3><p>简单来说ARC的作用是编译器在编译的时候，帮我们加入适当的release和retain调用。例如在ARC中的如下代码：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)foo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSObject</span> *object = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, object);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码，在ARC中会被改写为如下形式：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)foo</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSObject</span> *object = [[<span class="built_in">NSObject</span> alloc] init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, object);</span><br><span class="line">    [object release]; <span class="comment">//ARC添加的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由此可见，在ARC的管理方式下，引用计数任然是有效的，只是release与retain操作交给ARC自动添加了。因为ARC会自动为我们添加内存管理语义，所以在ARC下是不能主动调用内存管理语义的，具体如下：</p>
+<ul>
+<li>retain</li>
+<li>release</li>
+<li>autorelease</li>
+<li>dealloc</li>
+</ul>
+<p>熟悉MRC的人可能会觉得ARC只是替我们调用了release与retain等方法，其实ARC并不是直接通过消息派发机制来调用的，而是直接通过调用底层的C语言版本。C语言对应的方法如下：</p>
+<ul>
+<li>retain -&gt; objc_retain</li>
+<li>release -&gt; objc_release</li>
+<li>autorelease -&gt; objc_autorelease</li>
+</ul>
+<h3 id="ARC命名规则"><a href="#ARC命名规则" class="headerlink" title="ARC命名规则"></a>ARC命名规则</h3><p>总的来说ARC下的内存管理是通过命名规则来决定对象的管理权的归属，具体来说通过以下名称开头产生的对象管理权归调用者所有：</p>
+<ul>
+<li>alloc</li>
+<li>new</li>
+<li>copy</li>
+<li>mutableCopy</li>
+</ul>
+<p>如果不是通过以上语句开头产生的，那么则有被调用方管理，ARC会在创建方法末尾添加调用autorelease。</p>
+<p>示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">Student</span></span></span><br><span class="line">+ (<span class="keyword">id</span>)newStudent:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    Student *stu = [[Student alloc] init];</span><br><span class="line">    stu.name = name;</span><br><span class="line">    <span class="comment">//管理权归被调用方所有</span></span><br><span class="line">    <span class="keyword">return</span> stu;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">id</span>)studentWithName:(<span class="built_in">NSString</span> *)name</span><br><span class="line">&#123;</span><br><span class="line">    Student *stu = [[Student alloc] init];</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     在arc下管理权归被调用者</span></span><br><span class="line"><span class="comment">     return [stu autorelease];</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    stu.name = name;</span><br><span class="line">    <span class="keyword">return</span> stu;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@ dealloc"</span>, <span class="keyword">self</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> foo2()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s begin"</span>, __func__);</span><br><span class="line">    &#123;</span><br><span class="line">        Student *stu1, *stu2;</span><br><span class="line">        stu1 = [Student newStudent:<span class="string">@"Jacky"</span>];</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         [stu1 release];</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        stu2 = [Student studentWithName:<span class="string">@"Nacy"</span>];</span><br><span class="line">    &#125;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%s end"</span>, __func__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2019-10-14 18:06:19.802799+0800 Test_ARC[9252:11351467] foo2 begin</span><br><span class="line">2019-10-14 18:06:19.802865+0800 Test_ARC[9252:11351467] Jacky dealloc</span><br><span class="line">2019-10-14 18:06:30.592471+0800 Test_ARC[9252:11351467] foo2 end</span><br><span class="line">2019-10-14 18:06:33.308012+0800 Test_ARC[9252:11351467] Nacy dealloc</span><br></pre></td></tr></table></figure>
+
+<p>可能你会对这个运行结果存在疑惑，正常来说stu1与stu2的生命周期都应该在=={}==中，出了中括号这两个变量都应该销毁，变量销毁后，指向的对象也应该马上销毁。但是只有stu1在生命周期结束后销毁了，而stu2却延迟销毁了。为什么会这样呢，就像之前介绍说到的，stu2是通过==studentWithName==创建的，这不符合ARC中管理规则，所以stu2是以autorelease的方式返回的，内存管理方式是交给被调用方的。同理，就可以明白stu1会在变量作用于结束时销毁的原理了</p>
+<h3 id="ARC的优化"><a href="#ARC的优化" class="headerlink" title="ARC的优化"></a>ARC的优化</h3><h4 id="优化一-成对的retain与autorelease优化"><a href="#优化一-成对的retain与autorelease优化" class="headerlink" title="优化一 成对的retain与autorelease优化"></a>优化一 成对的retain与autorelease优化</h4><p>上面讲到，如果对象是通过不符合ARC规则的方法创建的，那么ARC会为其加上autorelease，如果这时候接收的变量是强指针的话，那么ARC会为其加上retain调用。示例如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Student *stu = [Student studentWithName:<span class="string">@"Nacy"</span>];</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">在arc处理后代码变为</span></span><br><span class="line"><span class="comment">Student *stu = [Student studentWithName:@"Nacy"];</span></span><br><span class="line"><span class="comment">[stu retain];</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>这样看来的话，在这里studentWithName中的autorelease与这里的retain就是多余的了，可以删除。但是为了兼容性，ARC没有直接删除。ARC不会直接调用autorelease，而是执行另外的函数objc_autoreleaseReturnValue。这个函数会检查返回值之后的代码，如果之后的代码有执行retain操作，那么就设置全局结构，不执行autorelease操作。同样的，在调用retain方法时，会调用objc_retainAutoreleasedReturnValue。这个方法会检查上面提到的标志位，如果标志位被设置了的话，那么就不会执行retain操作，并重置检测标志位。</p>
+<h4 id="优化二-设置实例变量"><a href="#优化二-设置实例变量" class="headerlink" title="优化二 设置实例变量"></a>优化二 设置实例变量</h4><p>在MRC情况下，setter方法的内存管理是这样的</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setObj:(<span class="keyword">id</span>)obj</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">id</span> newObj = [obj <span class="keyword">retain</span>]; <span class="comment">//保留新值</span></span><br><span class="line">    [_obj release]; <span class="comment">//释放旧值</span></span><br><span class="line">    _obj = newObj; <span class="comment">//设置实例变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是在ARC下面，只需要设置实例变量即可，ARC会自动保留新值，释放旧值，最后才设置实例变量，就像是上面这样写的一样，ARC代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)setObj:(<span class="keyword">id</span>)obj</span><br><span class="line">&#123;</span><br><span class="line">    _obj = obj; <span class="comment">//设置实例变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>ARC通过方法名来管理方法返回的对象</li>
+<li>ARC会优化成对的retain与release操作</li>
+<li>ARC只管理OC对象</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://item.jd.com/11402853.html" target="_blank" rel="noopener">Effective Objective-C 2.0</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/19/mysql重置密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/19/mysql重置密码/" itemprop="url">mysql重置密码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-18T16:18:55Z">
+                2019-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/19/mysql重置密码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/19/mysql重置密码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/19/mysql重置密码/" class="leancloud_visitors" data-flag-title="mysql重置密码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：<a href="https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html" target="_blank" rel="noopener">mysql 官方重置密码</a></p>
+<ol>
+<li>杀掉mysql进程</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> shell&gt; <span class="built_in">kill</span> `cat /mysql-data-directory/host_name.pid`</span></span><br><span class="line">sudo kill `sudo cat /usr/local/mysql/data/localhost.pid`</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>重写init.sql</p>
+</li>
+<li><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--MySQL 5.7.6 and later:</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'MyNewPass'</span>;</span><br><span class="line"><span class="comment">--MySQL 5.7.5 and earlier:</span></span><br><span class="line"><span class="comment">--SET PASSWORD FOR 'root'@'localhost' = PASSWORD('MyNewPass');</span></span><br></pre></td></tr></table></figure>
+
+<p>用mysql-init启动mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysqld --init-file=/initFilePath &amp;</span></span><br><span class="line"><span class="meta">shell&gt;</span><span class="bash"> sudo mysqld --init-file=/Users/lineworks/Documents/utilities/mysql/mysql-init &amp;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/10/C、CPlusPlus格式化字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/10/C、CPlusPlus格式化字符串/" itemprop="url">C、C++格式化字符串</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-09T18:05:44Z">
+                2019-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/10/C、CPlusPlus格式化字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/10/C、CPlusPlus格式化字符串/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/10/C、CPlusPlus格式化字符串/" class="leancloud_visitors" data-flag-title="C、C++格式化字符串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在C和C++开发中，我们经常会用到printf来进行字符串的格式化，例如<code>printf(&quot;format string %d, %d&quot;, 1, 2);</code>，这样的格式化只是用于打印调试信息。printf函数实现的是接收可变参数，然后解析格式化的字符串，最后输出到控制台。那么问题来了，当我们需要实现一个函数，根据传入的可变参数来生成格式化的字符串，应该怎么办呢？</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><p>首先来一个可变参数使用示例，<code>testVariadic</code>方法接收int行的可变参数，并以可变参数为-1表示结束。va_list用于遍历可变参数，<code>va_start</code>方法接收两个参数，第一个为<code>va_list</code>，第二个为可变参数前一个参数，下面的例子里该参数为a。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 下面是 &lt;stdarg.h&gt; 里面重要的几个宏定义如下：</span></span><br><span class="line"><span class="comment"> typedef char* va_list;</span></span><br><span class="line"><span class="comment"> void va_start ( va_list ap, prev_param ); // ANSI version</span></span><br><span class="line"><span class="comment"> type va_arg ( va_list ap, type );</span></span><br><span class="line"><span class="comment"> void va_end ( va_list ap );</span></span><br><span class="line"><span class="comment"> va_list 是一个字符指针，可以理解为指向当前参数的一个指针，取参必须通过这个指针进行。</span></span><br><span class="line"><span class="comment"> &lt;Step 1&gt; 在调用参数表之前，定义一个 va_list 类型的变量，(假设va_list 类型变量被定义为ap)；</span></span><br><span class="line"><span class="comment"> &lt;Step 2&gt; 然后应该对ap 进行初始化，让它指向可变参数表里面的第一个参数，这是通过 va_start 来实现的，第一个参数是 ap 本身，第二个参数是在变参表前面紧挨着的一个变量,即“...”之前的那个参数；</span></span><br><span class="line"><span class="comment"> &lt;Step 3&gt; 然后是获取参数，调用va_arg，它的第一个参数是ap，第二个参数是要获取的参数的指定类型，然后返回这个指定类型的值，并且把 ap 的位置指向变参表的下一个变量位置；</span></span><br><span class="line"><span class="comment"> &lt;Step 4&gt; 获取所有的参数之后，我们有必要将这个 ap 指针关掉，以免发生危险，方法是调用 va_end，他是输入的参数 ap 置为 NULL，应该养成获取完参数表之后关闭指针的习惯。说白了，就是让我们的程序具有健壮性。通常va_start和va_end是成对出现。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//-1表示可变参数结束</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">receiveVariadic</span><span class="params">(<span class="keyword">int</span> a, ...)</span> </span>&#123;</span><br><span class="line">    va_list <span class="built_in">list</span>;</span><br><span class="line">    va_start(<span class="built_in">list</span>, a);</span><br><span class="line">    <span class="keyword">int</span> arg = a;</span><br><span class="line">    <span class="keyword">while</span> (arg != <span class="number">-1</span>) &#123;</span><br><span class="line">        arg = va_arg(<span class="built_in">list</span>, <span class="keyword">int</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, arg);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//test</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testVari</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="comment">//-1表示可变参数结束</span></span><br><span class="line">    receiveVariadic(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testVari------</span><br><span class="line">2 3 4 5 6 -1</span><br></pre></td></tr></table></figure>
+
+<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>好了，我们已经介绍了怎样实现一个接收可变参数的C函数，接下来介绍根据接收的可变参数来格式化字符串。这里介绍两种方式，第一种是利用宏定义，第二种通过函数的方式来实现。</p>
+<h3 id="通过宏定义的方式"><a href="#通过宏定义的方式" class="headerlink" title="通过宏定义的方式"></a>通过宏定义的方式</h3><p>en…让咱们先来看看第一个版本的宏，这个宏定义对于不熟悉宏的人来说可能看着有点费劲，不过不要怕，稍后会做解释，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_WithoutReturn(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>, buf); \</span><br><span class="line">    <span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="宏基础知识"><a href="#宏基础知识" class="headerlink" title="宏基础知识"></a>宏基础知识</h4><p>首先需要介绍宏用到的知识：<code>\</code>, 这个<code>\</code>的作用是可换行定义宏，毕竟如果一行很长的宏可读性很差，使用方式在换行时加上<code>\</code>即可。第二个是介绍<code>(format, ...)</code>，这里的<code>...</code>是预定义的宏，用于接收可变参数，就像是<code>printf</code>函数一样。接着介绍<code>##__VA_ARGS__</code>，同样的<code>__VA_ARGS__</code>也是预定义的宏，表示接收到的<code>...</code>传入的可变参数。<code>##</code>的作用是用来处理未传入可变参数的情况，当没有传入可变参数的时候，编译器或通过优化将<code>snprintf(NULL, 0, format, ##__VA_ARGS__);</code>优化为<code>snprintf(NULL, 0, format);</code>。你可以理解为没有可变参数时，<code>##</code>前的逗号<code>,</code>与<code>__VA_ARGS__</code>都被“干掉了”。</p>
+<p>你一定会觉得困惑，为什么要写<code>do-while</code>语句呢？这是为了宏的健壮性，如果使用宏的人像下面这样使用的话，就会出问题</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> testMarco(a, b) \</span></span><br><span class="line"><span class="keyword">int</span> _a = a + <span class="number">1</span>; \</span><br><span class="line"><span class="keyword">int</span> _b = b + <span class="number">1</span>; \</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); \</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        testMarco(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码连编译都不会通过, 会报错如下:</p>
+<p><img src="/images/macro_1.png" alt></p>
+<p>如果手动展开这个宏的话，会变成这个样子，问题就显而易见了。但是如果<code>if</code>语句加上了<code>{}</code>的话，就不会有问题，可以看出规范写法是多么的重要🐶（皮一下很开心）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">int</span> _a = <span class="number">1</span> + <span class="number">1</span>; <span class="keyword">int</span> _b = <span class="number">2</span> + <span class="number">1</span>; <span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b);;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>加上<code>do-while</code>以后就不一样，加上do-while后的代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> testMarco(a, b) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line"><span class="keyword">int</span> _a = a + <span class="number">1</span>; \</span><br><span class="line"><span class="keyword">int</span> _b = b + <span class="number">1</span>; \</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        testMarco(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>预处理之后代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//展开后的代码 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="number">1</span> &gt; <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">do</span> &#123; <span class="keyword">int</span> _a = <span class="number">1</span> + <span class="number">1</span>; <span class="keyword">int</span> _b = <span class="number">2</span> + <span class="number">1</span>; <span class="built_in">printf</span>(<span class="string">"\n%d"</span>, _a + _b); &#125; <span class="keyword">while</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，宏的基础知识就介绍这么多了，接下来进入正题。</p>
+<h4 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h4><p>为了方便阅读，原谅我在这里再贴一遍宏定义的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_WithoutReturn(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>, buf); \</span><br><span class="line">    <span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>首先，介绍一下<code>snprintf()</code>函数，此函数的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> @param __str 接收格式化结果的指针</span></span><br><span class="line"><span class="comment"> @param __size 接收的size</span></span><br><span class="line"><span class="comment"> @param __format 格式化的字符串</span></span><br><span class="line"><span class="comment"> @param ... 可变参数</span></span><br><span class="line"><span class="comment"> @return 返回格式化后实际上写入的大小a，a &lt;= __size</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>     <span class="title">snprintf</span><span class="params">(<span class="keyword">char</span> * __restrict __str, <span class="keyword">size_t</span> __size, <span class="keyword">const</span> <span class="keyword">char</span> * __restrict __format, ...)</span> __<span class="title">printflike</span><span class="params">(<span class="number">3</span>, <span class="number">4</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>为了方便理解，使用方式是这个样子的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testSnprintf</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> des[<span class="number">50</span>];</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(des, <span class="number">50</span>, <span class="string">"less length %d"</span>, <span class="number">50</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"size:%d\n"</span>, size);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testSnprintf------</span><br><span class="line">size:14</span><br></pre></td></tr></table></figure>
+
+<p><code>snprintf</code>函数还有一个用法是<code>__str</code>和<code>__size</code>分别传入NULL和0，返回值会是格式化字符串的实际长度，可以通过这个方式来获取正确的格式化size，从而避免malloc多余的空间，造成空间浪费。同时返回的size是不包含结束符<code>\0</code>的，所以真正写入要buffer时，需要对size + 1。</p>
+<p>相信通过我的解释，你一定能看懂上面这段代码了吧。哦，对了malloc的代码一定要记得free（敲重点）。</p>
+<p>到了这里，如果细心思考的同学一定会问？这个宏根本没有实际用途好不好，我要的是能够把格式化的字符串作为返回值返回的，仅仅打印直接用<code>printf</code>不就好了。其实，这样的宏还是有作用的，比如说当你要记录日志时，你可以像这样使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Log_Debug(format, ...) \</span></span><br><span class="line"><span class="keyword">do</span> &#123; \</span><br><span class="line"><span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">size++; \</span><br><span class="line"><span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line"><span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">doLog(buf); \</span><br><span class="line"><span class="built_in">free</span>(buf); \</span><br><span class="line">&#125; <span class="keyword">while</span>(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>要将结果字符串返回的话，需要用到GNU C的赋值扩展，使用方式如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = (&#123;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">4</span>;</span><br><span class="line">        b + c;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这段代码变量a最终值会是6。利用gnu这个扩展，将之前的宏改造一下就能实现我们的需求，改造完成后是这个样子的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByMacro_ReturnFormatString(format, ...) \</span></span><br><span class="line">(&#123; \</span><br><span class="line">    <span class="keyword">int</span> size = <span class="built_in">snprintf</span>(<span class="literal">NULL</span>, <span class="number">0</span>, format, ##__VA_ARGS__);\</span><br><span class="line">    size++; \</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size); \</span><br><span class="line">    <span class="built_in">snprintf</span>(buf, size, format, ##__VA_ARGS__); \</span><br><span class="line">    buf; \</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>调用宏的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testByMacro1</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *a = myFormatStringByMacro_ReturnFormatString(<span class="string">"format by macro, %d %s"</span>, <span class="number">123</span>, <span class="string">"well done"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, a);</span><br><span class="line">    <span class="built_in">free</span>(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原谅我的啰嗦，malloc开辟的空间一定要记得free。运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testByMacro1------</span><br><span class="line">format by macro, <span class="number">123</span> well done</span><br></pre></td></tr></table></figure>
+
+<p>至此利用宏的方式就介绍完了。</p>
+<h3 id="通过函数的方式"><a href="#通过函数的方式" class="headerlink" title="通过函数的方式"></a>通过函数的方式</h3><p>老规矩先上代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">char</span> *<span class="title">myFormatStringByFun</span><span class="params">(<span class="keyword">char</span> *format, ...)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    va_list <span class="built_in">list</span>;</span><br><span class="line">    <span class="comment">//1. 先获取格式化后字符串的长度</span></span><br><span class="line">    va_start(<span class="built_in">list</span>, format);</span><br><span class="line">    <span class="keyword">int</span> size = vsnprintf(<span class="literal">NULL</span>, <span class="number">0</span>, format, <span class="built_in">list</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">    <span class="keyword">if</span>(size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    size++;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2. 复位va_list，将格式化字符串写入到buf</span></span><br><span class="line">    va_start(<span class="built_in">list</span>, format);</span><br><span class="line">    <span class="keyword">char</span> *buf = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(size);</span><br><span class="line">    vsnprintf(buf, size, format, <span class="built_in">list</span>);</span><br><span class="line">    va_end(<span class="built_in">list</span>);</span><br><span class="line">    <span class="keyword">return</span> buf;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里利用的是<code>vsnprintf</code>函数，此函数的定义在<code>stdio.h</code>中的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> @param __str 目标字符串</span></span><br><span class="line"><span class="comment"> @param __size 要赋值的大小</span></span><br><span class="line"><span class="comment"> @param __format 格式化字符串</span></span><br><span class="line"><span class="comment"> @param va_list 可变参数列表</span></span><br><span class="line"><span class="comment"> @return 返回格式化后实际上写入的大小a，a &lt;= __size</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>     <span class="title">vsnprintf</span><span class="params">(<span class="keyword">char</span> * __restrict __str, <span class="keyword">size_t</span> __size, <span class="keyword">const</span> <span class="keyword">char</span> * __restrict __format, va_list)</span> __<span class="title">printflike</span><span class="params">(<span class="number">3</span>, <span class="number">0</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>vsnprintf</code>的具体使用方式和之前介绍的<code>snprintf</code>是差不多的，这里就不再详细介绍了，不大明白的同学可以看看上面的介绍。哦，对了，这两个函数都是定义在stdio.h这个头文件下的</p>
+<p>接下来就是试一下我们封装的函数了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testByFun</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *b = myFormatStringByFun(<span class="string">"format by fun %d %s"</span>, <span class="number">321</span>, <span class="string">"nice"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testByFun------</span><br><span class="line">format by fun <span class="number">321</span> nice</span><br></pre></td></tr></table></figure>
+
+<p>格式化字符串的方法差不多介绍完了，不知道善于思考的你有没想到直接用宏定义来调用我们封装的函数呢？我就在这直接给出宏定义和使用方式了</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> myFormatStringByFunQuick(format, ...) myFormatStringByFun(format, ##__VA_ARGS__);</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testMyFormatStringByFunQuick</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"------%s------\n"</span>, __FUNCTION__);</span><br><span class="line">    <span class="keyword">char</span> *formatString = myFormatStringByFunQuick(<span class="string">"amazing happen, %s"</span>, <span class="string">"cool"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, formatString);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">------testMyFormatStringByFunQuick------</span><br><span class="line">amazing happen</span><br></pre></td></tr></table></figure>
+
+<h3 id="C-版本"><a href="#C-版本" class="headerlink" title="C++版本"></a>C++版本</h3><p>对了，最初实现是用的C++版本，这里使用的是泛型，代码是这个样子的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt; <span class="keyword">typename</span>... Args &gt;</span><br><span class="line"><span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">string_sprintf</span><span class="params">( <span class="keyword">const</span> <span class="keyword">char</span>* format, Args... args )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">std</span>::<span class="built_in">snprintf</span>( <span class="literal">nullptr</span>, <span class="number">0</span>, format, args... );</span><br><span class="line">    assert( length &gt;= <span class="number">0</span> );</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">char</span>* buf = <span class="keyword">new</span> <span class="keyword">char</span>[length + <span class="number">1</span>];</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">snprintf</span>( buf, length + <span class="number">1</span>, format, args... );</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">std</span>::<span class="function"><span class="built_in">string</span> <span class="title">str</span><span class="params">( buf )</span></span>;</span><br><span class="line">    <span class="keyword">delete</span>[] buf;</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实和C语言版本的没什么差别，只是多了泛型的东西而已，相信聪明的你一定能看懂，看不懂的话，就去看看C++的泛型知识吧，哈哈哈。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>终于介绍完了，你可以在<a href="https://github.com/WuKongCoo1/DemoFormatString" target="_blank" rel="noopener">这里</a>下载代码。写博客是真的有点累人，不过对于最近被面试打击的我来说，写博客能够让我对知识理解的更加透彻，毕竟要自己认真思考后才能够写的明白（至少我觉得讲明白了，哈哈哈）。如果有什么说的不对的地方，还请指出，感谢你的阅读，thks。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://stackoverflow.com/questions/2342162/stdstring-formatting-like-sprintf" target="_blank" rel="noopener">std::string formatting like sprintf</a></p>
+<p><a href="https://onevcat.com/2014/01/black-magic-in-macro/" target="_blank" rel="noopener">宏定义的黑魔法 - 宏菜鸟起飞手册</a></p>
+<p><a href="https://blog.csdn.net/bat67/article/details/77542165" target="_blank" rel="noopener">整理：C/C++可变参数，“## <strong>VA_ARGS</strong>”宏的介绍和使用</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/02/TCP的三次握手与四次挥手/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/02/TCP的三次握手与四次挥手/" itemprop="url">TCP的三次握手与四次挥手</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-02T14:08:36Z">
+                2019-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/net/" itemprop="url" rel="index">
+                    <span itemprop="name">net</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/02/TCP的三次握手与四次挥手/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/02/TCP的三次握手与四次挥手/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/02/TCP的三次握手与四次挥手/" class="leancloud_visitors" data-flag-title="TCP的三次握手与四次挥手">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>前段时间一直在准备面试，本以为准备的挺好，然而被腾讯面试官问道网络问题的时候，发现自己对TCP协议的理解真的是停留在表面，不够深入。于是本着提高自己的想法，去查了些资料，这里主要是总结我对TCP建立与断开连接过程的理解。</p>
+<h1 id="常见题目"><a href="#常见题目" class="headerlink" title="常见题目"></a>常见题目</h1><p>在面试中网络问题是一定会考察的，而TCP协议则是考察网络知识的重点。经常会被问道的问题如下：</p>
+<ol>
+<li>请讲一下TCP协议建立连接的过程</li>
+<li>请介绍TCP协议中的三次握手和四次挥手是怎么样的</li>
+<li>为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</li>
+<li>TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</li>
+</ol>
+<p>接下来，我将介绍我理解的TCP三次握手和4次挥手的过程，如果错误还请指正，谢谢。</p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><h2 id="三次握手过程"><a href="#三次握手过程" class="headerlink" title="三次握手过程"></a>三次握手过程</h2><p>首先需要服务器监听特定的端口，等待客户端来请求连接。当客户端需要建立连接时，客户端会先向服务器发送syn报文，将报文中syn置为随机生成的序号n（这里假设序号为1000）。服务器收到同步报文后，会回复一个ack报文，把ACK位置位n+1（这里的序号应该为1001），同时设置syn为y（这里假设为2000）。客户端收到服务器发送的ack报文后，会回复一个ACK报文给服务器，其中ACK位置为y+1（这里即为2001）。当服务器收到ACK消息后，即认为连接进入稳定状态。状态机与流程图如下：</p>
+<p><img src="/images/state_machine.png" alt></p>
+<p><img src="/images/tcp3waysynch.png" alt></p>
+<h2 id="四次挥手过程"><a href="#四次挥手过程" class="headerlink" title="四次挥手过程"></a>四次挥手过程</h2><p>当client从app接收到关闭指令后，client会给server发送FIN消息（表明client不会再给server发送数据），client进入finish-wait-1状态。server收到finish消息后，回复确认消息ack给client，自身进入close-wait状态。client接收到ack消息后，进入到FIN-WAIT-2状态。并且在此状态等待服务器发送finish消息。当server接收到app的关闭指令后，server给client发送FIN消息。服务器进入到LAST-ACK状态。客户端收到FIN消息后，会回复ACK消息，同时进入到TIME-WAIT状态，来等待server收到ack消息，客户端会在接下来的2MSL（maximum segment lifetime）的时间内保持TIME-WAIT状态。为什么是2MSL时间呢，一是为了server有足够的时间收到ACK消息，并在消息丢失时重发。二是为了在此连接结束后的后续连接提供缓冲期。如果不是2倍MSL的话，就可能混合来自不同连接的数据包，造成消息混乱。状态机与流程图如下：</p>
+<p><img src="/images/tcp_close_state_machine.png" alt></p>
+<p><img src="/images/tcpclose1.png" alt></p>
+<h2 id="完整过程"><a href="#完整过程" class="headerlink" title="完整过程"></a>完整过程</h2><p>以下为TCP从建立连接到断开的完整流程图</p>
+<p><img src="/images/tcpfsm1.png" alt></p>
+<h1 id="开始答题"><a href="#开始答题" class="headerlink" title="开始答题"></a>开始答题</h1><p>有了上面的介绍，基本能够回答前两个问题。</p>
+<h3 id="请讲一下TCP协议建立连接的过程"><a href="#请讲一下TCP协议建立连接的过程" class="headerlink" title="请讲一下TCP协议建立连接的过程"></a>请讲一下TCP协议建立连接的过程</h3><p>看上面</p>
+<h3 id="请介绍TCP协议中的三次握手和四次挥手是怎么样的"><a href="#请介绍TCP协议中的三次握手和四次挥手是怎么样的" class="headerlink" title="请介绍TCP协议中的三次握手和四次挥手是怎么样的"></a>请介绍TCP协议中的三次握手和四次挥手是怎么样的</h3><p>看上面</p>
+<h3 id="为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"><a href="#为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次" class="headerlink" title="为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次"></a>为什么TCP协议要三次握手来确立连接，而不是两次，也不是4次</h3><p>首先呢，根本不存在可靠的连接，tcp只是提供相对可靠的连接。三次握手的主要目的是交换通信需要的参数，主要是server与client的syn序号，这个序号是用于收发数据的。如果只有两次握手的话，当服务器发送ack+syn消息后，就会认为建立了稳定连接，这个时候如果ack+syn丢失了，client并没有收到这个消息，那么客户端就会认为连接建立不成功，而直接进入close状态。这样就会造成，server一直在哪傻等，永远不会有client来发送数据，这就会造成服务器资源的浪费。至于为什么不是四次握手，是因为握手三次成功以后，就可以认定当前连接是可靠的了，不然的话还需要client与server互相之间发送ack消息，这样就无休无止了。</p>
+<h3 id="TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"><a href="#TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1" class="headerlink" title="TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1"></a>TCP连接发起是的syn序号为什么不能从同一个序号开始，比如说1</h3><p>因为现实中的网络状况不可预知，比如说客户端在第一次连接时，使用序号为1为初始序号进行数据发送，发送了1到30的数据片段，这个时候因为网络问题断开了连接。然后客户端是syn为1重新建立了新的连接，这个时候服务器收到了之前发送的30个字节的数据，服务器就会以为这30个字节的数据是新发的，这就会导致数据混乱。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>说明，本文所有图片均来自<a href="http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm" target="_blank" rel="noopener">The TCP/IP Guide</a>。</p>
+<p>参考资料如下：</p>
+<p><a href="http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm" target="_blank" rel="noopener">The TCP/IP Guide</a></p>
+<p><a href="https://blog.csdn.net/xifeijian/article/details/12777187" target="_blank" rel="noopener">TCP为什么需要3次握手与4次挥手</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/40013850" target="_blank" rel="noopener">TCP三次握手四次挥手详解</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/C-中调用OC代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/20/C-中调用OC代码/" itemprop="url">C++中调用OC代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T13:16:19Z">
+                2019-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sundry/" itemprop="url" rel="index">
+                    <span itemprop="name">sundry</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/08/20/C-中调用OC代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/C-中调用OC代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/08/20/C-中调用OC代码/" class="leancloud_visitors" data-flag-title="C++中调用OC代码">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>　　最近项目中为了方便维护，底层统一使用C++编写。由于是项目是做屏幕共享sdk，所以只能底层的压缩、编解码使用C++，屏幕捕获部分Mac和win就自己实现了。那么问题就来了，因为是面向接口编程，所以项目的入口都是c++来写的，而屏幕捕获是需要oc部分的代码，就需要C++调用oc代码了。</p>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>　　之前只做过OC调动C++，于是Google了一下，在Stack Overflow上找到了这个<a href="https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function" target="_blank" rel="noopener">回答</a>。要看具体描述的可以去链接看看，实现思路一共有两种，我在这里大概描述一下。第一种，由于C++是不能直接调用OC的，所以需要通过C语言作为中间层，即C++调用C，C调用OC，这样就达到了C++调用OC的目的。第二种OC是可以调用C++的，通过在外部声名C++类，然后类具体实现放在OC类中，这样C++类就能够调用OC类了，其他需要调用OC的类，只需要调用外部声名的类即可。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>具体的实现方式有两种，第一种是C语言方法接收oc对象指针和参数，然后把指针桥接为具体的oc对象。第二种是用C++进行包装，先声名一个C++类，这里称为A。然后在OC类中，这里称为B，对A进行实现，因为这个实现实在OC语言里的，所以在这里是可以直接调用OC代码的。接下来声名一个C++类C。类C通过持有类A来调用OC类B，即A（C++）-&gt;C（C++）-&gt;B(OC类)</p>
+<p>　　## 实现方式一 by C</p>
+<p><strong>MyObject-C-Interface.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　int MyObjectDoSomethingWith (void *myObjectInstance, void *parameter);</span><br></pre></td></tr></table></figure></p>
+<p>　　<br><strong>MyObject.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　@interface MyObject : NSObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　int someVar;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line"></span><br><span class="line">　　- (int)doSomethingWith:(void *)aParameter;</span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
+<p>　　<strong>MyObject.mm</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">　　@implementation MyObject</span><br><span class="line">　　</span><br><span class="line">　　int MyObjectDoSomethingWith (void *self, void *aParameter)</span><br><span class="line">　　&#123;</span><br><span class="line">　　// 通过将self指针桥接为oc 对象来调用oc方法</span><br><span class="line">　　return [(__bridge id)self doSomethingWith:aParameter];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line"></span><br><span class="line">　　- (int) doSomethingWith:(void *) aParameter</span><br><span class="line">　　&#123;</span><br><span class="line">　　//将void *指针强转为对应的类型</span><br><span class="line">　　int* param = (int *)aParameter;</span><br><span class="line">　　return *param / 2 ;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　- (void)dealloc</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%s&quot;, __func__);</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
+<p>　　<strong>MyCPPClass.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　class MyCPPClass &#123;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　public:</span><br><span class="line">　　MyCPPClass();</span><br><span class="line">　　~MyCPPClass();</span><br><span class="line">　　int someMethod (void *objectiveCObject, void *aParameter);</span><br><span class="line">　　void *self;</span><br><span class="line">　　</span><br><span class="line">　　void setSelf(void *self);</span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　<strong>MyCPPClass.cpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　MyCPPClass::MyCPPClass()</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyCPPClass::~MyCPPClass()</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　int MyCPPClass::someMethod (void *objectiveCObject, void *aParameter)</span><br><span class="line">　　&#123;</span><br><span class="line">　　// To invoke an Objective-C method from C++, use</span><br><span class="line">　　// the C trampoline function</span><br><span class="line">　　return MyObjectDoSomethingWith (objectiveCObject, aParameter);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::setSelf(void *aSelf)</span><br><span class="line">　　&#123;</span><br><span class="line">　　self = aSelf;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　<strong>main.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line">　　#import &quot;MyObject.h&quot;</span><br><span class="line"></span><br><span class="line">　　int main(int argc, const char * argv[]) &#123;</span><br><span class="line">　　@autoreleasepool &#123;</span><br><span class="line">　　// insert code here...</span><br><span class="line">　　NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　MyCPPClass *c = new MyCPPClass();</span><br><span class="line">　　c-&gt;setSelf((__bridge void *)object);</span><br><span class="line">　　int a = 12;</span><br><span class="line">　　int result = c-&gt;someMethod((__bridge void *)object, &amp;a);</span><br><span class="line">　　NSLog(@&quot;%d&quot;, result);</span><br><span class="line">　　&#125;</span><br><span class="line">　　return 0;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　运行结果如下：<br>　　<img src="https://img2018.cnblogs.com/blog/552616/201906/552616-20190626153439356-1906667270.png" alt="运行结果"><br>　　<br>　　<strong>存在的问题</strong><br>　　<br>　　<br>　　在每次C++调用时都需要传递OC对象桥接为==void <em>==的指针，使用起来很不方便。<br>　　<br>　　## 方式二 by C++ IMPL<br>　　*</em>MyObject-C-Interface.h**<br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">　　#ifndef MyObject_C_Interface_h__h</span><br><span class="line">　　#define MyObject_C_Interface_h__h</span><br><span class="line"></span><br><span class="line">　　class MyClassImpl</span><br><span class="line">　　&#123;</span><br><span class="line">　　public:</span><br><span class="line">　　MyClassImpl ( void );</span><br><span class="line">　　~MyClassImpl( void );</span><br><span class="line">　　</span><br><span class="line">　　void init( void );</span><br><span class="line">　　int  doSomethingWith( void * aParameter );</span><br><span class="line">　　void logMyMessage( char * aCStr );</span><br><span class="line">　　</span><br><span class="line">　　private:</span><br><span class="line">　　void * self;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　#endif /* MyObject_C_Interface_h__h */</span><br></pre></td></tr></table></figure></p>
+<p>　　需要注意的是，==MyClassImpl==的实现是放在OC中的<br>　　<strong>MyObject.h</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">　　NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">　　</span><br><span class="line">　　@interface MyObject : NSObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　int someVar;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (int)  doSomethingWith:(void *) aParameter;</span><br><span class="line">　　- (void) logMyMessage:(char *) aCStr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">　　@end</span><br><span class="line">　　</span><br><span class="line">　　NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　<strong>MyObject.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　typedef void(^RetainSelfBlock)(void);</span><br><span class="line">　　</span><br><span class="line">　　@implementation MyObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　RetainSelfBlock _retainBlock;//通过这个block持有对象，造成循环引用，避免被释放</span><br><span class="line">　　&#125;</span><br><span class="line">　　MyClassImpl::MyClassImpl( void )</span><br><span class="line">　　: self( NULL )</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyClassImpl::~MyClassImpl( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id) self breakRetainCycly];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyClassImpl::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　object-&gt;_retainBlock = ^&#123;//循环引用</span><br><span class="line">　　[object class];</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　self = (__bridge void *)object;</span><br><span class="line">　　</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　int MyClassImpl::doSomethingWith( void *aParameter )</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　return [(__bridge id)self doSomethingWith:aParameter];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyClassImpl::logMyMessage( char *aCStr )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id)self logMyMessage:aCStr];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (int) doSomethingWith:(void *) aParameter</span><br><span class="line">　　&#123;</span><br><span class="line">　　int result = 0;</span><br><span class="line"></span><br><span class="line">　　// ... some code to calculate the result</span><br><span class="line">　　</span><br><span class="line">　　return result;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (void) logMyMessage:(char *) aCStr</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog( @&quot;%s&quot;, aCStr );</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　//打破循环引用，释放对象</span><br><span class="line">　　- (void) breakRetainCycly</span><br><span class="line">　　&#123;</span><br><span class="line">　　_retainBlock = nil;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　- (void)dealloc</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%s&quot;, __func__);</span><br><span class="line">　　&#125;</span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
+<p>　　在==MyObject.mm==中需要注意的是，由于OC是使用ARC来进行内存管理的，C++不能够管理OC对象的生命周期。在默认的情况下，临时变量会在autorelease pool每一次pop后被释放，所以在oc实现中要想对象不被释放，那就需要循环引用来帮忙了。</p>
+<p>　　具体代码如下,在MyClassImpl初始化时，利用循环引用保证object不被释放，在MyClassImpl调用析构函数时，将block置空，打破循环引用，以此来释放oc对象<br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">　　void MyClassImpl::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　object-&gt;_retainBlock = ^&#123;//循环引用</span><br><span class="line">　　[object class];</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　self = (__bridge void *)object;</span><br><span class="line">　　</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyClassImpl::~MyClassImpl( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id) self breakRetainCycly];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　//打破循环引用，释放对象</span><br><span class="line">　　- (void) breakRetainCycly</span><br><span class="line">　　&#123;</span><br><span class="line">　　_retainBlock = nil;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　<strong>MyCPPClass.hpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">　　#ifndef MyCPPClass_hpp</span><br><span class="line">　　#define MyCPPClass_hpp</span><br><span class="line"></span><br><span class="line">　　#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">　　class MyClassImpl;</span><br><span class="line">　　</span><br><span class="line">　　class MyCPPClass</span><br><span class="line">　　&#123;</span><br><span class="line">　　enum &#123; cANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING = 42 &#125;;</span><br><span class="line">　　public:</span><br><span class="line">　　MyCPPClass ( void );</span><br><span class="line">　　~MyCPPClass( void );</span><br><span class="line">　　</span><br><span class="line">　　void init( void );</span><br><span class="line">　　void doSomethingWithMyClass( void );</span><br><span class="line">　　</span><br><span class="line">　　private:</span><br><span class="line">　　MyClassImpl * _impl;</span><br><span class="line">　　int           _myValue;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　#endif /* MyCPPClass_hpp */</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　<strong>MyCPPClass.cpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　MyCPPClass::MyCPPClass( void )</span><br><span class="line">　　: _impl ( NULL )</span><br><span class="line">　　&#123;   &#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl = new MyClassImpl();</span><br><span class="line">　　_impl-&gt;init();</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyCPPClass::~MyCPPClass( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　if ( _impl ) &#123; delete _impl; _impl = NULL; &#125;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::doSomethingWithMyClass( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　int result = _impl-&gt;doSomethingWith(&amp;_myValue);</span><br><span class="line">　　if ( result == cANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING )</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl-&gt;logMyMessage(&quot;Hello, Arthur!&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line">　　else</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl-&gt;logMyMessage(&quot;Don&apos;t worry.&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　<br>　　<strong>main.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line"></span><br><span class="line">　　int main(int argc, const char * argv[]) &#123;</span><br><span class="line">　　@autoreleasepool &#123;</span><br><span class="line">　　MyCPPClass *temp = new MyCPPClass();</span><br><span class="line">　　temp-&gt;init();</span><br><span class="line">　　temp-&gt;doSomethingWithMyClass();</span><br><span class="line">　　delete temp;</span><br><span class="line">　　&#125;</span><br><span class="line">　　return 0;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　<strong>运行结果</strong><br>　　<img src="https://img2018.cnblogs.com/blog/552616/201906/552616-20190626153613056-820038660.png" alt="by c++ IMPL"><br>　　<br>　　# 总结<br>　　第一种通过C语言的方式来调用，使用起来更复杂，所以建议使用C++的方式来实现。需要注意的问题是C++不能管理OC对象的释放，所以需要利用循环引用。<br>　　<br>　　你可以在这里下载<a href="https://github.com/WuKongCoo1/C-Invoke-OC/tree/master" target="_blank" rel="noopener">demo</a><br>　　<br>　　参考：<a href="https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function" target="_blank" rel="noopener">https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">吴珂</p>
+              <p class="site-description motion-element" itemprop="description">机会是留给有准备的人？不对，准备留给有机会的人，没机会的就别瞎准备了。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/WuKongCoo1" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴珂</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://github-io-13.disqus.com/count.js" async></script>
+    
+
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QL7AG58rliEwch4iwUV02r52-gzGzoHsz", "0L9XP3dI3wrxTzXH7D8fBUEI");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
