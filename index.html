@@ -323,6 +323,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/iOS富文本处理采坑记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="吴珂">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jacky Walker">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/21/iOS富文本处理采坑记录/" itemprop="url">iOS富文本处理踩坑记录（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-20T16:38:28Z">
+                2020-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UIKit/" itemprop="url" rel="index">
+                    <span itemprop="name">UIKit</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/06/21/iOS富文本处理采坑记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/21/iOS富文本处理采坑记录/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/06/21/iOS富文本处理采坑记录/" class="leancloud_visitors" data-flag-title="iOS富文本处理踩坑记录（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <!--categories:-->
+<!--- [Objective-C]-->
+<!--- [net]-->
+<!--- [OpenGL]-->
+<!--- [sundry]-->
+<!--- [Cocoa]-->
+<!--- [DesignPattern]-->
+
+
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：</p>
+<ul>
+<li>当字符串中含有Unicode编码时，直接获取的range不对</li>
+<li>在中英文混合的情况下，遍历字符串会不连续</li>
+<li>富文本中的选择、删除处理</li>
+<li>富文本中的链接点击处理</li>
+</ul>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="range不对"><a href="#range不对" class="headerlink" title="range不对"></a>range不对</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"🔴1🔴2🔴3内部文档1"</span></span><br><span class="line"><span class="keyword">let</span> attributeString = <span class="type">NSMutableAttributedString</span>(string: string)</span><br><span class="line"><span class="keyword">let</span> range = <span class="type">NSRange</span>(location: <span class="number">0</span>, length: string.<span class="built_in">count</span>)</span><br><span class="line">attributeString.addAttribute(.foregroundColor, value: <span class="type">UIColor</span>.blue, range: range)</span><br><span class="line">textView.attributedText = attributeString</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<img src="/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png" width="300">
+
+<p>上面的代码看起来是没有问题的，既然颜色值没有全部生效，那么问题一个是出在了rang上。通过查资料发现，在swift中使用了扩展字型集群，所以swift中会对可以组合在一起的两个字符，以下为示例:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> precomposed: <span class="type">Character</span> = <span class="string">"\u&#123;D55C&#125;"</span> <span class="comment">// 한</span></span><br><span class="line"><span class="keyword">let</span> characters = [<span class="string">"\u&#123;1112&#125;"</span>, <span class="string">"\u&#123;1161&#125;"</span>, <span class="string">"\u&#123;11AB&#125;"</span>] <span class="comment">// ᄒ, ᅡ, ᆫ</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="type">String</span>()</span><br><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> characters &#123;</span><br><span class="line">    string.append(character)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"string:\(string) count:\(string.count)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string:ᄒ <span class="built_in">count</span>:<span class="number">1</span></span><br><span class="line">string:하 <span class="built_in">count</span>:<span class="number">1</span></span><br><span class="line">string:한 <span class="built_in">count</span>:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看出虽然上面的string已经append了三个character，但是count任然是1。那么我们应该怎么样做呢？主要有以下两种办法：</p>
+<ol>
+<li>string as NSString</li>
+<li>range convert to NSRange</li>
+</ol>
+<p>示例代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"🔴1🔴2🔴3内部文档1"</span></span><br><span class="line"><span class="comment">//method 1  string as NSString</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"NSString length: \((string as NSString).length)"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"String length: \(string.count)"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrongRange = <span class="type">NSRange</span>(location: <span class="number">0</span>, length: string.<span class="built_in">count</span>)</span><br><span class="line"><span class="comment">//method 2 range convert to NSRange</span></span><br><span class="line"><span class="keyword">let</span> r1 = string.range(of: string)</span><br><span class="line"><span class="keyword">var</span> correctRange: <span class="type">NSRange?</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> tR1 = r1 &#123;</span><br><span class="line">    correctRange = <span class="type">NSRange</span>(tR1, <span class="keyword">in</span>: string)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"wrongRange\(wrongRange)"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"correctRange: \(String(describing: correctRange))"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString length: 14</span><br><span class="line">String length: 11</span><br><span class="line">wrongRange&#123;0, 11&#125;</span><br><span class="line">correctRange: Optional(&#123;0, 14&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index/30404532#30404532" target="_blank" rel="noopener">https://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index/30404532#30404532</a></p>
+<p><a href="https://stackoverflow.com/questions/42114872/nsattributedstring-and-emojis-issue-with-positions-and-lengths" target="_blank" rel="noopener">https://stackoverflow.com/questions/42114872/nsattributedstring-and-emojis-issue-with-positions-and-lengths</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/GoogleTest使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2149,187 +2353,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/C-中调用OC代码/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="吴珂">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jacky Walker">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/20/C-中调用OC代码/" itemprop="url">C++中调用OC代码</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T13:16:19Z">
-                2019-08-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sundry/" itemprop="url" rel="index">
-                    <span itemprop="name">sundry</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/08/20/C-中调用OC代码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/C-中调用OC代码/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/08/20/C-中调用OC代码/" class="leancloud_visitors" data-flag-title="C++中调用OC代码">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>　　最近项目中为了方便维护，底层统一使用C++编写。由于是项目是做屏幕共享sdk，所以只能底层的压缩、编解码使用C++，屏幕捕获部分Mac和win就自己实现了。那么问题就来了，因为是面向接口编程，所以项目的入口都是c++来写的，而屏幕捕获是需要oc部分的代码，就需要C++调用oc代码了。</p>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>　　之前只做过OC调动C++，于是Google了一下，在Stack Overflow上找到了这个<a href="https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function" target="_blank" rel="noopener">回答</a>。要看具体描述的可以去链接看看，实现思路一共有两种，我在这里大概描述一下。第一种，由于C++是不能直接调用OC的，所以需要通过C语言作为中间层，即C++调用C，C调用OC，这样就达到了C++调用OC的目的。第二种OC是可以调用C++的，通过在外部声名C++类，然后类具体实现放在OC类中，这样C++类就能够调用OC类了，其他需要调用OC的类，只需要调用外部声名的类即可。</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>具体的实现方式有两种，第一种是C语言方法接收oc对象指针和参数，然后把指针桥接为具体的oc对象。第二种是用C++进行包装，先声名一个C++类，这里称为A。然后在OC类中，这里称为B，对A进行实现，因为这个实现实在OC语言里的，所以在这里是可以直接调用OC代码的。接下来声名一个C++类C。类C通过持有类A来调用OC类B，即A（C++）-&gt;C（C++）-&gt;B(OC类)</p>
-<p>　　## 实现方式一 by C</p>
-<p><strong>MyObject-C-Interface.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　　int MyObjectDoSomethingWith (void *myObjectInstance, void *parameter);</span><br></pre></td></tr></table></figure></p>
-<p>　　<br><strong>MyObject.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">　　@interface MyObject : NSObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　int someVar;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line"></span><br><span class="line">　　- (int)doSomethingWith:(void *)aParameter;</span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
-<p>　　<strong>MyObject.mm</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">　　@implementation MyObject</span><br><span class="line">　　</span><br><span class="line">　　int MyObjectDoSomethingWith (void *self, void *aParameter)</span><br><span class="line">　　&#123;</span><br><span class="line">　　// 通过将self指针桥接为oc 对象来调用oc方法</span><br><span class="line">　　return [(__bridge id)self doSomethingWith:aParameter];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line"></span><br><span class="line">　　- (int) doSomethingWith:(void *) aParameter</span><br><span class="line">　　&#123;</span><br><span class="line">　　//将void *指针强转为对应的类型</span><br><span class="line">　　int* param = (int *)aParameter;</span><br><span class="line">　　return *param / 2 ;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　- (void)dealloc</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%s&quot;, __func__);</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
-<p>　　<strong>MyCPPClass.h</strong><br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　class MyCPPClass &#123;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　public:</span><br><span class="line">　　MyCPPClass();</span><br><span class="line">　　~MyCPPClass();</span><br><span class="line">　　int someMethod (void *objectiveCObject, void *aParameter);</span><br><span class="line">　　void *self;</span><br><span class="line">　　</span><br><span class="line">　　void setSelf(void *self);</span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　<strong>MyCPPClass.cpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　MyCPPClass::MyCPPClass()</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyCPPClass::~MyCPPClass()</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　int MyCPPClass::someMethod (void *objectiveCObject, void *aParameter)</span><br><span class="line">　　&#123;</span><br><span class="line">　　// To invoke an Objective-C method from C++, use</span><br><span class="line">　　// the C trampoline function</span><br><span class="line">　　return MyObjectDoSomethingWith (objectiveCObject, aParameter);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::setSelf(void *aSelf)</span><br><span class="line">　　&#123;</span><br><span class="line">　　self = aSelf;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　<strong>main.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line">　　#import &quot;MyObject.h&quot;</span><br><span class="line"></span><br><span class="line">　　int main(int argc, const char * argv[]) &#123;</span><br><span class="line">　　@autoreleasepool &#123;</span><br><span class="line">　　// insert code here...</span><br><span class="line">　　NSLog(@&quot;Hello, World!&quot;);</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　MyCPPClass *c = new MyCPPClass();</span><br><span class="line">　　c-&gt;setSelf((__bridge void *)object);</span><br><span class="line">　　int a = 12;</span><br><span class="line">　　int result = c-&gt;someMethod((__bridge void *)object, &amp;a);</span><br><span class="line">　　NSLog(@&quot;%d&quot;, result);</span><br><span class="line">　　&#125;</span><br><span class="line">　　return 0;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　运行结果如下：<br>　　<img src="https://img2018.cnblogs.com/blog/552616/201906/552616-20190626153439356-1906667270.png" alt="运行结果"><br>　　<br>　　<strong>存在的问题</strong><br>　　<br>　　<br>　　在每次C++调用时都需要传递OC对象桥接为==void <em>==的指针，使用起来很不方便。<br>　　<br>　　## 方式二 by C++ IMPL<br>　　*</em>MyObject-C-Interface.h**<br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">　　#ifndef MyObject_C_Interface_h__h</span><br><span class="line">　　#define MyObject_C_Interface_h__h</span><br><span class="line"></span><br><span class="line">　　class MyClassImpl</span><br><span class="line">　　&#123;</span><br><span class="line">　　public:</span><br><span class="line">　　MyClassImpl ( void );</span><br><span class="line">　　~MyClassImpl( void );</span><br><span class="line">　　</span><br><span class="line">　　void init( void );</span><br><span class="line">　　int  doSomethingWith( void * aParameter );</span><br><span class="line">　　void logMyMessage( char * aCStr );</span><br><span class="line">　　</span><br><span class="line">　　private:</span><br><span class="line">　　void * self;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　#endif /* MyObject_C_Interface_h__h */</span><br></pre></td></tr></table></figure></p>
-<p>　　需要注意的是，==MyClassImpl==的实现是放在OC中的<br>　　<strong>MyObject.h</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">　　NS_ASSUME_NONNULL_BEGIN</span><br><span class="line">　　</span><br><span class="line">　　@interface MyObject : NSObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　int someVar;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (int)  doSomethingWith:(void *) aParameter;</span><br><span class="line">　　- (void) logMyMessage:(char *) aCStr;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">　　@end</span><br><span class="line">　　</span><br><span class="line">　　NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　<strong>MyObject.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　typedef void(^RetainSelfBlock)(void);</span><br><span class="line">　　</span><br><span class="line">　　@implementation MyObject</span><br><span class="line">　　&#123;</span><br><span class="line">　　RetainSelfBlock _retainBlock;//通过这个block持有对象，造成循环引用，避免被释放</span><br><span class="line">　　&#125;</span><br><span class="line">　　MyClassImpl::MyClassImpl( void )</span><br><span class="line">　　: self( NULL )</span><br><span class="line">　　&#123;</span><br><span class="line">　　</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyClassImpl::~MyClassImpl( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id) self breakRetainCycly];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyClassImpl::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　object-&gt;_retainBlock = ^&#123;//循环引用</span><br><span class="line">　　[object class];</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　self = (__bridge void *)object;</span><br><span class="line">　　</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　int MyClassImpl::doSomethingWith( void *aParameter )</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　return [(__bridge id)self doSomethingWith:aParameter];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyClassImpl::logMyMessage( char *aCStr )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id)self logMyMessage:aCStr];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (int) doSomethingWith:(void *) aParameter</span><br><span class="line">　　&#123;</span><br><span class="line">　　int result = 0;</span><br><span class="line"></span><br><span class="line">　　// ... some code to calculate the result</span><br><span class="line">　　</span><br><span class="line">　　return result;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　- (void) logMyMessage:(char *) aCStr</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog( @&quot;%s&quot;, aCStr );</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　//打破循环引用，释放对象</span><br><span class="line">　　- (void) breakRetainCycly</span><br><span class="line">　　&#123;</span><br><span class="line">　　_retainBlock = nil;</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　- (void)dealloc</span><br><span class="line">　　&#123;</span><br><span class="line">　　NSLog(@&quot;%s&quot;, __func__);</span><br><span class="line">　　&#125;</span><br><span class="line">　　@end</span><br></pre></td></tr></table></figure></p>
-<p>　　在==MyObject.mm==中需要注意的是，由于OC是使用ARC来进行内存管理的，C++不能够管理OC对象的生命周期。在默认的情况下，临时变量会在autorelease pool每一次pop后被释放，所以在oc实现中要想对象不被释放，那就需要循环引用来帮忙了。</p>
-<p>　　具体代码如下,在MyClassImpl初始化时，利用循环引用保证object不被释放，在MyClassImpl调用析构函数时，将block置空，打破循环引用，以此来释放oc对象<br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">　　void MyClassImpl::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　MyObject *object = [[MyObject alloc] init];</span><br><span class="line">　　object-&gt;_retainBlock = ^&#123;//循环引用</span><br><span class="line">　　[object class];</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　self = (__bridge void *)object;</span><br><span class="line">　　</span><br><span class="line">　　NSLog(@&quot;%p&quot;, self);</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyClassImpl::~MyClassImpl( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　[(__bridge id) self breakRetainCycly];</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　//打破循环引用，释放对象</span><br><span class="line">　　- (void) breakRetainCycly</span><br><span class="line">　　&#123;</span><br><span class="line">　　_retainBlock = nil;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　<strong>MyCPPClass.hpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">　　#ifndef MyCPPClass_hpp</span><br><span class="line">　　#define MyCPPClass_hpp</span><br><span class="line"></span><br><span class="line">　　#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">　　class MyClassImpl;</span><br><span class="line">　　</span><br><span class="line">　　class MyCPPClass</span><br><span class="line">　　&#123;</span><br><span class="line">　　enum &#123; cANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING = 42 &#125;;</span><br><span class="line">　　public:</span><br><span class="line">　　MyCPPClass ( void );</span><br><span class="line">　　~MyCPPClass( void );</span><br><span class="line">　　</span><br><span class="line">　　void init( void );</span><br><span class="line">　　void doSomethingWithMyClass( void );</span><br><span class="line">　　</span><br><span class="line">　　private:</span><br><span class="line">　　MyClassImpl * _impl;</span><br><span class="line">　　int           _myValue;</span><br><span class="line">　　&#125;;</span><br><span class="line">　　</span><br><span class="line">　　</span><br><span class="line">　　#endif /* MyCPPClass_hpp */</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　<strong>MyCPPClass.cpp</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line">　　#include &quot;MyObject-C-Interface.h&quot;</span><br><span class="line"></span><br><span class="line">　　MyCPPClass::MyCPPClass( void )</span><br><span class="line">　　: _impl ( NULL )</span><br><span class="line">　　&#123;   &#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::init( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl = new MyClassImpl();</span><br><span class="line">　　_impl-&gt;init();</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　MyCPPClass::~MyCPPClass( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　if ( _impl ) &#123; delete _impl; _impl = NULL; &#125;</span><br><span class="line">　　&#125;</span><br><span class="line">　　</span><br><span class="line">　　void MyCPPClass::doSomethingWithMyClass( void )</span><br><span class="line">　　&#123;</span><br><span class="line">　　int result = _impl-&gt;doSomethingWith(&amp;_myValue);</span><br><span class="line">　　if ( result == cANSWER_TO_LIFE_THE_UNIVERSE_AND_EVERYTHING )</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl-&gt;logMyMessage(&quot;Hello, Arthur!&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line">　　else</span><br><span class="line">　　&#123;</span><br><span class="line">　　_impl-&gt;logMyMessage(&quot;Don&apos;t worry.&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>　　<strong>main.mm</strong><br>　　<br>　　<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　#include &quot;MyCPPClass.hpp&quot;</span><br><span class="line"></span><br><span class="line">　　int main(int argc, const char * argv[]) &#123;</span><br><span class="line">　　@autoreleasepool &#123;</span><br><span class="line">　　MyCPPClass *temp = new MyCPPClass();</span><br><span class="line">　　temp-&gt;init();</span><br><span class="line">　　temp-&gt;doSomethingWithMyClass();</span><br><span class="line">　　delete temp;</span><br><span class="line">　　&#125;</span><br><span class="line">　　return 0;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure></p>
-<p>　　<strong>运行结果</strong><br>　　<img src="https://img2018.cnblogs.com/blog/552616/201906/552616-20190626153613056-820038660.png" alt="by c++ IMPL"><br>　　<br>　　# 总结<br>　　第一种通过C语言的方式来调用，使用起来更复杂，所以建议使用C++的方式来实现。需要注意的问题是C++不能管理OC对象的释放，所以需要利用循环引用。<br>　　<br>　　你可以在这里下载<a href="https://github.com/WuKongCoo1/C-Invoke-OC/tree/master" target="_blank" rel="noopener">demo</a><br>　　<br>　　参考：<a href="https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function" target="_blank" rel="noopener">https://stackoverflow.com/questions/1061005/calling-objective-c-method-from-c-member-function</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2380,7 +2403,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2391,12 +2414,21 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>

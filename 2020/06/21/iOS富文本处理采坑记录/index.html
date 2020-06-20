@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="富文本编辑,">
 
 
 
@@ -79,24 +79,20 @@
 
 
 
-<meta name="description" content="MAC OpenGL 环境搭建基础库介绍先要安装两个库一个是GLEW（OpenGL Extension Wrangler Library），另外一个是GLFW（Graphics Library Framework） GLEW譯自英文-OpenGL擴展Wrangler庫是一個跨平台的C / C ++庫，可幫助查詢和加載OpenGL擴展。 GLEW提供了高效的運行時機制，用於確定目標平台上支持哪些Op">
-<meta name="keywords" content="iOS、Mac、runtime、objective-c、oc">
+<meta name="description" content="前言最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：  当字符串中含有Unicode编码时，直接获取的range不对 在中英文混合的情况下，遍历字符串会不连续 富文本中的选择、删除处理 富文本中的链接点击处理  正文range不对场景在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下： 12345let strin">
+<meta name="keywords" content="富文本编辑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac OpenGL环境搭建">
-<meta property="og:url" content="http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/index.html">
+<meta property="og:title" content="iOS富文本处理踩坑记录（一）">
+<meta property="og:url" content="http://yoursite.com/2020/06/21/iOS富文本处理采坑记录/index.html">
 <meta property="og:site_name" content="Jacky Walker">
-<meta property="og:description" content="MAC OpenGL 环境搭建基础库介绍先要安装两个库一个是GLEW（OpenGL Extension Wrangler Library），另外一个是GLFW（Graphics Library Framework） GLEW譯自英文-OpenGL擴展Wrangler庫是一個跨平台的C / C ++庫，可幫助查詢和加載OpenGL擴展。 GLEW提供了高效的運行時機制，用於確定目標平台上支持哪些Op">
+<meta property="og:description" content="前言最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：  当字符串中含有Unicode编码时，直接获取的range不对 在中英文混合的情况下，遍历字符串会不连续 富文本中的选择、删除处理 富文本中的链接点击处理  正文range不对场景在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下： 12345let strin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143441915-1128090430.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143348522-1218740224.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143328995-1467734221.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143224335-1252417188.png">
-<meta property="og:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143156518-737968913.png">
-<meta property="og:updated_time" content="2020-03-26T08:16:47.440Z">
+<meta property="og:image" content="http://yoursite.com/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png">
+<meta property="og:updated_time" content="2020-06-20T09:32:13.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac OpenGL环境搭建">
-<meta name="twitter:description" content="MAC OpenGL 环境搭建基础库介绍先要安装两个库一个是GLEW（OpenGL Extension Wrangler Library），另外一个是GLFW（Graphics Library Framework） GLEW譯自英文-OpenGL擴展Wrangler庫是一個跨平台的C / C ++庫，可幫助查詢和加載OpenGL擴展。 GLEW提供了高效的運行時機制，用於確定目標平台上支持哪些Op">
-<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143441915-1128090430.png">
+<meta name="twitter:title" content="iOS富文本处理踩坑记录（一）">
+<meta name="twitter:description" content="前言最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：  当字符串中含有Unicode编码时，直接获取的range不对 在中英文混合的情况下，遍历字符串会不连续 富文本中的选择、删除处理 富文本中的链接点击处理  正文range不对场景在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下： 12345let strin">
+<meta name="twitter:image" content="http://yoursite.com/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png">
 
 
 
@@ -126,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/">
+  <link rel="canonical" href="http://yoursite.com/2020/06/21/iOS富文本处理采坑记录/">
 
 
 
 
 
-  <title>Mac OpenGL环境搭建 | Jacky Walker</title>
+  <title>iOS富文本处理踩坑记录（一） | Jacky Walker</title>
   
 
 
@@ -329,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/21/iOS富文本处理采坑记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="吴珂">
@@ -346,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac OpenGL环境搭建</h1>
+          <h1 class="post-title" itemprop="name headline">iOS富文本处理踩坑记录（一）</h1>
         
 
         <div class="post-meta">
@@ -358,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-20T21:10:26+08:00">
-                2019-08-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-21T00:38:28+08:00">
+                2020-06-20
               </time>
             
 
@@ -381,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
-                    <span itemprop="name">OpenGL</span>
+                  <a href="/categories/UIKit/" itemprop="url" rel="index">
+                    <span itemprop="name">UIKit</span>
                   </a>
                 </span>
 
@@ -399,8 +395,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/08/20/Mac-OpenGL环境搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/08/20/Mac-OpenGL环境搭建/" itemprop="commentCount"></span>
+                <a href="/2020/06/21/iOS富文本处理采坑记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/21/iOS富文本处理采坑记录/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,7 +404,7 @@
 
           
           
-             <span id="/2019/08/20/Mac-OpenGL环境搭建/" class="leancloud_visitors" data-flag-title="Mac OpenGL环境搭建">
+             <span id="/2020/06/21/iOS富文本处理采坑记录/" class="leancloud_visitors" data-flag-title="iOS富文本处理踩坑记录（一）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -439,48 +435,48 @@
       
 
       
-        <h1 id="MAC-OpenGL-环境搭建"><a href="#MAC-OpenGL-环境搭建" class="headerlink" title="MAC OpenGL 环境搭建"></a>MAC OpenGL 环境搭建</h1><h2 id="基础库介绍"><a href="#基础库介绍" class="headerlink" title="基础库介绍"></a>基础库介绍</h2><p>先要安装两个库一个是GLEW（OpenGL Extension Wrangler Library），另外一个是GLFW（Graphics Library Framework）</p>
-<h3 id="GLEW"><a href="#GLEW" class="headerlink" title="GLEW"></a>GLEW</h3><p>譯自英文-OpenGL擴展Wrangler庫是一個跨平台的C / C ++庫，可幫助查詢和加載OpenGL擴展。 GLEW提供了高效的運行時機制，用於確定目標平台上支持哪些OpenGL擴展。所有OpenGL擴展都在一個頭文件中公開，該文件是從官方擴展名列表機器生成的</p>
-<h3 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h3><p>GLFW 是配合 OpenGL 使用的轻量级工具程序库，缩写自 Graphics Library Framework（图形库框架）。GLFW 的主要功能是创建并管理窗口和 OpenGL 上下文，同时还提供了处理手柄、键盘、鼠标输入的功能。</p>
-<h2 id="进入安装步骤"><a href="#进入安装步骤" class="headerlink" title="进入安装步骤"></a>进入安装步骤</h2><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>要进行安装的话需要先安装CMake，可以选择使用GUI 方式 或者命令行的方式。GUI可以在这里<a href="https://cmake.org/download/" target="_blank" rel="noopener">下载</a>，命令行的方式的话，可以用brew来安装，方式如下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install cmake</span><br></pre></td></tr></table></figure>
+        <!--categories:-->
+<!--- [Objective-C]-->
+<!--- [net]-->
+<!--- [OpenGL]-->
+<!--- [sundry]-->
+<!--- [Cocoa]-->
+<!--- [DesignPattern]-->
 
-<h3 id="安装GLEW"><a href="#安装GLEW" class="headerlink" title="安装GLEW"></a>安装GLEW</h3><p>首先在这里下载<a href="http://glew.sourceforge.net/" target="_blank" rel="noopener">源码</a>，下载以后，解压文件，然后进入到文件所在路径，打开终端进入到此路径，执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
-<h3 id="安装GLFW"><a href="#安装GLFW" class="headerlink" title="安装GLFW"></a>安装GLFW</h3><p>首先在<a href="https://www.glfw.org/download.html" target="_blank" rel="noopener">这里</a>下载源码，我们可以选择直接下载编译好的库，也可以下载源文件然后通过camke来自己编译，区别是如果用cmake库的话，在执行成功以后，会直接将生成的库与头文件分别添加到系统路径，也就是/usr/local/include和/usr/local/lib。这里就自己选择方式了。我在这里介绍利用make工具，自己编译的方式</p>
-<p>打开cmake 的gui工具，在source code选择下载的glfw路径，这一步需要在这个路径创建一个build目录，用于存放生成的文件。然后在browse build路径选择我们刚才创建的路径，点击configure。<br><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143441915-1128090430.png" alt></p>
-<p>生成成功会出现如下效果</p>
-<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143348522-1218740224.png" alt></p>
-<p>接下来从终端进入到build目录，没错就是刚才我们创建的build，输入如下指令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 
-<p>执行成功后，剩成的.a文件与头文件就都放到/usr/local/include和/usr/local/lib了。</p>
-<p>环境安装好以后，应该是这个样子的</p>
-<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143328995-1467734221.png" alt></p>
-<p>至此，环境安装完毕，接下来就是加入到工程了</p>
-<h2 id="加入工程"><a href="#加入工程" class="headerlink" title="加入工程"></a>加入工程</h2><h3 id="配置搜索路径"><a href="#配置搜索路径" class="headerlink" title="配置搜索路径"></a>配置搜索路径</h3><p>首先我们创建一个command line的工程，然后在build setting里这只user search path，在user search path中设置为：/usr/local/include，这里一定要注意不能选择递归查找，否则会出错。然后设置library search path为：/usr/local/lib。设置这个的作用是工程中明确工程中查找头文件和.a文件的路径。</p>
-<h3 id="添加要链接的framework"><a href="#添加要链接的framework" class="headerlink" title="添加要链接的framework"></a>添加要链接的framework</h3><p>添加以下库文件：</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在做基于UITextView的富文本编辑功能，遇到了不少的坑，总感觉起来呢有以下几点：</p>
 <ul>
-<li>Cocoa.framework</li>
-<li>OpenGL.framwork</li>
-<li>GLUT.framework</li>
-<li>CoreVideo.framework</li>
-<li>IOKit.framework</li>
-<li>libglfw3.a</li>
-<li>libGLEW.a</li>
+<li>当字符串中含有Unicode编码时，直接获取的range不对</li>
+<li>在中英文混合的情况下，遍历字符串会不连续</li>
+<li>富文本中的选择、删除处理</li>
+<li>富文本中的链接点击处理</li>
 </ul>
-<p><img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143224335-1252417188.png" alt="库文件"></p>
-<p>其中，libglfw3.a、libGLEW.a需要点击 add another，然后进入要路径/usr/local/lib中添加。</p>
-<p>配置完成以后，就可以写代码了，进入main.cpp文件，将main中修改如下</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Render</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">0.0f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    glBegin(GL_TRIANGLES);</span><br><span class="line">    &#123;</span><br><span class="line">        glColor3f(<span class="number">1.0</span>,<span class="number">0.0</span>,<span class="number">0.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">0</span>, <span class="number">.5</span>);</span><br><span class="line">        glColor3f(<span class="number">0.0</span>,<span class="number">1.0</span>,<span class="number">0.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">-.5</span>,<span class="number">-.5</span>);</span><br><span class="line">        glColor3f(<span class="number">0.0</span>, <span class="number">0.0</span>, <span class="number">1.0</span>);</span><br><span class="line">        glVertex2f(<span class="number">.5</span>, <span class="number">-.5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    glEnd();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    GLFWwindow* win;</span><br><span class="line">    <span class="keyword">if</span>(!glfwInit())&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    win = glfwCreateWindow(<span class="number">640</span>, <span class="number">480</span>, <span class="string">"OpenGL Base Project"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span>(!win)</span><br><span class="line">    &#123;</span><br><span class="line">        glfwTerminate();</span><br><span class="line">        <span class="built_in">exit</span>(EXIT_FAILURE);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!glewInit())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    glfwMakeContextCurrent(win);</span><br><span class="line">    <span class="keyword">while</span>(!glfwWindowShouldClose(win))&#123;</span><br><span class="line">        Render();</span><br><span class="line">        glfwSwapBuffers(win);</span><br><span class="line">        glfwPollEvents();</span><br><span class="line">    &#125;</span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="built_in">exit</span>(EXIT_SUCCESS);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="range不对"><a href="#range不对" class="headerlink" title="range不对"></a>range不对</h2><h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><p>在富文本中有时候需要高亮文本，但是遇到了文本只有部分高亮的问题，代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"🔴1🔴2🔴3内部文档1"</span></span><br><span class="line"><span class="keyword">let</span> attributeString = <span class="type">NSMutableAttributedString</span>(string: string)</span><br><span class="line"><span class="keyword">let</span> range = <span class="type">NSRange</span>(location: <span class="number">0</span>, length: string.<span class="built_in">count</span>)</span><br><span class="line">attributeString.addAttribute(.foregroundColor, value: <span class="type">UIColor</span>.blue, range: range)</span><br><span class="line">textView.attributedText = attributeString</span><br></pre></td></tr></table></figure>
 
-<p>见证奇迹的时刻到了，运行，你将会看到一个漂亮的三角形<img src="https://img2018.cnblogs.com/blog/552616/201908/552616-20190815143156518-737968913.png" alt></p>
-<p>mac 工程搭建，就说这么多了。</p>
-<hr>
-<p>感谢以下文章的作者：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/24529016" target="_blank" rel="noopener">Mac系统下配置OpenGL环境（小白自学版）</a></p>
-<p><a href="http://blog.shenyuanluo.com/OpenGLEnvironment.html" target="_blank" rel="noopener">OpenGL学习笔记（二）—— (macOS)环境搭建</a></p>
+<p>效果：</p>
+<img src="/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png" width="300">
+
+<p>上面的代码看起来是没有问题的，既然颜色值没有全部生效，那么问题一个是出在了rang上。通过查资料发现，在swift中使用了扩展字型集群，所以swift中会对可以组合在一起的两个字符，以下为示例:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> precomposed: <span class="type">Character</span> = <span class="string">"\u&#123;D55C&#125;"</span> <span class="comment">// 한</span></span><br><span class="line"><span class="keyword">let</span> characters = [<span class="string">"\u&#123;1112&#125;"</span>, <span class="string">"\u&#123;1161&#125;"</span>, <span class="string">"\u&#123;11AB&#125;"</span>] <span class="comment">// ᄒ, ᅡ, ᆫ</span></span><br><span class="line"><span class="keyword">var</span> string = <span class="type">String</span>()</span><br><span class="line"><span class="keyword">for</span> character <span class="keyword">in</span> characters &#123;</span><br><span class="line">    string.append(character)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"string:\(string) count:\(string.count)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string:ᄒ <span class="built_in">count</span>:<span class="number">1</span></span><br><span class="line">string:하 <span class="built_in">count</span>:<span class="number">1</span></span><br><span class="line">string:한 <span class="built_in">count</span>:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看出虽然上面的string已经append了三个character，但是count任然是1。那么我们应该怎么样做呢？主要有以下两种办法：</p>
+<ol>
+<li>string as NSString</li>
+<li>range convert to NSRange</li>
+</ol>
+<p>示例代码如下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">"🔴1🔴2🔴3内部文档1"</span></span><br><span class="line"><span class="comment">//method 1  string as NSString</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"NSString length: \((string as NSString).length)"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"String length: \(string.count)"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wrongRange = <span class="type">NSRange</span>(location: <span class="number">0</span>, length: string.<span class="built_in">count</span>)</span><br><span class="line"><span class="comment">//method 2 range convert to NSRange</span></span><br><span class="line"><span class="keyword">let</span> r1 = string.range(of: string)</span><br><span class="line"><span class="keyword">var</span> correctRange: <span class="type">NSRange?</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">let</span> tR1 = r1 &#123;</span><br><span class="line">    correctRange = <span class="type">NSRange</span>(tR1, <span class="keyword">in</span>: string)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"wrongRange\(wrongRange)"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"correctRange: \(String(describing: correctRange))"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString length: 14</span><br><span class="line">String length: 11</span><br><span class="line">wrongRange&#123;0, 11&#125;</span><br><span class="line">correctRange: Optional(&#123;0, 14&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index/30404532#30404532" target="_blank" rel="noopener">https://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index/30404532#30404532</a></p>
+<p><a href="https://stackoverflow.com/questions/42114872/nsattributedstring-and-emojis-issue-with-positions-and-lengths" target="_blank" rel="noopener">https://stackoverflow.com/questions/42114872/nsattributedstring-and-emojis-issue-with-positions-and-lengths</a></p>
 
       
     </div>
@@ -496,6 +492,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/富文本编辑/" rel="tag"># 富文本编辑</a>
+          
+        </div>
+      
 
       
       
@@ -505,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/19/initial-blog/" rel="next" title="initial blog">
-                <i class="fa fa-chevron-left"></i> initial blog
+              <a href="/2019/12/08/GoogleTest使用/" rel="next" title="GoogleTest使用">
+                <i class="fa fa-chevron-left"></i> GoogleTest使用
               </a>
             
           </div>
@@ -514,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/20/C-中调用OC代码/" rel="prev" title="C++中调用OC代码">
-                C++中调用OC代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -669,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC-OpenGL-环境搭建"><span class="nav-number">1.</span> <span class="nav-text">MAC OpenGL 环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础库介绍"><span class="nav-number">1.1.</span> <span class="nav-text">基础库介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GLEW"><span class="nav-number">1.1.1.</span> <span class="nav-text">GLEW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GLFW"><span class="nav-number">1.1.2.</span> <span class="nav-text">GLFW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入安装步骤"><span class="nav-number">1.2.</span> <span class="nav-text">进入安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备工作"><span class="nav-number">1.2.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装GLEW"><span class="nav-number">1.2.2.</span> <span class="nav-text">安装GLEW</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装GLFW"><span class="nav-number">1.2.3.</span> <span class="nav-text">安装GLFW</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加入工程"><span class="nav-number">1.3.</span> <span class="nav-text">加入工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置搜索路径"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置搜索路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加要链接的framework"><span class="nav-number">1.3.2.</span> <span class="nav-text">添加要链接的framework</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#range不对"><span class="nav-number">2.1.</span> <span class="nav-text">range不对</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">2.1.1.</span> <span class="nav-text">场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">2.2.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -839,9 +837,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2019/08/20/Mac-OpenGL环境搭建/';
-          this.page.identifier = '2019/08/20/Mac-OpenGL环境搭建/';
-          this.page.title = 'Mac OpenGL环境搭建';
+          this.page.url = 'http://yoursite.com/2020/06/21/iOS富文本处理采坑记录/';
+          this.page.identifier = '2020/06/21/iOS富文本处理采坑记录/';
+          this.page.title = 'iOS富文本处理踩坑记录（一）';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://github-io-13.disqus.com/embed.js';
