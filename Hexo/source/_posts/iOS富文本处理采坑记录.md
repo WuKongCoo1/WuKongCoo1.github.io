@@ -6,6 +6,7 @@ category:
   - - UIKit
 date: 2020-06-20 16:38:28
 tags:
+typora-root-url: ../../source
 ---
 <!--categories:-->
 <!--- [Objective-C]-->
@@ -44,7 +45,7 @@ textView.attributedText = attributeString
 
 效果：
 
-<img src="/Users/bytedance/Documents/Personal/blog/Hexo/source/images/image-20200620155224529.png" width=300>
+<img src="/images/image-20200620155224529.png" width=300>
 
 上面的代码看起来是没有问题的，既然颜色值没有全部生效，那么问题一个是出在了rang上。通过查资料发现，在swift中使用了扩展字型集群，所以swift中会对可以组合在一起的两个字符，以下为示例:
 
