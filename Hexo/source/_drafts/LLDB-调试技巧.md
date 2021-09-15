@@ -95,5 +95,59 @@ $string
 -[UIViewController _printHierarchy]：打印 UIViewController 的层级结构
 ```
 
+## Image
+
+### Lookup
+
+Look up information for a raw address in the executable or any shared libraries.
+
+```shell
+(lldb) image lookup --address 0x1ec4
+(lldb) im loo -a 0x1ec4
+
+```
+
+Look up functions matching a regular expression in a binary.
+
+```shell
+This one finds debug symbols:
+(lldb) image lookup -r -n <FUNC_REGEX>
+
+This one finds non-debug symbols:
+(lldb) image lookup -r -s <FUNC_REGEX>
+```
+
+Find full source line information.
+
+```shell
+This one is a bit messy at present. Do:
+
+(lldb) image lookup -v --address 0x1ec4
+
+and look for the LineEntry line, which will have the full source path and line range information.
+```
+
+Look up information for an address in **a.out** only.
+
+```
+(lldb) image lookup --address 0x1ec4 a.out
+(lldb) im loo -a 0x1ec4 a.out
+```
+
+## BreakPoint
+
+```
+//设置正则表达式断点
+rb "-\[UIImageView setHighlighted:\]"
+//类方法打断点
+breakpoint set -n "[ACCRepoContextModel setVideoType:]"
+```
+
+参数打印
+
+```
+po $arg1
+```
+
 
 
